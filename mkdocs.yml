@@ -1,0 +1,82 @@
+site_name: 具身智能与机器人工程笔记
+site_author: 刘杰夫
+site_url: https://jeffliulab.github.io/embodied-notes/
+
+theme:
+  name: material
+  features:
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.indexes
+    - navigation.top
+    - navigation.path
+    - search.suggest
+    - search.highlight
+
+plugins:
+  - search
+  - i18n:
+      docs_structure: suffix
+      languages:
+        - locale: zh
+          default: true
+          name: 中文
+          build: true
+        - locale: en
+          name: English
+          build: true
+          site_name: "Embodied Intelligence & Robot Engineering Notes"
+          nav_translations:
+            首页: Home
+            机器人学: Robotics
+            机器人工程: Robot Engineering
+            机器人学习: Robot Learning
+            仿真与部署: Simulation & Deployment
+            自动驾驶: Autonomous Driving
+            无人机: Drones
+            机械臂: Robot Arms
+            机器狗: Quadrupeds
+            人形机器人: Humanoid Robots
+            独立议题: Topics
+
+extra:
+  alternate:
+    - name: 中文
+      link: /embodied-notes/
+      lang: zh
+    - name: English
+      link: /embodied-notes/en/
+      lang: en
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - attr_list
+  - md_in_html
+  - tables
+  - footnotes
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js
+  - javascripts/katex.js
+
+extra_css:
+  - https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css
+
+nav:
+  - 首页: index.md
+  - 机器人学: 00_Robotics/index.md
+  - 机器人工程: 01_Robot_Engineering/index.md
+  - 机器人学习: 02_Robot_Learning/index.md
+  - 仿真与部署: 03_Sim2Real/index.md
+  - 自动驾驶: 04_Autonomous_Driving/index.md
+  - 无人机: 05_Drones/index.md
+  - 机械臂: 06_Robot_Arms/index.md
+  - 机器狗: 07_Quadrupeds/index.md
+  - 人形机器人: 08_Humanoids/index.md
+  - 独立议题: 09_Topics/index.md

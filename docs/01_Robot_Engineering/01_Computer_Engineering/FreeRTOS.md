@@ -191,7 +191,7 @@ UNDEFINED behavior。必须 FromISR。
 ## 12. Related Concepts
 
 - **同节**:[ARM Cortex-M](ARM_Cortex_M.md)、[RTOS Overview](RTOS_Overview.md)
-- **应用**:[ROS2 Basics](../10_Robot_Integration/ROS2_Basics.md)、[Embedded debugging]
+- **应用**:[ROS2 Basics](../11_Integration/ROS2_Basics.md)、[Embedded debugging]
 - **AWS**: FreeRTOS + AWS IoT
 
 ---

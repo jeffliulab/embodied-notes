@@ -161,7 +161,7 @@ Default not persistent; need file/DB backend (Mosquitto persistence).
 ## 12. Related Concepts
 
 - **Same section**: [USB](USB.en.md), [Modbus](Modbus.en.md)
-- **Embedded**: [ESP32](../03_Embedded_Systems/ARM_Cortex_M.en.md)
+- **Embedded**: [ESP32](../01_Computer_Engineering/ARM_Cortex_M.en.md)
 
 ---
 

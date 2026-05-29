@@ -3,7 +3,7 @@
 > *轴承使旋转或直线运动 smooth + low friction。从 industrial 机械、汽车、机器人 joint 到精密仪器,无处不在。SKF, NSK, NTN, FAG 主要 vendor。本篇覆盖类型、选型、寿命计算。*
 >
 > **难度**:Intermediate
-> **前置知识**:[Materials Science](../00_Foundations/Materials_Science.md)、[CAD 工具](CAD工具.md)
+> **前置知识**:[Materials Science](../12_Foundations/Materials_Science.md)、[CAD 工具](CAD工具.md)
 
 ---
 
@@ -186,7 +186,7 @@ Shaft / housing tolerance 错 → bearing 内应力 → 早 fail。
 ## 12. Related Concepts
 
 - **同节**:[底盘与运动机构](底盘与运动机构.md)、[3D 打印与加工](3D打印与加工.md)
-- **应用**:[无刷电机与 FOC](../06_Actuators_Motors/无刷电机与FOC.md)、[减速器](../06_Actuators_Motors/减速器.md)
+- **应用**:[无刷电机与 FOC](../05_Motors_Actuators/无刷电机与FOC.md)、[减速器](../05_Motors_Actuators/减速器.md)
 
 ---
 

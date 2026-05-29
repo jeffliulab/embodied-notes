@@ -3,7 +3,7 @@
 > *3D 打印 / 增材制造 (AM) 自 1986 (Hull SLA) 以来革命性改变 prototyping + 小批量制造。FDM / SLA / SLS / SLM / Binder jet 各自适用。机器人 / 航天 / 医疗都广泛使用。*
 >
 > **难度**:Intermediate
-> **前置知识**:[Materials Science](../00_Foundations/Materials_Science.md)、[CAD 工具](../04_Mechanical_Engineering/CAD工具.md)
+> **前置知识**:[Materials Science](../12_Foundations/Materials_Science.md)、[CAD 工具](../08_Mechanical/CAD工具.md)
 
 ---
 
@@ -161,8 +161,8 @@ SLM Al/Ti 粉末易燃易爆,需 specialized facility。
 
 ## 10. Related Concepts
 
-- **材料**:[Materials Science](../00_Foundations/Materials_Science.md)
-- **设计**:[CAD 工具](../04_Mechanical_Engineering/CAD工具.md)
+- **材料**:[Materials Science](../12_Foundations/Materials_Science.md)
+- **设计**:[CAD 工具](../08_Mechanical/CAD工具.md)
 
 ---
 

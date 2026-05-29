@@ -3,7 +3,7 @@
 > *ADC (Analog-to-Digital Converter) converts continuous voltage → discrete digital; DAC the reverse. Bridge for sensors / audio / DSP / control.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [Op-Amp](Op_Amp.en.md), [Signal Processing](../00_Foundations/Signal_Processing.en.md)
+> **Prerequisites**: [Op-Amp](Op_Amp.en.md), [Signal Processing](../12_Foundations/Signal_Processing.en.md)
 
 ---
 
@@ -159,7 +159,7 @@ Offset accumulates; need chopper / auto-zero.
 ## 10. Related Concepts
 
 - **Same section**: [Op-Amp](Op_Amp.en.md)
-- **Applications**: [Signal Processing](../00_Foundations/Signal_Processing.en.md)
+- **Applications**: [Signal Processing](../12_Foundations/Signal_Processing.en.md)
 
 ---
 

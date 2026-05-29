@@ -3,7 +3,7 @@
 > *3D printing / additive manufacturing (AM) has revolutionized prototyping + small-batch production since 1986 (Hull SLA). FDM / SLA / SLS / SLM / Binder jet each suit different needs. Used widely in robotics / aerospace / medical.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [Materials Science](../00_Foundations/Materials_Science.en.md), [CAD Tools](../04_Mechanical_Engineering/CAD工具.en.md)
+> **Prerequisites**: [Materials Science](../12_Foundations/Materials_Science.en.md), [CAD Tools](../08_Mechanical/CAD工具.en.md)
 
 ---
 
@@ -157,8 +157,8 @@ SLM Al/Ti powders flammable / explosive, need specialized facility.
 
 ## 10. Related Concepts
 
-- **Materials**: [Materials Science](../00_Foundations/Materials_Science.en.md)
-- **Design**: [CAD Tools](../04_Mechanical_Engineering/CAD工具.en.md)
+- **Materials**: [Materials Science](../12_Foundations/Materials_Science.en.md)
+- **Design**: [CAD Tools](../08_Mechanical/CAD工具.en.md)
 
 ---
 

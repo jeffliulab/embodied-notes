@@ -161,7 +161,7 @@ Hobby servos can't use 30 / 100 Hz (only 50 Hz).
 ## 11. Related Concepts
 
 - **Same section**: [Brushless Motor & FOC](无刷电机与FOC.en.md), [Stepper Motor](Stepper_Motor.en.md), [Reducer](减速器.en.md)
-- **Communication**: [Ethernet & EtherCAT](../08_Communication_Networks/以太网与EtherCAT.en.md)
+- **Communication**: [Ethernet & EtherCAT](../06_Communication/以太网与EtherCAT.en.md)
 
 ---
 

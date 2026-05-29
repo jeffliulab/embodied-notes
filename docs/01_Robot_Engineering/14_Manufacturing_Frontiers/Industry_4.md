@@ -3,7 +3,7 @@
 > *Industry 4.0 (2011 德国概念) = 第 4 次工业革命。融合 IoT, AI, cyber-physical systems, big data, robotics 入制造。Smart factory, digital twin, predictive maintenance 是核心 themes。*
 >
 > **难度**:Intermediate
-> **前置知识**:[3D 打印](3D_Printing.md)、[CNC](CNC.md)、[ROS 2 基础](../10_Robot_Integration/ROS2_Basics.md)
+> **前置知识**:[3D 打印](3D_Printing.md)、[CNC](CNC.md)、[ROS 2 基础](../11_Integration/ROS2_Basics.md)
 
 ---
 
@@ -192,7 +192,7 @@ class RULPredictor(nn.Module):
 ## 14. Related Concepts
 
 - **同节**:[3D 打印](3D_Printing.md)、[CNC](CNC.md)
-- **机器人**:[ROS 2 基础](../10_Robot_Integration/ROS2_Basics.md)
+- **机器人**:[ROS 2 基础](../11_Integration/ROS2_Basics.md)
 - **AI**: https://jeffliulab.github.io/ai-notes/06_AI_Engineering/
 
 ---

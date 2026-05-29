@@ -197,7 +197,7 @@ Stepper torque drops sharply at high speed; consider BLDC + encoder for high spe
 ## 12. Related Concepts
 
 - **Same section**: [Brushless Motor & FOC](无刷电机与FOC.en.md), [Reducer](减速器.en.md)
-- **Control**: [Control Theory](../00_Foundations/Control_Theory.en.md)
+- **Control**: [Control Theory](../12_Foundations/Control_Theory.en.md)
 
 ---
 

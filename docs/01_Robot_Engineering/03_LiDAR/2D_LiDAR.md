@@ -173,7 +173,7 @@ def generate_launch_description():
 | GMapping | 粒子滤波 | `slam_gmapping` | 经典算法，资源消耗低 |
 | Hector SLAM | 扫描匹配 | `hector_slam` | 不需要里程计 |
 
-> 详细 SLAM 内容请参考 [SLAM 专题](../../08_Embodied_Intelligence/03_Robotics/SLAM.md)
+> 详细 SLAM 内容请参考 [SLAM 专题](../../00_Robotics/02_Classical_Robotics/SLAM.md)
 
 ### 扫地机器人导航
 

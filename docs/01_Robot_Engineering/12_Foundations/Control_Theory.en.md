@@ -4,7 +4,7 @@
 >
 > **Difficulty**: Intermediate-Advanced
 > **Prerequisites**: [Signal Processing](Signal_Processing.en.md), calculus, linear algebra
-> **Further reading**: [FOC Motor Control](../06_Actuators_Motors/无刷电机与FOC.en.md)
+> **Further reading**: [FOC Motor Control](../05_Motors_Actuators/无刷电机与FOC.en.md)
 
 ---
 
@@ -253,7 +253,7 @@ Nonlinear systems linearized around operating point; fails far from it.
 ## 11. Related Concepts
 
 - **Same section**: [Signal Processing](Signal_Processing.en.md)
-- **Applications**: [FOC Motor](../06_Actuators_Motors/无刷电机与FOC.en.md)
+- **Applications**: [FOC Motor](../05_Motors_Actuators/无刷电机与FOC.en.md)
 - **Robotics**: https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/03_Robotics/
 
 ---

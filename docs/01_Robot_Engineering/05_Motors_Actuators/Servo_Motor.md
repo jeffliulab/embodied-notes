@@ -164,7 +164,7 @@ Hobby servo 不能用 30 / 100 Hz (only 50 Hz)。
 ## 11. Related Concepts
 
 - **同节**:[无刷电机与 FOC](无刷电机与FOC.md)、[Stepper Motor](Stepper_Motor.md)、[减速器](减速器.md)
-- **通信**:[以太网与 EtherCAT](../08_Communication_Networks/以太网与EtherCAT.md)
+- **通信**:[以太网与 EtherCAT](../06_Communication/以太网与EtherCAT.md)
 
 ---
 

@@ -160,7 +160,7 @@ Default 不持久;need 配置 file/DB backend(Mosquitto persistence)。
 
 ## 12. Related Concepts
 
-- **嵌入式**:[ESP32](../03_Embedded_Systems/ARM_Cortex_M.md)
+- **嵌入式**:[ESP32](../01_Computer_Engineering/ARM_Cortex_M.md)
 
 ---
 

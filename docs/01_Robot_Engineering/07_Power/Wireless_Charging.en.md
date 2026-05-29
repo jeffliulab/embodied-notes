@@ -158,7 +158,7 @@ L, C tolerance → resonance shift → efficiency drop.
 ## 11. Related Concepts
 
 - **Same section**: [BMS Battery Management](BMS_Battery_Management.en.md), power electronics
-- **Electrical**: [Power Electronics](../01_Electrical_Engineering/Power_Electronics.en.md)
+- **Electrical**: [Power Electronics](../13_Electrical_Engineering/Power_Electronics.en.md)
 
 ---
 

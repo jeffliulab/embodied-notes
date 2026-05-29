@@ -4,7 +4,7 @@
 >
 > **难度**:Intermediate
 > **前置知识**:操作系统基础、C 语言、嵌入式概念
-> **后续阅读**:[CPU 架构](../02_Computer_Engineering/CPU架构.md)、[CAN 总线](../08_Communication_Networks/CAN总线.md)
+> **后续阅读**:[CPU 架构](CPU架构.md)、[CAN 总线](../06_Communication/CAN总线.md)
 
 ---
 
@@ -206,8 +206,8 @@ ISR 长 → block 其他 interrupt。任何长操作 defer。
 
 ## 11. Related Concepts
 
-- **硬件**:[CPU 架构](../02_Computer_Engineering/CPU架构.md)、[嵌入式系统](../02_Computer_Engineering/嵌入式系统.md)
-- **通信**:[CAN 总线](../08_Communication_Networks/CAN总线.md)、[串口与 I2C/SPI](../08_Communication_Networks/串口与I2C_SPI.md)
+- **硬件**:[CPU 架构](CPU架构.md)、[嵌入式系统](嵌入式系统.md)
+- **通信**:[CAN 总线](../06_Communication/CAN总线.md)、[串口与 I2C/SPI](../06_Communication/串口与I2C_SPI.md)
 
 ---
 

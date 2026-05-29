@@ -271,7 +271,7 @@ Some high-end humanoid robots use EtherCAT to connect all body joints:
 - Full-body coordinated motion
 - Interfaces with upper-level MPC/RL controllers via shared memory
 
-See [Real-Time Systems](../../08_Embodied_Intelligence/09_Deployment/实时系统.md) for details.
+See [Real-Time Systems](../../03_Sim2Real/02_Deployment/实时系统.md) for details.
 
 ## EtherCAT vs. CAN Comparison
 

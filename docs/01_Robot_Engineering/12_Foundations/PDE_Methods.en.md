@@ -58,7 +58,7 @@ $$\nabla \times \mathbf{E} = -\partial_t \mathbf{B}, \quad \nabla \times \mathbf
 - Variational form
 - Arbitrary mesh
 - Flexible, industry standard
-- See [FEA](../04_Mechanical_Engineering/Finite_Element_Analysis.en.md)
+- See [FEA](../08_Mechanical/Finite_Element_Analysis.en.md)
 
 ### 3.3 FVM (Finite Volume)
 
@@ -205,7 +205,7 @@ First-order hyperbolic shock formation complex (Burgers equation).
 ## 11. Related Concepts
 
 - **Same section**: [Linear Algebra](Linear_Algebra.en.md), [Signal Processing](Signal_Processing.en.md), [Fluid Mechanics](Fluid_Mechanics.en.md)
-- **Applications**: [FEA](../04_Mechanical_Engineering/Finite_Element_Analysis.en.md)
+- **Applications**: [FEA](../08_Mechanical/Finite_Element_Analysis.en.md)
 - **AI**: Physics-Informed NN
 
 ---

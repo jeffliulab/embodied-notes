@@ -163,7 +163,7 @@ Type I 违 1st law, Type II 违 2nd law。
 ## 10. Related Concepts
 
 - **同节**:[Linear Algebra](Linear_Algebra.md)、[Signal Processing](Signal_Processing.md)
-- **应用**:[电池技术](../07_Power_Energy/电池技术.md)、[散热与防护](../04_Mechanical_Engineering/散热与防护.md)
+- **应用**:[电池技术](../07_Power/电池技术.md)、[散热与防护](../08_Mechanical/散热与防护.md)
 
 ---
 

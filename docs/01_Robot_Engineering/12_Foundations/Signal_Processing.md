@@ -4,7 +4,7 @@
 >
 > **难度**:Intermediate
 > **前置知识**:微积分、复数、线性代数
-> **后续阅读**:[控制理论](Control_Theory.md)、[CAN 总线](../08_Communication_Networks/CAN总线.md)
+> **后续阅读**:[控制理论](Control_Theory.md)、[CAN 总线](../06_Communication/CAN总线.md)
 
 ---
 
@@ -232,8 +232,8 @@ filtfilt (双向 zero-phase) 仅 off-line 用;real-time 用单向 lfilter。
 
 ## 11. Related Concepts
 
-- **通信**:[CAN 总线](../08_Communication_Networks/CAN总线.md)
-- **传感器**:[IMU](../05_Sensors_Perception/03_IMU_Navigation/index.md)、[Cameras](../05_Sensors_Perception/01_Cameras/index.md)
+- **通信**:[CAN 总线](../06_Communication/CAN总线.md)
+- **传感器**:[IMU](../04_IMU_Navigation/index.md)、[Cameras](../02_Cameras/index.md)
 
 ---
 

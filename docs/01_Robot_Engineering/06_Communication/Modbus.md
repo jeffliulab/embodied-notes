@@ -155,7 +155,7 @@ Modicon 1-based、protocol 0-based,文档需明确。
 
 ## 11. Related Concepts
 
-- **嵌入式**:[ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.md)
+- **嵌入式**:[ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.md)
 
 ---
 

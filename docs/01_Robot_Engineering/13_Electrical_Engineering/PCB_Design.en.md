@@ -187,7 +187,7 @@ Without checking PCB fab stackup → impedance wrong.
 ## 12. Related Concepts
 
 - **Same section**: [Op_Amp](Op_Amp.en.md), [Power_Electronics](Power_Electronics.en.md)
-- **Embedded**: [ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.en.md)
+- **Embedded**: [ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.en.md)
 
 ---
 

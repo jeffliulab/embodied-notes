@@ -3,7 +3,7 @@
 > *CNC 用计算机控制机床精密切削金属 / 塑料 / 木材。3-5 轴 mill / lathe / router / EDM 是工业基础。从 1950s 起发展,今天与 3D 打印共同构成 modern manufacturing。*
 >
 > **难度**:Intermediate
-> **前置知识**:[CAD 工具](../04_Mechanical_Engineering/CAD工具.md)、[材料科学](../00_Foundations/Materials_Science.md)
+> **前置知识**:[CAD 工具](../08_Mechanical/CAD工具.md)、[材料科学](../12_Foundations/Materials_Science.md)
 
 ---
 
@@ -202,8 +202,8 @@ def generate_pocket_gcode(center, size, depth, tool_dia=3, stepdown=0.5, feed=50
 
 ## 11. Related Concepts
 
-- **CAD**:[CAD 工具](../04_Mechanical_Engineering/CAD工具.md)
-- **材料**:[Materials Science](../00_Foundations/Materials_Science.md)
+- **CAD**:[CAD 工具](../08_Mechanical/CAD工具.md)
+- **材料**:[Materials Science](../12_Foundations/Materials_Science.md)
 
 ---
 

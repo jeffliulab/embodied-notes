@@ -3,7 +3,7 @@
 > *BMS is the brain of lithium battery packs — monitors voltage / current / temperature, balances cells, estimates SoC / SoH, protects against overcharge / overdischarge / short. Every EV / phone / drone / energy storage must have BMS. This article covers architecture + algorithms + safety.*
 >
 > **Difficulty**: Intermediate-Advanced
-> **Prerequisites**: [Battery Technology](电池技术.en.md), [Op-Amp](../01_Electrical_Engineering/Op_Amp.en.md)
+> **Prerequisites**: [Battery Technology](电池技术.en.md), [Op-Amp](../13_Electrical_Engineering/Op_Amp.en.md)
 
 ---
 
@@ -192,8 +192,8 @@ CAN disconnect → BMS must fail-safe (open contactor).
 ## 12. Related Concepts
 
 - **Same section**: [Battery Technology](电池技术.en.md), [Power Management Circuits](电源管理电路.en.md), [Charging & Safety](充电与安全.en.md)
-- **Communication**: [CAN Bus](../08_Communication_Networks/CAN总线.en.md)
-- **MCU**: [ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.en.md)
+- **Communication**: [CAN Bus](../06_Communication/CAN总线.en.md)
+- **MCU**: [ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.en.md)
 
 ---
 

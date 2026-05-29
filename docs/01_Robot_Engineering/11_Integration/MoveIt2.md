@@ -172,7 +172,7 @@ API 不同;Migration tool 半自动。
 ## 12. Related Concepts
 
 - **同节**:[ROS2_Basics](ROS2_Basics.md)、[SLAM_Basics](SLAM_Basics.md)
-- **机械**:[Bearings](../04_Mechanical_Engineering/Bearings.md)
+- **机械**:[Bearings](../08_Mechanical/Bearings.md)
 - **AI**: VLA + MoveIt
 
 ---

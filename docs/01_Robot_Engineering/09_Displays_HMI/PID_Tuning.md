@@ -3,7 +3,7 @@
 > *PID (Proportional-Integral-Derivative) 1922 Minorsky 海军舵机首用,百年仍是工业最普遍 controller。无模型、可解释、调参直觉。机器人 motor、温度、压力、PLC 普遍。Ziegler-Nichols (1942) + lambda tuning + auto-tuning。Anti-windup、derivative kick 等细节决定 production 表现。*
 >
 > **难度**:Intermediate
-> **前置知识**:[Control_Theory](../00_Foundations/Control_Theory.md)、Laplace 变换
+> **前置知识**:[Control_Theory](../12_Foundations/Control_Theory.md)、Laplace 变换
 
 ---
 
@@ -170,8 +170,8 @@ $$\Delta u_k = K_p (e_k - e_{k-1}) + K_i e_k \Delta t + K_d (e_k - 2 e_{k-1} + e
 ## 13. Related Concepts
 
 - **同节**:[GUI Frameworks](GUI_Frameworks.md)
-- **基础**:[Control Theory](../00_Foundations/Control_Theory.md)、[Signal Processing](../00_Foundations/Signal_Processing.md)
-- **电机**:[BLDC Motor](../06_Actuators_Motors/BLDC_Motor.md)
+- **基础**:[Control Theory](../12_Foundations/Control_Theory.md)、[Signal Processing](../12_Foundations/Signal_Processing.md)
+- **电机**:[BLDC Motor](../05_Motors_Actuators/BLDC_Motor.md)
 
 ---
 

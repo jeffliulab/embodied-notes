@@ -158,7 +158,7 @@ L、C tolerance → 谐振偏 → 效率掉。
 ## 11. Related Concepts
 
 - **同节**:[BMS Battery Management](BMS_Battery_Management.md)、Power Electronics
-- **电气**:[Power Electronics](../01_Electrical_Engineering/Power_Electronics.md)
+- **电气**:[Power Electronics](../13_Electrical_Engineering/Power_Electronics.md)
 
 ---
 

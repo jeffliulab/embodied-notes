@@ -541,7 +541,7 @@ export ROS_DOMAIN_ID=42
 
 ## Related Content
 
-- [ROS2 In-Depth Tutorial](../../08_Embodied_Intelligence/06_Software/ROS2.md) -- Deep dive into ROS2
+- [ROS2 In-Depth Tutorial](../../03_Sim2Real/03_Ecosystem/ROS2.md) -- Deep dive into ROS2
 - [System Integration Overview](系统集成综述.md) -- Integration overview
 - [Debugging and Testing](调试与测试.md) -- ROS2 debugging methods
 

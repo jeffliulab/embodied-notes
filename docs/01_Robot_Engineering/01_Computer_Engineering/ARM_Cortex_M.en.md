@@ -3,7 +3,7 @@
 > *ARM Cortex-M is the dominant embedded CPU, from ultra-low-end M0 (STM32F0) to mid M4F (STM32F4) to high-end M7/M33. Tens of billions shipped worldwide. This article covers architecture, peripherals, development flow.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [CPU Architecture](../02_Computer_Engineering/CPU架构.en.md), C language
+> **Prerequisites**: [CPU Architecture](CPU架构.en.md), C language
 
 ---
 
@@ -176,7 +176,7 @@ Some instructions require alignment.
 ## 11. Related Concepts
 
 - **Same section**: [RTOS Overview](RTOS_Overview.en.md)
-- **Hardware**: [CPU Architecture](../02_Computer_Engineering/CPU架构.en.md), [Embedded Systems](../02_Computer_Engineering/嵌入式系统.en.md)
+- **Hardware**: [CPU Architecture](CPU架构.en.md), [Embedded Systems](嵌入式系统.en.md)
 
 ---
 

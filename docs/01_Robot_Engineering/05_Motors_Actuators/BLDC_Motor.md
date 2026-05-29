@@ -3,7 +3,7 @@
 > *BLDC 是机器人 / 无人机 / EV / 工业自动化主力电机。无电刷 = 寿命长、高效、低噪。换向由 ESC (Electronic Speed Controller) + Hall / encoder 控制。Outrunner (无人机) vs Inrunner (CNC)。FOC (Field Oriented Control) 是当代精控算法。Tesla / Optimus / Figure 全用 BLDC。*
 >
 > **难度**:Intermediate
-> **前置知识**:基础电磁、PWM、[Power Electronics](../01_Electrical_Engineering/Power_Electronics.md)
+> **前置知识**:基础电磁、PWM、[Power Electronics](../13_Electrical_Engineering/Power_Electronics.md)
 
 ---
 
@@ -174,8 +174,8 @@ class FOCController:
 ## 12. Related Concepts
 
 - **同节**:[Stepper Motor](Stepper_Motor.md)、[Servo Motor](Servo_Motor.md)
-- **电气**:[Power Electronics](../01_Electrical_Engineering/Power_Electronics.md)
-- **机器人**:[ROS2_Basics](../10_Robot_Integration/ROS2_Basics.md)
+- **电气**:[Power Electronics](../13_Electrical_Engineering/Power_Electronics.md)
+- **机器人**:[ROS2_Basics](../11_Integration/ROS2_Basics.md)
 
 ---
 

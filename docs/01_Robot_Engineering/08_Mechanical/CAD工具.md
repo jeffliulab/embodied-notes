@@ -4,7 +4,7 @@
 
 CAD（Computer-Aided Design）工具是机器人机械设计的核心软件。从概念建模到详细设计、从结构仿真到制造出图，CAD贯穿整个设计流程。本节对比主流CAD工具并介绍机器人特有的URDF/MJCF导出流程。
 
-> **仿真与开发工具链**请参考：[开发工具链](../../08_Embodied_Intelligence/06_Software/开发工具链.md)
+> **仿真与开发工具链**请参考：[开发工具链](../../03_Sim2Real/03_Ecosystem/开发工具链.md)
 
 ## 主流CAD工具对比
 

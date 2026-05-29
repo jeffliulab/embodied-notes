@@ -3,7 +3,7 @@
 > *BMS 是锂电池组的大脑 — 监测 voltage / current / temperature, 平衡 cells, 估 SoC / SoH, 保护过充 / 过放 / 短路。任何 EV / 手机 / 无人机 / 储能都必须有 BMS。本篇覆盖架构 + 算法 + 安全。*
 >
 > **难度**:Intermediate-Advanced
-> **前置知识**:[电池技术](电池技术.md)、[Op-Amp](../01_Electrical_Engineering/Op_Amp.md)
+> **前置知识**:[电池技术](电池技术.md)、[Op-Amp](../13_Electrical_Engineering/Op_Amp.md)
 
 ---
 
@@ -194,8 +194,8 @@ CAN 断 → BMS 必须 fail-safe (断开 contactor)。
 ## 12. Related Concepts
 
 - **同节**:[电池技术](电池技术.md)、[电源管理电路](电源管理电路.md)、[充电与安全](充电与安全.md)
-- **通信**:[CAN 总线](../08_Communication_Networks/CAN总线.md)
-- **MCU**:[ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.md)
+- **通信**:[CAN 总线](../06_Communication/CAN总线.md)
+- **MCU**:[ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.md)
 
 ---
 

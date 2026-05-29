@@ -172,7 +172,7 @@ PD 协议复杂;不规范 cable 可能损 device。
 ## 12. Related Concepts
 
 - **同节**:[CAN 总线](CAN总线.md)、[串口与 I2C/SPI](串口与I2C_SPI.md)、[WiFi 与蓝牙](WiFi与蓝牙.md)、[以太网与 EtherCAT](以太网与EtherCAT.md)
-- **嵌入式**:[ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.md)
+- **嵌入式**:[ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.md)
 
 ---
 

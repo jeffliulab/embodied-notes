@@ -170,7 +170,7 @@ Common-mode input 必须在 op-amp 允许范围。
 
 ## 9. Related Concepts
 
-- **应用**:[Sensors](../05_Sensors_Perception/index.md)、[FOC 电机控制](../06_Actuators_Motors/无刷电机与FOC.md)
+- **应用**:[Sensors](../index.md)、[FOC 电机控制](../05_Motors_Actuators/无刷电机与FOC.md)
 
 ---
 

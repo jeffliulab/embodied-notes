@@ -172,7 +172,7 @@ APIs differ; migration tool semi-automatic.
 ## 12. Related Concepts
 
 - **Same section**: [ROS2_Basics](ROS2_Basics.en.md), [SLAM_Basics](SLAM_Basics.en.md)
-- **Mechanical**: [Bearings](../04_Mechanical_Engineering/Bearings.en.md)
+- **Mechanical**: [Bearings](../08_Mechanical/Bearings.en.md)
 - **AI**: VLA + MoveIt
 
 ---

@@ -3,7 +3,7 @@
 > *SLAM 是机器人**同时**建图 + 定位的算法。从 1990s EKF-SLAM,到 2010s graph-based,到现代 visual / LiDAR / multi-sensor fusion。是 autonomous vehicle, AR/VR, 无人机的基础。*
 >
 > **难度**:Advanced
-> **前置知识**:[Linear Algebra](../00_Foundations/Linear_Algebra.md)、[Control Theory](../00_Foundations/Control_Theory.md)、概率论
+> **前置知识**:[Linear Algebra](../12_Foundations/Linear_Algebra.md)、[Control Theory](../12_Foundations/Control_Theory.md)、概率论
 
 ---
 
@@ -213,7 +213,7 @@ IMU-camera time / extrinsic 必须 calibrate;否则 VIO 失败。
 ## 12. Related Concepts
 
 - **同节**:[ROS 2 基础](ROS2_Basics.md)、[系统集成综述](系统集成综述.md)
-- **传感**:[Cameras](../05_Sensors_Perception/01_Cameras/index.md)、[LiDAR](../05_Sensors_Perception/02_LiDAR/index.md)、[IMU](../05_Sensors_Perception/03_IMU_Navigation/index.md)
+- **传感**:[Cameras](../02_Cameras/index.md)、[LiDAR](../03_LiDAR/index.md)、[IMU](../04_IMU_Navigation/index.md)
 - **AI 关联**: [Embodied Intelligence](https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/)
 
 ---

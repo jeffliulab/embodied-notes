@@ -3,7 +3,7 @@
 > *PID (Proportional-Integral-Derivative) introduced 1922 by Minorsky for naval steering, still the most ubiquitous industrial controller a century later. Model-free, interpretable, intuitive tuning. Common in robot motors, temperature, pressure, PLCs. Ziegler-Nichols (1942) + lambda tuning + auto-tuning. Anti-windup, derivative kick are critical production details.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [Control Theory](../00_Foundations/Control_Theory.en.md), Laplace transform
+> **Prerequisites**: [Control Theory](../12_Foundations/Control_Theory.en.md), Laplace transform
 
 ---
 
@@ -170,8 +170,8 @@ Large dead time / oscillation-sensitive plants don't suit; lambda tuning more st
 ## 13. Related Concepts
 
 - **Same section**: [GUI Frameworks](GUI_Frameworks.en.md)
-- **Foundation**: [Control Theory](../00_Foundations/Control_Theory.en.md), [Signal Processing](../00_Foundations/Signal_Processing.en.md)
-- **Motors**: [BLDC Motor](../06_Actuators_Motors/BLDC_Motor.en.md)
+- **Foundation**: [Control Theory](../12_Foundations/Control_Theory.en.md), [Signal Processing](../12_Foundations/Signal_Processing.en.md)
+- **Motors**: [BLDC Motor](../05_Motors_Actuators/BLDC_Motor.en.md)
 
 ---
 

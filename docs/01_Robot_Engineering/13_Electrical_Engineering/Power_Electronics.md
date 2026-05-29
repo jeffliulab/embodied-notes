@@ -175,7 +175,7 @@ MOSFET 不带 → 需外接 Schottky for 续流。
 ## 11. Related Concepts
 
 - **同节**:[Op-Amp](Op_Amp.md)、[ADC / DAC](ADC_DAC.md)
-- **应用**:[电池技术](../07_Power_Energy/电池技术.md)、[电源管理电路](../07_Power_Energy/电源管理电路.md)
+- **应用**:[电池技术](../07_Power/电池技术.md)、[电源管理电路](../07_Power/电源管理电路.md)
 
 ---
 

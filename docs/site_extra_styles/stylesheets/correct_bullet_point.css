@@ -1,0 +1,11 @@
+.md-typeset ul ul {
+  margin-left: 1.2em;  /* 恢复缩进 */
+}
+
+.md-typeset ul ul li {
+  list-style-type: circle;  /* 让第二级用圆圈 */
+}
+
+.md-typeset ul ul ul li {
+  list-style-type: square;  /* 第三级方块，可选 */
+}

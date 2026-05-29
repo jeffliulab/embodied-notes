@@ -182,8 +182,8 @@ FEA result ≠ truth; experimental validation essential.
 ## 12. Related Concepts
 
 - **Same section**: [Bearings](Bearings.en.md)
-- **Math basis**: [Linear Algebra](../00_Foundations/Linear_Algebra.en.md), [Materials Science](../00_Foundations/Materials_Science.en.md)
-- **Robotics**: [SLAM Basics](../10_Robot_Integration/SLAM_Basics.en.md)
+- **Math basis**: [Linear Algebra](../12_Foundations/Linear_Algebra.en.md), [Materials Science](../12_Foundations/Materials_Science.en.md)
+- **Robotics**: [SLAM Basics](../11_Integration/SLAM_Basics.en.md)
 
 ---
 

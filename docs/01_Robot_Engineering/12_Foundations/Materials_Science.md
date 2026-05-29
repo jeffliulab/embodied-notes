@@ -177,7 +177,7 @@ Composite 方向相关;不能假设 isotropic。
 ## 11. Related Concepts
 
 - **同节**:[Linear Algebra](Linear_Algebra.md)、[Thermodynamics](Thermodynamics.md)
-- **应用**:[CAD 工具](../04_Mechanical_Engineering/CAD工具.md)、[3D 打印](../04_Mechanical_Engineering/3D打印与加工.md)
+- **应用**:[CAD 工具](../08_Mechanical/CAD工具.md)、[3D 打印](../08_Mechanical/3D打印与加工.md)
 
 ---
 

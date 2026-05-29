@@ -140,7 +140,7 @@ Analog circuits sensitive to PCB layout.
 
 ## 9. Related Concepts
 
-- **Applications**: [Sensors](../05_Sensors_Perception/index.en.md)
+- **Applications**: [Sensors](../index.en.md)
 
 ---
 

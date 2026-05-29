@@ -3,7 +3,7 @@
 > *工业机器人是制造业自动化核心。Unimate (1961, GM) 首工业机器人。Fanuc / ABB / KUKA / Yaskawa "四大家族"+ 中国 Estun / 埃斯顿。Cobot (Universal Robots 2008 起) 与人协作。年装机量 50 万+。VLA / Foundation Model 是下一代。*
 >
 > **难度**:Intermediate
-> **前置知识**:[ROS2_Basics](../10_Robot_Integration/ROS2_Basics.md)、机器人学
+> **前置知识**:[ROS2_Basics](../11_Integration/ROS2_Basics.md)、机器人学
 
 ---
 
@@ -167,7 +167,7 @@ Repeatable 不代表 absolute position 精;须 calibration。
 ## 12. Related Concepts
 
 - **同节**:[3D Printing](3D_Printing.md)、[CNC](CNC.md)、[Industry 4.0](Industry_4.md)
-- **机器人**:[ROS2](../10_Robot_Integration/ROS2_Basics.md)、[SLAM](../10_Robot_Integration/SLAM_Basics.md)
+- **机器人**:[ROS2](../11_Integration/ROS2_Basics.md)、[SLAM](../11_Integration/SLAM_Basics.md)
 - **AI**: VLA — https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/
 
 ---

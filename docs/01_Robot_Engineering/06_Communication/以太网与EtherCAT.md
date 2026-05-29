@@ -271,7 +271,7 @@ while (1) {
 - 全身协调运动
 - 与上层MPC/RL控制器通过共享内存交互
 
-详见 [实时系统](../../08_Embodied_Intelligence/09_Deployment/实时系统.md)
+详见 [实时系统](../../03_Sim2Real/02_Deployment/实时系统.md)
 
 ## EtherCAT vs CAN 对比
 

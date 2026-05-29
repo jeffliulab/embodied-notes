@@ -3,7 +3,7 @@
 > *BLDC is the workhorse motor for robots / drones / EVs / industrial automation. No brushes = longer life, high efficiency, low noise. Commutation by ESC (Electronic Speed Controller) + Hall / encoder. Outrunner (drones) vs Inrunner (CNC). FOC (Field Oriented Control) is the modern precision algorithm. Tesla / Optimus / Figure all use BLDC.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: Basic EM, PWM, [Power Electronics](../01_Electrical_Engineering/Power_Electronics.en.md)
+> **Prerequisites**: Basic EM, PWM, [Power Electronics](../13_Electrical_Engineering/Power_Electronics.en.md)
 
 ---
 
@@ -174,8 +174,8 @@ Engineering nearly identical (BLDC usually trapezoidal, PMSM sinusoidal), same f
 ## 12. Related Concepts
 
 - **Same section**: [Stepper Motor](Stepper_Motor.en.md), [Servo Motor](Servo_Motor.en.md)
-- **Electrical**: [Power Electronics](../01_Electrical_Engineering/Power_Electronics.en.md)
-- **Robotics**: [ROS2_Basics](../10_Robot_Integration/ROS2_Basics.en.md)
+- **Electrical**: [Power Electronics](../13_Electrical_Engineering/Power_Electronics.en.md)
+- **Robotics**: [ROS2_Basics](../11_Integration/ROS2_Basics.en.md)
 
 ---
 

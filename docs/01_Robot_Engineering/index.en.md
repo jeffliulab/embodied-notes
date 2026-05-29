@@ -17,3 +17,7 @@ Using humanoid robots, quadrupeds, robot vacuums, and robot arms as primary refe
 - **[Displays & HMI](09_Displays_HMI/index.md)** — OLED/LCD, web interface, remote control
 - **[Force & Tactile Sensing](10_Force_Tactile/index.md)** — 6-axis F/T, tactile skin, foot sensors, force control
 - **[System Integration](11_Integration/index.md)** — PCB design, ROS2 integration, debugging, robot teardowns
+- **[Engineering Foundations](12_Foundations/index.md)** — Linear algebra, control theory, signal processing, thermodynamics, materials science
+- **[Electrical Engineering](13_Electrical_Engineering/index.md)** — Op-amps, ADC/DAC, power electronics, PCB design
+- **[Manufacturing & Frontiers](14_Manufacturing_Frontiers/index.md)** — 3D printing, CNC, Industry 4.0, robotics in manufacturing
+- **[Hardware Overview & Selection](15_Hardware_Overview/index.md)** — Cross-module surveys of sensing/actuation/computing/open-source platforms and selection decisions

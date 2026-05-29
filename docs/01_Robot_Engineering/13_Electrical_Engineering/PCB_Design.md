@@ -187,7 +187,7 @@ def trace_width_external(I, dT=10, t_oz=1):
 ## 12. Related Concepts
 
 - **同节**:[Op_Amp](Op_Amp.md)、[Power_Electronics](Power_Electronics.md)
-- **嵌入式**:[ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.md)
+- **嵌入式**:[ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.md)
 
 ---
 

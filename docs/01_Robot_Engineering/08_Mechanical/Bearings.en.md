@@ -3,7 +3,7 @@
 > *Bearings enable rotational or linear motion with low friction. From industrial machinery, automotive, robot joints to precision instruments — ubiquitous. SKF, NSK, NTN, FAG are major vendors. This article covers types, selection, life calculation.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [Materials Science](../00_Foundations/Materials_Science.en.md), [CAD Tools](CAD工具.en.md)
+> **Prerequisites**: [Materials Science](../12_Foundations/Materials_Science.en.md), [CAD Tools](CAD工具.en.md)
 
 ---
 
@@ -185,7 +185,7 @@ Exceeding rated RPM → heat + lubrication breakdown.
 ## 12. Related Concepts
 
 - **Same section**: [Chassis & Motion Mechanisms](底盘与运动机构.en.md), [3D Printing & Machining](3D打印与加工.en.md)
-- **Applications**: [Brushless Motor & FOC](../06_Actuators_Motors/无刷电机与FOC.en.md), [Reducer](../06_Actuators_Motors/减速器.en.md)
+- **Applications**: [Brushless Motor & FOC](../05_Motors_Actuators/无刷电机与FOC.en.md), [Reducer](../05_Motors_Actuators/减速器.en.md)
 
 ---
 

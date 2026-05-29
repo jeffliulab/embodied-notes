@@ -156,7 +156,7 @@ Modicon 1-based, protocol 0-based, docs must be explicit.
 ## 11. Related Concepts
 
 - **Same section**: [USB](USB.en.md), industrial buses
-- **Embedded**: [ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.en.md)
+- **Embedded**: [ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.en.md)
 
 ---
 

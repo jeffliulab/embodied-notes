@@ -4,7 +4,7 @@
 >
 > **难度**:Intermediate-Advanced
 > **前置知识**:[信号处理](Signal_Processing.md)、微积分、线性代数
-> **后续阅读**:[FOC 电机控制](../06_Actuators_Motors/无刷电机与FOC.md)
+> **后续阅读**:[FOC 电机控制](../05_Motors_Actuators/无刷电机与FOC.md)
 
 ---
 
@@ -255,7 +255,7 @@ MPC / LQR 依赖准确 model。Plant 变化 → 性能下降。
 ## 11. Related Concepts
 
 - **同节**:[信号处理](Signal_Processing.md)
-- **应用**:[FOC 电机](../06_Actuators_Motors/无刷电机与FOC.md)
+- **应用**:[FOC 电机](../05_Motors_Actuators/无刷电机与FOC.md)
 - **机器人**:https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/03_Robotics/ — 机器人学
 
 ---

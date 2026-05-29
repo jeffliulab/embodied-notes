@@ -165,7 +165,7 @@ MOSFET doesn't have → external Schottky needed for freewheeling.
 ## 11. Related Concepts
 
 - **Same section**: [Op-Amp](Op_Amp.en.md), [ADC / DAC](ADC_DAC.en.md)
-- **Applications**: [Battery Technology](../07_Power_Energy/电池技术.en.md), [Power Management Circuits](../07_Power_Energy/电源管理电路.en.md)
+- **Applications**: [Battery Technology](../07_Power/电池技术.en.md), [Power Management Circuits](../07_Power/电源管理电路.en.md)
 
 ---
 

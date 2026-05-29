@@ -3,7 +3,7 @@
 > *CNC uses computers to precisely cut metal / plastic / wood. 3-5 axis mill / lathe / router / EDM is industrial foundation. Developed since 1950s; today combines with 3D printing to form modern manufacturing.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [CAD Tools](../04_Mechanical_Engineering/CAD工具.en.md), [Materials Science](../00_Foundations/Materials_Science.en.md)
+> **Prerequisites**: [CAD Tools](../08_Mechanical/CAD工具.en.md), [Materials Science](../12_Foundations/Materials_Science.en.md)
 
 ---
 
@@ -200,8 +200,8 @@ Cheap CNC ball screw backlash → precision loss.
 
 ## 11. Related Concepts
 
-- **CAD**: [CAD Tools](../04_Mechanical_Engineering/CAD工具.en.md)
-- **Materials**: [Materials Science](../00_Foundations/Materials_Science.en.md)
+- **CAD**: [CAD Tools](../08_Mechanical/CAD工具.en.md)
+- **Materials**: [Materials Science](../12_Foundations/Materials_Science.en.md)
 
 ---
 

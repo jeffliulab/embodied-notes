@@ -169,7 +169,7 @@ PD protocol complex; non-compliant cable may damage device.
 ## 12. Related Concepts
 
 - **Same section**: [CAN Bus](CAN总线.en.md), [Serial & I2C/SPI](串口与I2C_SPI.en.md), [WiFi & Bluetooth](WiFi与蓝牙.en.md), [Ethernet & EtherCAT](以太网与EtherCAT.en.md)
-- **Embedded**: [ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.en.md)
+- **Embedded**: [ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.en.md)
 
 ---
 

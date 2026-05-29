@@ -3,7 +3,7 @@
 > *ADC (Analog-to-Digital Converter) 把连续 voltage → 离散数字;DAC 反之。是 sensors / audio / DSP / control 的桥梁。*
 >
 > **难度**:Intermediate
-> **前置知识**:[Op-Amp](Op_Amp.md)、[信号处理](../00_Foundations/Signal_Processing.md)
+> **前置知识**:[Op-Amp](Op_Amp.md)、[信号处理](../12_Foundations/Signal_Processing.md)
 
 ---
 
@@ -165,7 +165,7 @@ Offset 误差累积;需 chopper / auto-zero。
 ## 10. Related Concepts
 
 - **同节**:[Op-Amp](Op_Amp.md)
-- **应用**:[信号处理](../00_Foundations/Signal_Processing.md)、[Sensors](../05_Sensors_Perception/index.md)
+- **应用**:[信号处理](../12_Foundations/Signal_Processing.md)、[Sensors](../index.md)
 
 ---
 

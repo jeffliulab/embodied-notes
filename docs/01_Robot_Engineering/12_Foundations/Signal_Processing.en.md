@@ -4,7 +4,7 @@
 >
 > **Difficulty**: Intermediate
 > **Prerequisites**: calculus, complex numbers, linear algebra
-> **Further reading**: [Control Theory](Control_Theory.en.md), [CAN Bus](../08_Communication_Networks/CAN总线.en.md)
+> **Further reading**: [Control Theory](Control_Theory.en.md), [CAN Bus](../06_Communication/CAN总线.en.md)
 
 ---
 
@@ -229,8 +229,8 @@ filtfilt (bidirectional zero-phase) only offline; real-time uses unidirectional 
 
 ## 11. Related Concepts
 
-- **Communications**: [CAN Bus](../08_Communication_Networks/CAN总线.en.md)
-- **Sensors**: [IMU](../05_Sensors_Perception/03_IMU_Navigation/index.en.md), [Cameras](../05_Sensors_Perception/01_Cameras/index.en.md)
+- **Communications**: [CAN Bus](../06_Communication/CAN总线.en.md)
+- **Sensors**: [IMU](../04_IMU_Navigation/index.en.md), [Cameras](../02_Cameras/index.en.md)
 
 ---
 

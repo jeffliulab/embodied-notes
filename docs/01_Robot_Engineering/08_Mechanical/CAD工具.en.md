@@ -4,7 +4,7 @@
 
 CAD (Computer-Aided Design) tools are the core software for robot mechanical design. From concept modeling to detailed design, from structural simulation to manufacturing drawings, CAD is integral to the entire design workflow. This section compares mainstream CAD tools and introduces the URDF/MJCF export process specific to robotics.
 
-> **Simulation and development toolchain**: See [Development Toolchain](../../08_Embodied_Intelligence/06_Software/开发工具链.md)
+> **Simulation and development toolchain**: See [Development Toolchain](../../03_Sim2Real/03_Ecosystem/开发工具链.md)
 
 ## Mainstream CAD Tool Comparison
 

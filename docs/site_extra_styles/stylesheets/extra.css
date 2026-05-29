@@ -1,0 +1,140 @@
+/* === Google Fonts (Tufte SVG typography) === */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..800;1,9..144,400..600&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* 限制代码块最大高度，显示滚动条 */
+pre code {
+  display: block;
+  max-height: 30em; /* 大约 20 行，根据行高调整 */
+  overflow: auto;
+}
+
+/* ====== 正文二级标题色带 ====== */
+.md-content h2 {
+  background: linear-gradient(135deg, #4051b5 0%, #5c6bc0 100%);
+  color: #fff !important;
+  padding: 10px 16px;
+  border-radius: 4px;
+  margin-top: 2.4em;
+  font-size: 1.15em;
+  letter-spacing: 0.02em;
+}
+
+.md-content h2 a {
+  color: #fff !important;
+}
+
+.md-content h2 .headerlink {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.md-content h2 .headerlink:hover {
+  color: #fff;
+}
+
+/* ====== 顶部标签页悬停下拉菜单 ====== */
+.tab-dropdown {
+  position: fixed;
+  background: var(--md-default-bg-color);
+  border-top: 2px solid var(--md-primary-fg-color);
+  border-radius: 0 0 4px 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 4px 0;
+  min-width: 140px;
+  z-index: 400;
+  white-space: nowrap;
+}
+
+.tab-dropdown__item {
+  display: block;
+  padding: 6px 16px;
+  font-size: 0.7rem;
+  color: var(--md-default-fg-color--light);
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+
+.tab-dropdown__item:hover {
+  background: rgba(64, 81, 181, 0.06);
+  color: var(--md-primary-fg-color);
+}
+
+/* 有子菜单的项显示箭头 */
+.tab-dropdown__item.has-submenu::after {
+  content: " \25B8";
+  float: right;
+  margin-left: 8px;
+  opacity: 0.5;
+}
+
+/* 三级子菜单样式 */
+.tab-submenu {
+  border-top: none;
+  border-left: 2px solid var(--md-primary-fg-color);
+}
+
+/* ============================================================ */
+/*   Tufte SVG palette — aligns with the ai-notes sibling repo   */
+/* ============================================================ */
+:root {
+  /* 主色板 */
+  --dia-bg:              #f5f0e8;   /* 主背景 (warm cream) */
+  --dia-bg-card:         #ffffff;   /* 卡片白底 */
+  --dia-bg-deep:         #ede8df;   /* 强调底色 / code 块 */
+  --dia-stroke:          #1a1612;   /* 主笔画 / ink */
+  --dia-stroke-soft:     #6b5f4e;   /* 辅助笔画 / muted */
+  --dia-stroke-tertiary: #9c8e7a;   /* 三级注解 */
+  --dia-accent:          #c4673a;   /* 主强调 terracotta */
+  --dia-accent-deep:     #b55d32;
+  --dia-accent-soft:     rgba(196,103,58,.08);
+  --dia-green:           #4a6741;   /* 副色 1 forest */
+  --dia-green-soft:      #8bc086;
+  --dia-blue:            #2c4d6e;   /* 副色 2 deep blue */
+  --dia-gold:            #b8932c;   /* 副色 3 gold */
+  --dia-rule:            #ede8df;   /* 边框 / 分隔线 */
+}
+
+/* dark mode 覆盖 */
+[data-md-color-scheme="slate"] {
+  --dia-bg:              #1a1612;
+  --dia-bg-card:         #252018;
+  --dia-bg-deep:         #2e2820;
+  --dia-stroke:          #e8e0d8;
+  --dia-stroke-soft:     #a09888;
+  --dia-stroke-tertiary: #6b5f4e;
+  --dia-accent:          #da7756;
+  --dia-accent-deep:     #c4673a;
+  --dia-accent-soft:     rgba(218,119,86,.12);
+  --dia-green:           #8bc086;
+  --dia-green-soft:      #4a6741;
+  --dia-blue:            #7fa3c8;
+  --dia-gold:            #e8c060;
+  --dia-rule:            #2e2820;
+}
+
+/* SVG 容器 */
+.diagram {
+  background: var(--dia-bg);
+  border: 1px solid var(--dia-rule);
+  border-radius: 4px;
+  padding: 32px 24px;
+  margin: 28px 0;
+  text-align: center;
+  overflow-x: auto;
+}
+
+.diagram svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+}
+
+/* Figure caption (放在 .diagram 容器后面) */
+.figure-caption {
+  font-family: "Fraunces", Georgia, serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--dia-stroke-soft);
+  text-align: center;
+  margin: -16px 0 28px 0;
+}

@@ -173,7 +173,7 @@ def generate_launch_description():
 | GMapping | Particle filter | `slam_gmapping` | Classic algorithm, low resource consumption |
 | Hector SLAM | Scan matching | `hector_slam` | No odometry required |
 
-> For detailed SLAM content, see [SLAM Topic](../../08_Embodied_Intelligence/03_Robotics/SLAM.md)
+> For detailed SLAM content, see [SLAM Topic](../../00_Robotics/02_Classical_Robotics/SLAM.md)
 
 ### Robot Vacuum Navigation
 

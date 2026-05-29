@@ -3,7 +3,7 @@
 > *Industry 4.0 (2011 Germany concept) = 4th industrial revolution. Integrates IoT, AI, cyber-physical systems, big data, robotics into manufacturing. Smart factory, digital twin, predictive maintenance are core themes.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [3D Printing](3D_Printing.en.md), [CNC](CNC.en.md), [ROS 2 Basics](../10_Robot_Integration/ROS2_Basics.en.md)
+> **Prerequisites**: [3D Printing](3D_Printing.en.md), [CNC](CNC.en.md), [ROS 2 Basics](../11_Integration/ROS2_Basics.en.md)
 
 ---
 
@@ -189,7 +189,7 @@ Closed ecosystem → long-term high cost.
 ## 14. Related Concepts
 
 - **Same section**: [3D Printing](3D_Printing.en.md), [CNC](CNC.en.md)
-- **Robotics**: [ROS 2 Basics](../10_Robot_Integration/ROS2_Basics.en.md)
+- **Robotics**: [ROS 2 Basics](../11_Integration/ROS2_Basics.en.md)
 - **AI**: https://jeffliulab.github.io/ai-notes/06_AI_Engineering/
 
 ---

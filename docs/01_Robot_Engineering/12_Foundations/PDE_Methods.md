@@ -58,7 +58,7 @@ $$\nabla \times \mathbf{E} = -\partial_t \mathbf{B}, \quad \nabla \times \mathbf
 - Variational form
 - 任意 mesh
 - 灵活,工业 standard
-- 详见 [FEA](../04_Mechanical_Engineering/Finite_Element_Analysis.md)
+- 详见 [FEA](../08_Mechanical/Finite_Element_Analysis.md)
 
 ### 3.3 FVM (Finite Volume)
 
@@ -205,7 +205,7 @@ PDE 解高度依赖 boundary。Dirichlet / Neumann / Robin 区分关键。
 ## 11. Related Concepts
 
 - **同节**:[Linear Algebra](Linear_Algebra.md)、[Signal Processing](Signal_Processing.md)、[Fluid Mechanics](Fluid_Mechanics.md)
-- **应用**:[FEA](../04_Mechanical_Engineering/Finite_Element_Analysis.md)
+- **应用**:[FEA](../08_Mechanical/Finite_Element_Analysis.md)
 - **AI**:Physics-Informed NN
 
 ---

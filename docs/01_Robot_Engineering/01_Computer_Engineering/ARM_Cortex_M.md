@@ -3,7 +3,7 @@
 > *ARM Cortex-M 是嵌入式系统主流 CPU,从超低端 M0 (STM32F0) 到中端 M4F (STM32F4) 到高端 M7/M33。全球数百亿出货。本篇覆盖架构、外设、开发流程。*
 >
 > **难度**:Intermediate
-> **前置知识**:[CPU 架构](../02_Computer_Engineering/CPU架构.md)、C 语言
+> **前置知识**:[CPU 架构](CPU架构.md)、C 语言
 
 ---
 
@@ -183,7 +183,7 @@ ISR 修改的变量 → 必须 `volatile` 否则编译器 optimize 出错。
 ## 11. Related Concepts
 
 - **同节**:[RTOS Overview](RTOS_Overview.md)
-- **硬件**:[CPU 架构](../02_Computer_Engineering/CPU架构.md)、[嵌入式系统](../02_Computer_Engineering/嵌入式系统.md)
+- **硬件**:[CPU 架构](CPU架构.md)、[嵌入式系统](嵌入式系统.md)
 
 ---
 

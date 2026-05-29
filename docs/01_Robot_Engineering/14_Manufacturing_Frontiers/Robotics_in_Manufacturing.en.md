@@ -3,7 +3,7 @@
 > *Industrial robots are core to manufacturing automation. Unimate (1961, GM) was the first industrial robot. Fanuc / ABB / KUKA / Yaskawa are the "Big Four" + Chinese Estun. Cobot era (Universal Robots 2008+) collaborates with humans. Annual installs 500K+. VLA / foundation models are next generation.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [ROS2_Basics](../10_Robot_Integration/ROS2_Basics.en.md), robotics
+> **Prerequisites**: [ROS2_Basics](../11_Integration/ROS2_Basics.en.md), robotics
 
 ---
 
@@ -167,7 +167,7 @@ Domestic robots cheap, but controllers still depend on Yaskawa et al.
 ## 12. Related Concepts
 
 - **Same section**: [3D Printing](3D_Printing.en.md), [CNC](CNC.en.md), [Industry 4.0](Industry_4.en.md)
-- **Robotics**: [ROS2](../10_Robot_Integration/ROS2_Basics.en.md), [SLAM](../10_Robot_Integration/SLAM_Basics.en.md)
+- **Robotics**: [ROS2](../11_Integration/ROS2_Basics.en.md), [SLAM](../11_Integration/SLAM_Basics.en.md)
 - **AI**: VLA — https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/
 
 ---

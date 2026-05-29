@@ -550,7 +550,7 @@ export ROS_DOMAIN_ID=42
 
 ## 相关内容
 
-- [ROS2 详细教程](../../08_Embodied_Intelligence/06_Software/ROS2.md) — ROS2 深入学习
+- [ROS2 详细教程](../../03_Sim2Real/03_Ecosystem/ROS2.md) — ROS2 深入学习
 - [系统集成综述](系统集成综述.md) — 集成全局视图
 - [调试与测试](调试与测试.md) — ROS2 调试方法
 

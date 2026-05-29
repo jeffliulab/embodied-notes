@@ -182,8 +182,8 @@ FEA 结果 ≠ 真实;须 experiment 校验。
 ## 12. Related Concepts
 
 - **同节**:[Bearings](Bearings.md)
-- **数学基础**:[Linear Algebra](../00_Foundations/Linear_Algebra.md)、[Materials Science](../00_Foundations/Materials_Science.md)
-- **机器人**:[SLAM Basics](../10_Robot_Integration/SLAM_Basics.md)
+- **数学基础**:[Linear Algebra](../12_Foundations/Linear_Algebra.md)、[Materials Science](../12_Foundations/Materials_Science.md)
+- **机器人**:[SLAM Basics](../11_Integration/SLAM_Basics.md)
 
 ---
 

@@ -191,7 +191,7 @@ Wrongly calling vPortFree → crash.
 ## 12. Related Concepts
 
 - **Same section**: [ARM Cortex-M](ARM_Cortex_M.en.md), [RTOS Overview](RTOS_Overview.en.md)
-- **Applications**: [ROS2 Basics](../10_Robot_Integration/ROS2_Basics.en.md), embedded debugging
+- **Applications**: [ROS2 Basics](../11_Integration/ROS2_Basics.en.md), embedded debugging
 - **AWS**: FreeRTOS + AWS IoT
 
 ---

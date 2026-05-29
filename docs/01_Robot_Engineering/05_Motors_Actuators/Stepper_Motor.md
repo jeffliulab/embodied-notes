@@ -198,7 +198,7 @@ Stepper 高速 torque 急降;高速场景考虑 BLDC + encoder。
 ## 12. Related Concepts
 
 - **同节**:[无刷电机与 FOC](无刷电机与FOC.md)、[减速器](减速器.md)
-- **控制**:[控制理论](../00_Foundations/Control_Theory.md)
+- **控制**:[控制理论](../12_Foundations/Control_Theory.md)
 
 ---
 

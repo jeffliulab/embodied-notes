@@ -3,7 +3,7 @@
 > *SLAM is the algorithm for robots to **simultaneously** build maps + localize. From 1990s EKF-SLAM, to 2010s graph-based, to modern visual / LiDAR / multi-sensor fusion. Foundation of autonomous vehicles, AR/VR, drones.*
 >
 > **Difficulty**: Advanced
-> **Prerequisites**: [Linear Algebra](../00_Foundations/Linear_Algebra.en.md), [Control Theory](../00_Foundations/Control_Theory.en.md), probability
+> **Prerequisites**: [Linear Algebra](../12_Foundations/Linear_Algebra.en.md), [Control Theory](../12_Foundations/Control_Theory.en.md), probability
 
 ---
 
@@ -210,7 +210,7 @@ IMU-camera time / extrinsic must be calibrated; else VIO fails.
 ## 12. Related Concepts
 
 - **Same section**: [ROS 2 Basics](ROS2_Basics.en.md), [Integration Overview](系统集成综述.en.md)
-- **Sensors**: [Cameras](../05_Sensors_Perception/01_Cameras/index.en.md), [LiDAR](../05_Sensors_Perception/02_LiDAR/index.en.md), [IMU](../05_Sensors_Perception/03_IMU_Navigation/index.en.md)
+- **Sensors**: [Cameras](../02_Cameras/index.en.md), [LiDAR](../03_LiDAR/index.en.md), [IMU](../04_IMU_Navigation/index.en.md)
 - **AI connection**: [Embodied Intelligence](https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/)
 
 ---

@@ -175,7 +175,7 @@ iOS vs Android user expectations differ; Flutter / RN hard to perfect.
 ## 13. Related Concepts
 
 - **Same section**: [Display Systems Overview](显示系统综述.en.md), [OLED & LCD](OLED与LCD.en.md), [Touchscreen & Web UI](触摸屏与Web界面.en.md)
-- **Embedded**: [ARM Cortex-M](../03_Embedded_Systems/ARM_Cortex_M.en.md)
+- **Embedded**: [ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.en.md)
 
 ---
 

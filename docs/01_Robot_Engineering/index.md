@@ -17,3 +17,7 @@
 - **[显示与人机交互](09_Displays_HMI/index.md)** — OLED/LCD、Web界面、遥控手柄
 - **[力觉与触觉传感](10_Force_Tactile/index.md)** — 六维力矩、触觉皮肤、足端传感、力控
 - **[系统集成](11_Integration/index.md)** — PCB设计、ROS2集成、调试、机器人拆解案例
+- **[工程数理基础](12_Foundations/index.md)** — 线性代数、控制理论、信号处理、热力学、材料科学
+- **[电子电气工程](13_Electrical_Engineering/index.md)** — 运算放大器、ADC/DAC、电力电子、PCB设计
+- **[制造与前沿](14_Manufacturing_Frontiers/index.md)** — 3D打印、CNC、工业4.0、制造业机器人
+- **[硬件总览与选型](15_Hardware_Overview/index.md)** — 传感/执行/计算/开源平台横向综述与选型决策

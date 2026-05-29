@@ -4,7 +4,7 @@
 >
 > **Difficulty**: Intermediate
 > **Prerequisites**: OS basics, C language, embedded concepts
-> **Further reading**: [CPU Architecture](../02_Computer_Engineering/CPU架构.en.md), [CAN Bus](../08_Communication_Networks/CAN总线.en.md)
+> **Further reading**: [CPU Architecture](CPU架构.en.md), [CAN Bus](../06_Communication/CAN总线.en.md)
 
 ---
 
@@ -206,8 +206,8 @@ Long ISR → blocks other interrupts. Defer any long operation.
 
 ## 11. Related Concepts
 
-- **Hardware**: [CPU Architecture](../02_Computer_Engineering/CPU架构.en.md), [Embedded Systems](../02_Computer_Engineering/嵌入式系统.en.md)
-- **Communications**: [CAN Bus](../08_Communication_Networks/CAN总线.en.md), [Serial & I2C/SPI](../08_Communication_Networks/串口与I2C_SPI.en.md)
+- **Hardware**: [CPU Architecture](CPU架构.en.md), [Embedded Systems](嵌入式系统.en.md)
+- **Communications**: [CAN Bus](../06_Communication/CAN总线.en.md), [Serial & I2C/SPI](../06_Communication/串口与I2C_SPI.en.md)
 
 ---
 

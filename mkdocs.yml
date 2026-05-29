@@ -34,6 +34,20 @@ plugins:
             机器人学习: Robot Learning
             仿真与部署: "Simulation & Deployment"
             自动驾驶: Autonomous Driving
+            基础: Foundations
+            感知: Perception
+            预测与规划: "Prediction & Planning"
+            控制: Control
+            端到端与学习: "End-to-End & Learning"
+            自动驾驶综述: "Autonomous Driving Overview"
+            自动驾驶范式与方法谱系: "AD Paradigms & Method Taxonomy"
+            感知与定位: "Perception & Localization"
+            运动预测: "Motion Prediction"
+            规划与决策: "Planning & Decision"
+            车辆控制: "Vehicle Control"
+            端到端驾驶: "End-to-End Driving"
+            协变量偏移与闭环鸿沟: "Covariate Shift & the Closed-Loop Gap"
+            数据集与闭环评测: "Datasets & Closed-Loop Evaluation"
             无人机: Drones
             机械臂: Robot Arms
             机器狗: Quadrupeds
@@ -481,6 +495,21 @@ nav:
       - 开发工具链: 03_Sim2Real/03_Ecosystem/开发工具链.md
   - 自动驾驶:
     - 04_Autonomous_Driving/index.md
+    - 基础:
+      - 自动驾驶综述: 04_Autonomous_Driving/01_Foundations/自动驾驶综述.md
+      - 自动驾驶范式与方法谱系: 04_Autonomous_Driving/01_Foundations/自动驾驶范式与方法谱系.md
+    - 感知:
+      - 感知与定位: 04_Autonomous_Driving/02_Perception/感知与定位.md
+    - 预测与规划:
+      - 运动预测: 04_Autonomous_Driving/03_Prediction_Planning/运动预测.md
+      - 规划与决策: 04_Autonomous_Driving/03_Prediction_Planning/规划与决策.md
+    - 控制:
+      - 车辆控制: 04_Autonomous_Driving/04_Control/车辆控制.md
+    - 端到端与学习:
+      - 端到端驾驶: 04_Autonomous_Driving/05_Learning_E2E/端到端驾驶.md
+      - 协变量偏移与闭环鸿沟: 04_Autonomous_Driving/05_Learning_E2E/协变量偏移与闭环鸿沟.md
+    - 数据与评测:
+      - 数据集与闭环评测: 04_Autonomous_Driving/06_Data_Eval/数据集与闭环评测.md
   - 无人机:
     - 05_Drones/index.md
     - 无人机: 05_Drones/无人机.md

@@ -203,7 +203,7 @@ robot.step(action)
 
 ## 5. History and Modern Status
 
-- **2022** — RT-1 (Google) — 35M params, Transformer-based, 5000 demonstrations
+- **2022** — RT-1 (Google) — 35M params, Transformer-based, ~130K episodes
 - **July 2023** — RT-2 (Google) — adds PaLM-E, emergent reasoning
 - **2023** — Open X-Embodiment dataset (22 labs, 1M demos)
 - **April 2024** — Octo (Berkeley) — 90M open-source VLA
@@ -251,7 +251,7 @@ VLA is a single-step policy; long-horizon tasks need external planning ("open fr
 | **RT-2** | Google 2023 | PaLM-E 5B/55B | Direct LLM fine-tuning |
 | **Octo** | Berkeley 2024 | Transformer | 90M, open-source, modular |
 | **OpenVLA** | Stanford 2024 | Llama-2 7B | Fully open |
-| **π0** | Physical Intelligence 2024 | PaliGemma + Flow Matching | 3B, flow model decoder |
+| **π0** | Physical Intelligence 2024 | PaliGemma + Flow Matching | 3B, flow model decoder, weights open-sourced (openpi) |
 | **Helix** | Figure 2024-25 | Closed | Commercial deployment |
 | **RDT-1B** | Tsinghua 2024 | DiT | 1B, diffusion decoder |
 

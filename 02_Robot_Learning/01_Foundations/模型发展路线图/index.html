@@ -1,0 +1,10490 @@
+
+<!doctype html>
+<html lang="zh" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="刘杰夫">
+      
+      
+        <link rel="canonical" href="https://jeffliulab.github.io/embodied-notes/02_Robot_Learning/01_Foundations/%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E5%9B%BE/">
+      
+      
+        <link rel="prev" href="../VLA%E6%A8%A1%E5%9E%8B/">
+      
+      
+        <link rel="next" href="../%E5%A4%9A%E4%BB%BB%E5%8A%A1%E4%B8%8E%E6%B3%9B%E5%8C%96/">
+      
+      
+        
+          <link rel="alternate" href="./" hreflang="zh">
+        
+          <link rel="alternate" href="../../../en/02_Robot_Learning/01_Foundations/%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E5%9B%BE/" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>模型发展路线图 - 具身智能与机器人工程笔记</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../site_extra_styles/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../site_extra_styles/stylesheets/correct_bullet_point.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          跳转至
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="页眉">
+    <a href="../../.." title="具身智能与机器人工程笔记" class="md-header__button md-logo" aria-label="具身智能与机器人工程笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            具身智能与机器人工程笔记
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              模型发展路线图
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="选择当前语言">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../../en/02_Robot_Learning/01_Foundations/%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E5%9B%BE/" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="查找">
+        
+        <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            正在初始化搜索引擎
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="标签" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../00_Robotics/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  机器人学
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../01_Robot_Engineering/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  机器人工程
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  机器人学习
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../03_Sim2Real/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  仿真与部署
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../04_Autonomous_Driving/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  自动驾驶
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../05_Drones/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  无人机
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../06_Robot_Arms/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  机械臂
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../07_Quadrupeds/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  机器狗
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../08_Humanoids/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  人形机器人
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../09_Topics/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  独立议题
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="具身智能与机器人工程笔记" class="md-nav__button md-logo" aria-label="具身智能与机器人工程笔记" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    具身智能与机器人工程笔记
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器人学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/01_Embodiment_Theory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    具身智能理论
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    具身智能理论
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    具身智能综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E8%B7%AF%E7%BA%BF%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    具身智能技术路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E9%87%8C%E7%A8%8B%E7%A2%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    具身智能发展里程碑
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E8%AE%A4%E7%9F%A5%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    具身认知理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E7%9B%B4%E8%A7%89%E7%89%A9%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    直觉物理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E8%A1%A8%E5%BE%81%E4%B8%8E%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    表征与世界模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E6%84%9F%E7%9F%A5-%E8%A1%8C%E5%8A%A8%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知-行动循环
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/02_Classical_Robotics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    经典机器人学
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    经典机器人学
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/robotics_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人学综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    坐标系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E8%BF%90%E5%8A%A8%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人运动学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人动力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人控制理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/MPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型预测控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E8%BF%90%E5%8A%A8%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人运动规划
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E4%BB%BB%E5%8A%A1%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    任务与运动规划理论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/SLAM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SLAM
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/03_Research_Resources/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    研究资源
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    研究资源
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/03_Research_Resources/%E5%85%B3%E9%94%AE%E4%BC%9A%E8%AE%AE%E4%B8%8E%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关键会议与期刊
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/03_Research_Resources/%E5%85%B3%E9%94%AE%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    关键论文精读
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人工程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器人工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/01_Computer_Engineering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机工程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    计算机工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B7%A5%E7%A8%8B%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算机工程综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/CPU%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPU架构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/GPU%E4%B8%8E%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU与并行计算
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E5%86%85%E5%AD%98%E4%B8%8E%E5%AD%98%E5%82%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    内存与存储
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E6%80%BB%E7%BA%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    总线与接口
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    嵌入式系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    操作系统基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/ARM_Cortex_M/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ARM Cortex-M 系列
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/FreeRTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/RTOS_Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实时操作系统 (RTOS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/Zephyr_RTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zephyr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/02_Cameras/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    相机与视觉
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    相机与视觉
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A7%86%E8%A7%89%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人视觉综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/RGB%E7%9B%B8%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RGB相机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E6%B7%B1%E5%BA%A6%E7%9B%B8%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    深度相机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E5%8F%8C%E7%9B%AE%E4%B8%8E%E7%BB%93%E6%9E%84%E5%85%89/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    双目与结构光
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E5%85%A8%E6%99%AF%E4%B8%8E%E4%BA%8B%E4%BB%B6%E7%9B%B8%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    全景与事件相机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E4%B8%8E%E9%80%89%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    相机标定与选型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/03_LiDAR/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    激光雷达
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    激光雷达
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/LiDAR%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LiDAR综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/2D_LiDAR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D LiDAR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/3D_LiDAR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D LiDAR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/%E5%9B%BA%E6%80%81LiDAR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    固态LiDAR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/%E7%82%B9%E4%BA%91%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    点云处理基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/04_IMU_Navigation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    惯性导航与定位
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    惯性导航与定位
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/IMU%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMU综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/IMU%E9%80%89%E5%9E%8B%E4%B8%8E%E6%A0%A1%E5%87%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMU选型与校准
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/%E8%A7%86%E8%A7%89%E6%83%AF%E6%80%A7%E9%87%8C%E7%A8%8B%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    视觉惯性里程计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/GPS%E4%B8%8ERTK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPS与RTK
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多传感器融合
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/%E8%BF%91%E8%B7%9D%E7%A6%BB%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    近距离传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/05_Motors_Actuators/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电机与执行器
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    电机与执行器
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E7%94%B5%E6%9C%BA%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电机综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA%E4%B8%8E%E7%BC%96%E7%A0%81%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    直流电机与编码器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E8%88%B5%E6%9C%BA%E4%B8%8E%E6%80%BB%E7%BA%BF%E8%88%B5%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    舵机与总线舵机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E6%97%A0%E5%88%B7%E7%94%B5%E6%9C%BA%E4%B8%8EFOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    无刷电机与FOC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E5%87%8F%E9%80%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    减速器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E7%94%B5%E6%9C%BA%E9%A9%B1%E5%8A%A8%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电机驱动板
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E6%9C%AB%E7%AB%AF%E6%89%A7%E8%A1%8C%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    末端执行器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E6%B6%B2%E5%8E%8B%E4%B8%8E%E6%B0%94%E5%8A%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    液压与气动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/BLDC_Motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    无刷直流电机 (BLDC Motor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/Servo_Motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    伺服电机 (Servo Motor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/Stepper_Motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    步进电机 (Stepper Motor)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/06_Communication/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通信与总线
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    通信与总线
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E9%80%9A%E4%BF%A1%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    通信综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E4%B8%B2%E5%8F%A3%E4%B8%8EI2C_SPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    串口与I2C/SPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/CAN%E6%80%BB%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN总线
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%B8%8EEtherCAT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    以太网与EtherCAT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/WiFi%E4%B8%8E%E8%93%9D%E7%89%99/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WiFi与蓝牙
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    远程通信
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/MQTT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/Modbus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modbus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/USB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/07_Power/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电源管理
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    电源管理
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E7%94%B5%E6%BA%90%E7%B3%BB%E7%BB%9F%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电源系统综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E7%94%B5%E6%B1%A0%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电池技术
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E7%94%B5%E8%B7%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电源管理电路
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E5%8A%9F%E8%80%97%E9%A2%84%E7%AE%97%E4%B8%8E%E7%BB%AD%E8%88%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    功耗预算与续航
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E5%85%85%E7%94%B5%E4%B8%8E%E5%AE%89%E5%85%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    充电与安全
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/BMS_Battery_Management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电池管理系统 (Battery Management System, BMS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/Wireless_Charging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    无线充电 (Wireless Power Transfer)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/08_Mechanical/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机械结构
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机械结构
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机械设计综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E5%BA%95%E7%9B%98%E4%B8%8E%E8%BF%90%E5%8A%A8%E6%9C%BA%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    底盘与运动机构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%9C%BA%E6%A2%B0%E8%87%82%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机械臂结构
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%95%A3%E7%83%AD%E4%B8%8E%E9%98%B2%E6%8A%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    散热与防护
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/3D%E6%89%93%E5%8D%B0%E4%B8%8E%E5%8A%A0%E5%B7%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D打印与加工
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%9D%90%E6%96%99%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    材料选择
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/CAD%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAD工具
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/Bearings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    轴承 (Bearings)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/Finite_Element_Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    有限元分析 (Finite Element Analysis)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/09_Displays_HMI/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    显示与人机交互
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    显示与人机交互
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    显示系统综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/OLED%E4%B8%8ELCD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OLED与LCD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/LED%E6%8C%87%E7%A4%BA%E4%B8%8E%E5%A3%B0%E9%9F%B3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED指示与声音
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/%E8%A7%A6%E6%91%B8%E5%B1%8F%E4%B8%8EWeb%E7%95%8C%E9%9D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    触摸屏与Web界面
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/%E9%81%A5%E6%8E%A7%E4%B8%8E%E6%89%8B%E6%9F%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    遥控与手柄
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/GUI_Frameworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Frameworks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/PID_Tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PID 控制器与调参 (PID Control & Tuning)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/10_Force_Tactile/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    力觉与触觉传感
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    力觉与触觉传感
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E5%8A%9B%E8%A7%89%E4%BC%A0%E6%84%9F%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    力觉传感综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E5%85%AD%E7%BB%B4%E5%8A%9B%E7%9F%A9%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    六维力矩传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E8%A7%A6%E8%A7%89%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    触觉传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E8%B6%B3%E7%AB%AF%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    足端传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E5%8A%9B%E6%8E%A7%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    力控应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/11_Integration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统集成
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    系统集成
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    系统集成综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E6%8E%A5%E7%BA%BF%E4%B8%8EPCB%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    接线与PCB设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/ROS2%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS2系统集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E8%B0%83%E8%AF%95%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    调试与测试
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E5%85%B8%E5%9E%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8B%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    典型机器人拆解
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/MoveIt2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MoveIt 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/ROS2_Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/SLAM_Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SLAM (Simultaneous Localization and Mapping) 基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/12_Foundations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工程数理基础
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    工程数理基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Linear_Algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    线性代数
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Control_Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制理论基础
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Signal_Processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    信号处理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/PDE_Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    偏微分方程方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Fluid_Mechanics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    流体力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Thermodynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    热力学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Materials_Science/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    材料科学
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电子电气工程
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    电子电气工程
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/Op_Amp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运算放大器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/ADC_DAC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADC / DAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/Power_Electronics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    电力电子
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/PCB_Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCB 设计
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    制造与前沿
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_15" id="__nav_3_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    制造与前沿
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/3D_Printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D 打印
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/CNC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/Industry_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    工业 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/Robotics_in_Manufacturing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    制造业中的机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_16" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/15_Hardware_Overview/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件总览与选型
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    硬件总览与选型
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E7%A1%AC%E4%BB%B6%E9%80%89%E5%9E%8B%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    硬件选型指南
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    传感器
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E6%89%A7%E8%A1%8C%E5%99%A8%E4%B8%8E%E9%A9%B1%E5%8A%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    执行器与驱动
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%8F%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    计算平台
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E5%BC%80%E6%BA%90%E7%A1%AC%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开源硬件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人学习
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器人学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础与综述
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    基础与综述
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人学习综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器人基础模型概论
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../VLA%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLA 模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型发展路线图
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模型发展路线图
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 为什么需要一张模型发展路线图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 两条主轴：时间线与范式谱系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 两条主轴：时间线与范式谱系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 时间线看什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 范式谱系看什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第一阶段：经典机器人学习模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 第二阶段：序列建模与生成式策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 第二阶段：序列建模与生成式策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 这条线的核心转变
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 代表模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 为什么 ACT 是桥接节点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 第三阶段：VLA 与机器人基础模型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 第三阶段：VLA 与机器人基础模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 代表主线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 这一阶段的关键变化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 第四阶段：世界模型与可想象训练
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 第五阶段：大模型规划与具身 Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 关键技术拐点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-2022-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 2022-2026 时间线总图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 范式树状图与“从哪篇开始读”
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 范式树状图与“从哪篇开始读”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐阅读顺序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 哪些模型值得单独成页，哪些先保留在综述中
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 参考阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%9A%E4%BB%BB%E5%8A%A1%E4%B8%8E%E6%B3%9B%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    多任务与泛化
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%9C%BA%E5%99%A8%E4%BA%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    大模型驱动的机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    世界模型与视频生成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../02_Methods/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    学习方法
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    学习方法
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    模仿学习
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Methods/%E6%89%A9%E6%95%A3%E7%AD%96%E7%95%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    扩散策略
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Methods/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9C%A8%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    强化学习在机器人中的应用
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Methods/VLA-RL%E9%9B%86%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLA-RL 集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Methods/ACT%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACT 模型
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Methods/Sim2Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim2Real 迁移
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../03_Models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    代表模型
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    代表模型
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Models/RT_1_Detailed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RT-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Models/RT2_OpenVLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RT-2 与 OpenVLA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Models/Octo_Foundation_Policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Octo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Models/Pi0_Physical_Intelligence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    π0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Models/RDT_1B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDT-1B
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Models/Helix_Figure_AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Models/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开源模型汇总
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../04_Data_Benchmarks/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据与评测
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据与评测
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Data_Benchmarks/%E9%81%A5%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    遥操作与数据收集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Data_Benchmarks/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8EBenchmark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据集与 Benchmark
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Data_Benchmarks/DROID_Dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DROID 数据集
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Data_Benchmarks/VLA_Benchmark_Suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLA 评测基准套件
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Data_Benchmarks/UMI_Universal_Manipulation_Interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UMI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Data_Benchmarks/Aloha_Mobile_Aloha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aloha 与 Mobile Aloha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真与部署
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    仿真与部署
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/01_Simulation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    仿真
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/simulation_platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真平台
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/%E4%BB%BF%E7%9C%9F%E5%B7%A5%E5%85%B7%E5%AF%B9%E6%AF%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真工具对比
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/%E4%BB%BF%E7%9C%9F%E4%B8%96%E7%95%8C%E6%9E%84%E5%BB%BA%E4%B8%8E%E7%89%A9%E7%90%86%E8%A7%84%E5%88%99/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真世界构建与物理规则
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/%E4%BB%BF%E7%9C%9F%E8%B5%84%E4%BA%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    仿真资产
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/02_Deployment/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    部署与运维
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    部署与运维
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/Sim2Real%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim2Real 部署
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E6%A0%87%E5%AE%9A%E4%B8%8E%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    标定与系统集成
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    实时系统
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E5%AE%89%E5%85%A8%E4%B8%8E%E9%B2%81%E6%A3%92%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    安全与鲁棒性
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E9%83%A8%E7%BD%B2%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    部署案例
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/03_Ecosystem/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    生态与工具链
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    生态与工具链
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/ROS2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/NVIDIA%E7%94%9F%E6%80%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NVIDIA 生态
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开源框架
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%93%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    开发工具链
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../04_Autonomous_Driving/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    自动驾驶
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    基础
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    基础
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/01_Foundations/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶综述
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/01_Foundations/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%8C%83%E5%BC%8F%E4%B8%8E%E6%96%B9%E6%B3%95%E8%B0%B1%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    自动驾驶范式与方法谱系
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    感知
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/02_Perception/%E6%84%9F%E7%9F%A5%E4%B8%8E%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    感知与定位
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    预测与规划
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    预测与规划
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/03_Prediction_Planning/%E8%BF%90%E5%8A%A8%E9%A2%84%E6%B5%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    运动预测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/03_Prediction_Planning/%E8%A7%84%E5%88%92%E4%B8%8E%E5%86%B3%E7%AD%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    规划与决策
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    控制
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    控制
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/04_Control/%E8%BD%A6%E8%BE%86%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    车辆控制
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端与学习
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    端到端与学习
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/05_Learning_E2E/%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%A9%BE%E9%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    端到端驾驶
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/05_Learning_E2E/%E5%8D%8F%E5%8F%98%E9%87%8F%E5%81%8F%E7%A7%BB%E4%B8%8E%E9%97%AD%E7%8E%AF%E9%B8%BF%E6%B2%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    协变量偏移与闭环鸿沟
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据与评测
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    数据与评测
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../04_Autonomous_Driving/06_Data_Eval/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E9%97%AD%E7%8E%AF%E8%AF%84%E6%B5%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    数据集与闭环评测
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../05_Drones/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    无人机
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    无人机
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05_Drones/%E6%97%A0%E4%BA%BA%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    无人机
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../06_Robot_Arms/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机械臂
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机械臂
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_Robot_Arms/%E6%9C%BA%E6%A2%B0%E8%87%82%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机械臂与移动操作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_Robot_Arms/%E7%81%B5%E5%B7%A7%E6%89%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    灵巧手
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../07_Quadrupeds/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    机器狗
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    机器狗
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07_Quadrupeds/%E5%9B%9B%E8%B6%B3%E6%9C%BA%E5%99%A8%E4%BA%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    四足机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../08_Humanoids/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人形机器人
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    人形机器人
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08_Humanoids/humanoid_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    人形机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../09_Topics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    独立议题
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    独立议题
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E5%85%AC%E5%8F%B8%E5%85%A8%E6%99%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    公司全景
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E8%A1%8C%E4%B8%9A%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    行业研究
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E5%B8%82%E5%9C%BA%E4%B8%8E%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    市场与需求
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E4%BA%A7%E5%AD%A6%E7%A0%94%E5%90%88%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    产学研合作
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E4%B8%9A%E7%95%8C%E5%8A%A8%E6%80%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    业界动态
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E7%97%9B%E7%82%B9%E4%B8%8E%E6%8C%91%E6%88%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    痛点与挑战
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/cleaning_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    扫地机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E6%9C%8D%E5%8A%A1%E6%9C%BA%E5%99%A8%E4%BA%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    服务机器人
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. 为什么需要一张模型发展路线图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. 两条主轴：时间线与范式谱系
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. 两条主轴：时间线与范式谱系">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 时间线看什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 范式谱系看什么
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. 第一阶段：经典机器人学习模型
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. 第二阶段：序列建模与生成式策略
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. 第二阶段：序列建模与生成式策略">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 这条线的核心转变
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 代表模型
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-act" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 为什么 ACT 是桥接节点
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-vla" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. 第三阶段：VLA 与机器人基础模型
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5. 第三阶段：VLA 与机器人基础模型">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#51" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.1 代表主线
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#52" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5.2 这一阶段的关键变化
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. 第四阶段：世界模型与可想象训练
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 第五阶段：大模型规划与具身 Agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. 关键技术拐点
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#9-2022-2026" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        9. 2022-2026 时间线总图
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        10. 范式树状图与“从哪篇开始读”
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="10. 范式树状图与“从哪篇开始读”">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        推荐阅读顺序
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        11. 哪些模型值得单独成页，哪些先保留在综述中
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#12" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        12. 参考阅读
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="导航栏" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    首页
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    机器人学习
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    基础与综述
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+
+<h1 id="_1">模型发展路线图</h1>
+<!-- CONTENT-EXPAND-TODO (2026-05-15)
+Reviewer: independent audit (Explore agent) - Batch 1 audit found this missing
+Status: §3-8 阶段叙述完整,3 张 SVG (river + swimlane + tree) 设计有创意
+Gaps:
+- Worked example 缺失: 跟踪 ACT 这一个模型跨越 "经典模仿 → chunked → VLA action head" 三阶段的具体演化案例
+- §3 三大范式可补 "如何在自家 lab 选择起步范式" 的决策树指引
+- river diagram (SVG 1) Q2 DNA 较弱,后续可考虑改为更明确的「分支+汇聚」几何
+-->
+
+<p>具身智能里的“模型”并不是一条单线演化出来的。它同时沿着两条主轴推进：</p>
+<ul>
+<li>一条是<strong>时间线</strong>：从经典模仿学习到序列建模、再到 VLA、世界模型和 agentic planning。</li>
+<li>一条是<strong>范式谱系</strong>：从“学动作”到“学分布”，再到“学语言+视觉+动作统一表示”，最后走向“学世界并在世界中规划”。</li>
+</ul>
+<p>这篇笔记的作用不是替代单篇模型笔记，而是给整个 <code>05_Models</code> 板块补上一张总地图。读完之后，你应该知道：</p>
+<ol>
+<li>机器人模型经历了哪些阶段。</li>
+<li>ACT 在整个谱系里的位置是什么。</li>
+<li>VLA、Diffusion Policy、世界模型和 LLM 规划分别属于哪条支线。</li>
+<li>下一步该先读哪篇。</li>
+</ol>
+<blockquote>
+<p>相关笔记：<a href="../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%AE%BA/">机器人基础模型概论</a> | <a href="../VLA%E6%A8%A1%E5%9E%8B/">VLA模型</a> | <a href="../../02_Methods/ACT%E6%A8%A1%E5%9E%8B/">ACT模型</a> | <a href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%9C%BA%E5%99%A8%E4%BA%BA/">大模型驱动的机器人</a> | <a href="../%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/">世界模型与视频生成</a></p>
+</blockquote>
+<hr />
+<h2 id="1">1. 为什么需要一张模型发展路线图</h2>
+<p>如果只按“论文时间”来记模型，很容易产生两个误解：</p>
+<ul>
+<li>误以为新模型一定全面替代旧模型</li>
+<li>误以为所有工作都在同一条技术线上竞争</li>
+</ul>
+<p>但真实情况是：</p>
+<ul>
+<li><strong>ACT</strong> 不是 foundation model，却是 <code>action chunking</code> 路线的关键桥梁</li>
+<li><strong>Diffusion Policy</strong> 不是 VLA，却定义了“生成式动作建模”这条强支线</li>
+<li><strong>RT-2 / OpenVLA / pi0</strong> 属于 VLA 主线，但动作头设计并不相同</li>
+<li><strong>SayCan / Code as Policies</strong> 主要解决的是规划与接口，而不是底层动作生成</li>
+<li><strong>Dreamer / UniSim / Cosmos</strong> 更接近“世界建模”和“想象中训练”</li>
+</ul>
+<p>所以，最合理的组织方式不是只看时间，也不是只看类别，而是把<strong>时间线和范式谱系一起看</strong>。</p>
+<hr />
+<h2 id="2">2. 两条主轴：时间线与范式谱系</h2>
+<h3 id="21">2.1 时间线看什么</h3>
+<p>时间线回答的是：<strong>关键拐点何时出现，后来工作是在延续哪种思想。</strong></p>
+<h3 id="22">2.2 范式谱系看什么</h3>
+<p>范式谱系回答的是：<strong>一个模型主要解决哪一层问题。</strong></p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>典型问题</th>
+<th>代表模型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>经典策略学习</td>
+<td>如何从示教里学动作</td>
+<td>BC, DAgger, GAIL</td>
+</tr>
+<tr>
+<td>序列/生成式策略</td>
+<td>如何建模多步、多模态动作</td>
+<td>Decision Transformer, BeT, ACT, Diffusion Policy</td>
+</tr>
+<tr>
+<td>VLA / 机器人基础模型</td>
+<td>如何统一视觉、语言与动作</td>
+<td>RT-1, RT-2, Octo, OpenVLA, pi0</td>
+</tr>
+<tr>
+<td>世界模型</td>
+<td>如何预测未来并在模型中训练</td>
+<td>Dreamer, UniSim, Genie, Cosmos</td>
+</tr>
+<tr>
+<td>大模型规划</td>
+<td>如何做长程推理、子任务分解、API 调用</td>
+<td>SayCan, Code as Policies, VoxPoser</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="3">3. 第一阶段：经典机器人学习模型</h2>
+<p>这条线的核心目标是：<strong>先让机器人学会从数据模仿动作</strong>。</p>
+<p>典型代表：</p>
+<ul>
+<li><strong>BC</strong>：把策略学习直接变成监督学习</li>
+<li><strong>DAgger</strong>：解决部署时的分布偏移</li>
+<li><strong>IRL / MaxEnt IRL</strong>：从演示反推奖励</li>
+<li><strong>GAIL</strong>：把模仿学习写成对抗训练</li>
+</ul>
+<p>这一阶段的特征是：</p>
+<ul>
+<li>任务通常较窄</li>
+<li>数据规模较小</li>
+<li>模型以“学单步动作映射”为主</li>
+<li>语言和跨任务泛化基本不强</li>
+</ul>
+<p>这类内容主要放在 <a href="../../02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/">模仿学习</a>。</p>
+<hr />
+<h2 id="4">4. 第二阶段：序列建模与生成式策略</h2>
+<p>当研究者发现“单步回归动作”会遇到抖动、多模态、长时序误差累积时，第二阶段出现了。</p>
+<h3 id="41">4.1 这条线的核心转变</h3>
+<p>从：</p>
+<div class="arithmatex">\[
+\pi(o_t) \rightarrow a_t
+\]</div>
+<p>转向：</p>
+<div class="arithmatex">\[
+\pi(o_{t-k:t}, \text{task}) \rightarrow a_{t:t+H}
+\]</div>
+<p>也就是不再只预测当前一步，而是开始预测一个<strong>动作序列</strong>，或者直接建模动作分布。</p>
+<h3 id="42">4.2 代表模型</h3>
+<ul>
+<li><strong>Decision Transformer</strong>：把控制写成序列建模</li>
+<li><strong>BeT</strong>：用离散 latent action token 建模行为</li>
+<li><strong>ACT</strong>：用 <code>CVAE + Transformer</code> 做 action chunk prediction</li>
+<li><strong>Diffusion Policy</strong>：用扩散模型建模多模态动作分布</li>
+</ul>
+<h3 id="43-act">4.3 为什么 ACT 是桥接节点</h3>
+<p>ACT 的重要性不在于它是最大的模型，而在于它把下面这条思路清晰地建立起来了：</p>
+<!-- SVG-DESIGN-NOTES
+Type: A (结构) — "桥" 几何, ACT 作为桥梁横跨左右两岸
+Q0: ACT 之所以是 pivot, 因为它同时具备「短时序 action chunk」(从经典 BC 借鉴) + 「生成式建模」(向 Diffusion Policy 输出动作分布 + 向 VLA 输出 token 序列) — 是单一节点连接 4 个后继方向, 几何上必然是 hub-and-spoke 而非链
+Q1: 左岸: 3 个经典方法 (BC/DAgger/GAIL) 用淡 disc; 中央 hub: ACT 用大圆 + chunk 内部小条 (表示 prediction horizon); 右岸三 spoke: 上→生成式 (Diffusion Policy/RDT), 下→VLA chunk 设计 (OpenVLA/pi0/FAST), 中→世界模型(可选, 表示更远); 真实桥架 / arch 几何
+Q2: 去标题: 桥架 + ACT hub + 3 后继方向 → 立刻是 ACT 桥接 framing, 不是普通"链式发展"
+Q3: 删 8 个等大方框 + 6 横向箭头; "经典模仿学习" 改 disc 群组; "后续 VLA 的 chunk/token/horizon 设计" 描述文字合并入 spoke 注释
+Q4: ACT 内部画出 chunk = N actions 的几何; 后继路线名直接贴 spoke
+Q5: 全 var(--dia-*); 共用
+-->
+<div class="diagram">
+<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="ACT as a hub bridging classical imitation learning to three downstream paradigms">
+  <defs>
+    <marker id="act-arr" markerWidth="9" markerHeight="9" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L8,3 z" fill="var(--dia-stroke-soft)"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="14" font-style="italic" fill="var(--dia-stroke)">ACT 的桥接地位 · 经典模仿 → 现代动作建模</text>
+
+  <!-- left bank: classical imitation methods as 3 small discs -->
+  <text x="100" y="100" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-stroke-soft)">左岸：经典模仿</text>
+  <text x="100" y="115" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">single-step π(o)→a</text>
+  <circle cx="60" cy="180" r="22" fill="var(--dia-bg-card)" stroke="var(--dia-green)" stroke-width="1.5"/>
+  <text x="60" y="184" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" fill="var(--dia-stroke)">BC</text>
+  <circle cx="120" cy="220" r="22" fill="var(--dia-bg-card)" stroke="var(--dia-green)" stroke-width="1.5"/>
+  <text x="120" y="224" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" fill="var(--dia-stroke)">DAgger</text>
+  <circle cx="60" cy="260" r="22" fill="var(--dia-bg-card)" stroke="var(--dia-green)" stroke-width="1.5"/>
+  <text x="60" y="264" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" fill="var(--dia-stroke)">GAIL</text>
+
+  <!-- left bank base ground -->
+  <line x1="20" y1="305" x2="180" y2="305" stroke="var(--dia-stroke-soft)" stroke-width="2"/>
+  <line x1="20" y1="305" x2="40" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="40" y1="305" x2="60" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="60" y1="305" x2="80" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="80" y1="305" x2="100" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="100" y1="305" x2="120" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="120" y1="305" x2="140" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="140" y1="305" x2="160" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+
+  <!-- the BRIDGE: an arch from 200 to 600 passing through ACT hub at 450 -->
+  <path d="M 180,260 Q 450,180 720,260" fill="none" stroke="var(--dia-stroke)" stroke-width="2.2"/>
+  <path d="M 200,265 Q 450,210 700,265" fill="none" stroke="var(--dia-stroke-soft)" stroke-width="1" stroke-dasharray="3,2"/>
+
+  <!-- bridge piers -->
+  <line x1="240" y1="245" x2="240" y2="305" stroke="var(--dia-stroke-soft)" stroke-width="1.2"/>
+  <line x1="660" y1="245" x2="660" y2="305" stroke="var(--dia-stroke-soft)" stroke-width="1.2"/>
+
+  <!-- ACT hub at center -->
+  <circle cx="450" cy="180" r="44" fill="var(--dia-bg-card)" stroke="var(--dia-accent)" stroke-width="2.6"/>
+  <text x="450" y="170" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="14" font-style="italic" fill="var(--dia-accent-deep)">ACT</text>
+  <text x="450" y="186" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">CVAE + Tr.</text>
+  <!-- mini chunk visualization inside hub -->
+  <g>
+    <rect x="424" y="195" width="7" height="14" fill="var(--dia-accent)" stroke="none"/>
+    <rect x="432" y="195" width="7" height="14" fill="var(--dia-accent)" stroke="none"/>
+    <rect x="440" y="195" width="7" height="14" fill="var(--dia-accent)" stroke="none"/>
+    <rect x="448" y="195" width="7" height="14" fill="var(--dia-accent)" stroke="none"/>
+    <rect x="456" y="195" width="7" height="14" fill="var(--dia-accent)" stroke="none"/>
+    <rect x="464" y="195" width="7" height="14" fill="var(--dia-accent)" stroke="none"/>
+    <rect x="472" y="195" width="7" height="14" fill="var(--dia-accent)" stroke="none"/>
+  </g>
+  <text x="450" y="222" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">chunk = 7 actions</text>
+
+  <!-- arrows from left bank into ACT hub (incoming) -->
+  <path d="M 130,200 Q 280,180 405,180" fill="none" stroke="var(--dia-stroke-soft)" stroke-width="1.4" marker-end="url(#act-arr)"/>
+  <text x="240" y="170" font-family="Fraunces, Georgia, serif" font-size="10" font-style="italic" fill="var(--dia-stroke-soft)">borrow: data-driven IL</text>
+
+  <!-- 3 spokes from ACT to right bank -->
+  <!-- spoke 1 up: generative action modeling -->
+  <path d="M 480,150 Q 590,110 720,90" fill="none" stroke="var(--dia-accent)" stroke-width="1.8" marker-end="url(#act-arr)"/>
+  <rect x="720" y="65" width="160" height="48" rx="3" fill="var(--dia-bg-card)" stroke="var(--dia-accent)" stroke-width="1.6"/>
+  <text x="800" y="84" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-stroke)">生成式动作建模</text>
+  <text x="800" y="102" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-accent-deep)">Diffusion Policy · RDT</text>
+  <text x="620" y="115" font-family="Fraunces, Georgia, serif" font-size="9" font-style="italic" fill="var(--dia-stroke-soft)">借 CVAE 的多模态思想</text>
+
+  <!-- spoke 2 right-mid: VLA chunk/token design -->
+  <path d="M 494,180 Q 600,180 720,180" fill="none" stroke="var(--dia-blue)" stroke-width="1.8" marker-end="url(#act-arr)"/>
+  <rect x="720" y="155" width="160" height="48" rx="3" fill="var(--dia-bg-card)" stroke="var(--dia-blue)" stroke-width="1.6"/>
+  <text x="800" y="174" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-stroke)">VLA · action chunk/token</text>
+  <text x="800" y="192" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-blue)">OpenVLA · pi0 · FAST</text>
+  <text x="630" y="170" font-family="Fraunces, Georgia, serif" font-size="9" font-style="italic" fill="var(--dia-stroke-soft)">借 chunk-as-target horizon</text>
+
+  <!-- spoke 3 down-right: cross-embodiment generalist -->
+  <path d="M 480,215 Q 590,245 720,265" fill="none" stroke="var(--dia-green)" stroke-width="1.8" marker-end="url(#act-arr)"/>
+  <rect x="720" y="245" width="160" height="48" rx="3" fill="var(--dia-bg-card)" stroke="var(--dia-green)" stroke-width="1.6"/>
+  <text x="800" y="264" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-stroke)">多具身基础模型</text>
+  <text x="800" y="282" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-green)">Octo · HPT</text>
+  <text x="620" y="250" font-family="Fraunces, Georgia, serif" font-size="9" font-style="italic" fill="var(--dia-stroke-soft)">借 chunk 接口统一</text>
+
+  <!-- right bank ground -->
+  <line x1="700" y1="305" x2="880" y2="305" stroke="var(--dia-stroke-soft)" stroke-width="2"/>
+  <line x1="700" y1="305" x2="720" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="720" y1="305" x2="740" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="740" y1="305" x2="760" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="760" y1="305" x2="780" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="780" y1="305" x2="800" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="800" y1="305" x2="820" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <line x1="820" y1="305" x2="840" y2="320" stroke="var(--dia-stroke-soft)" stroke-width="0.6"/>
+  <text x="800" y="100" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-stroke-soft)"></text>
+  <text x="790" y="335" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-stroke-soft)">右岸：现代 generative + foundation models</text>
+</svg>
+</div>
+<p class="figure-caption">Figure 1 — ACT 不是终局模型，但它把"短时序 action chunk"这一抽象桥接到三个不同的后继方向：生成式动作建模、VLA 的 chunk 接口、多具身基础模型。</p>
+
+<p>也就是说，ACT 连接的是：</p>
+<ul>
+<li>左边的 <a href="../../02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/">模仿学习</a></li>
+<li>右边更大的动作建模路线，包括 <a href="../VLA%E6%A8%A1%E5%9E%8B/">VLA模型</a> 和后续 action tokenization 工作</li>
+</ul>
+<p>如果只读 VLA 而不理解 ACT，很多“为什么要做 chunk、为什么不逐步出动作”的设计动机就会缺一半。</p>
+<hr />
+<h2 id="5-vla">5. 第三阶段：VLA 与机器人基础模型</h2>
+<p>这一阶段的核心问题变成了：</p>
+<p><strong>能不能把视觉、语言和动作统一到同一模型里，并利用 web-scale 预训练获得跨任务泛化？</strong></p>
+<h3 id="51">5.1 代表主线</h3>
+<ul>
+<li><strong>RT-1</strong>：大规模真实机器人数据训练的 Robotics Transformer</li>
+<li><strong>RT-2</strong>：把 VLM 微调成 VLA，证明 web knowledge 可以迁入机器人控制</li>
+<li><strong>Octo</strong>：开源、多具身、通用动作接口</li>
+<li><strong>OpenVLA</strong>：开源 7B VLA，推动社区复现</li>
+<li><strong>HPT</strong>：异构传感器和跨具身输入的统一</li>
+<li><strong>RDT</strong>：扩散 Transformer 做双臂高维动作生成</li>
+<li><strong>pi0</strong>：flow matching 风格的 VLA 主线</li>
+</ul>
+<h3 id="52">5.2 这一阶段的关键变化</h3>
+<table>
+<thead>
+<tr>
+<th>变化</th>
+<th>早期策略模型</th>
+<th>VLA / 基础模型阶段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入</td>
+<td>状态、少量图像</td>
+<td>多视角视觉 + 语言 + 本体感觉</td>
+</tr>
+<tr>
+<td>数据</td>
+<td>单任务或单机器人</td>
+<td>多任务、多机器人、多来源</td>
+</tr>
+<tr>
+<td>目标</td>
+<td>学单一技能</td>
+<td>学通用视觉-语言-动作映射</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>单步或短时序动作</td>
+<td>token / chunk / diffusion / flow</td>
+</tr>
+<tr>
+<td>泛化来源</td>
+<td>演示覆盖</td>
+<td>预训练 + 多具身数据 + 微调</td>
+</tr>
+</tbody>
+</table>
+<p>更多细节见 <a href="../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%AE%BA/">机器人基础模型概论</a> 和 <a href="../VLA%E6%A8%A1%E5%9E%8B/">VLA模型</a>。</p>
+<hr />
+<h2 id="6">6. 第四阶段：世界模型与可想象训练</h2>
+<p>当动作模型越来越强之后，研究焦点进一步上移：</p>
+<p><strong>如果模型不仅会出动作，还会预测“未来会发生什么”，是不是可以先在模型中试错？</strong></p>
+<p>这条线的代表包括：</p>
+<ul>
+<li><strong>Dreamer 系</strong>：在 latent world model 中训练策略</li>
+<li><strong>UniSim</strong>：用可生成的世界替代大量真实交互</li>
+<li><strong>Genie / 交互式视频世界模型</strong>：从视频中学可交互动态</li>
+<li><strong>Cosmos / Genesis</strong>：把大规模视频生成、仿真和物理 AI 数据结合起来</li>
+</ul>
+<p>这一阶段的重点不再只是“给我一个动作”，而是：</p>
+<ul>
+<li>预测未来视觉状态</li>
+<li>预测潜在动力学</li>
+<li>在 imagined rollouts 中评估或训练策略</li>
+</ul>
+<p>对应笔记是 <a href="../%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/">世界模型与视频生成</a>。</p>
+<hr />
+<h2 id="7-agent">7. 第五阶段：大模型规划与具身 Agent</h2>
+<p>还有一条并行主线，它不直接优化低层动作，而是研究：</p>
+<p><strong>如何让大模型做长程任务理解、工具调用、子任务分解和接口编排。</strong></p>
+<p>代表工作：</p>
+<ul>
+<li><strong>SayCan</strong>：LLM 概率与 affordance 分数联合选技能</li>
+<li><strong>Code as Policies</strong>：直接生成程序调用机器人接口</li>
+<li><strong>VoxPoser</strong>：让大模型通过 3D 价值图与空间表示来驱动操作</li>
+</ul>
+<p>这条线和 VLA 不是替代关系，而是层级关系：</p>
+<ul>
+<li>VLA 更像底层统一策略</li>
+<li>LLM agent 更像高层规划器</li>
+</ul>
+<p>对应笔记是 <a href="../%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%9C%BA%E5%99%A8%E4%BA%BA/">大模型驱动的机器人</a>。</p>
+<hr />
+<h2 id="8">8. 关键技术拐点</h2>
+<p>下面这些技术拐点，基本定义了近几年的演化方向：</p>
+<table>
+<thead>
+<tr>
+<th>技术拐点</th>
+<th>解决的问题</th>
+<th>代表工作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>动作离散化</td>
+<td>让 LLM/VLM 直接出动作 token</td>
+<td>RT-1, RT-2, OpenVLA</td>
+</tr>
+<tr>
+<td>Action chunking</td>
+<td>减少抖动、提升时间一致性</td>
+<td>ACT, pi0</td>
+</tr>
+<tr>
+<td>扩散 / Flow Matching</td>
+<td>建模多模态连续动作分布</td>
+<td>Diffusion Policy, RDT, pi0</td>
+</tr>
+<tr>
+<td>Web pretraining</td>
+<td>引入语义知识与推理能力</td>
+<td>RT-2, OpenVLA, pi0</td>
+</tr>
+<tr>
+<td>Cross-embodiment</td>
+<td>一个模型覆盖多机器人</td>
+<td>Octo, HPT, OpenVLA</td>
+</tr>
+<tr>
+<td>Open-source training stack</td>
+<td>降低复现与微调门槛</td>
+<td>Octo, OpenVLA, LeRobot</td>
+</tr>
+<tr>
+<td>High-frequency action tokenization</td>
+<td>让更快控制也能走 token 路线</td>
+<td>FAST, 新一代 tokenized policy</td>
+</tr>
+</tbody>
+</table>
+<p>其中 <strong>ACT 的历史地位</strong> 可以概括成一句话：</p>
+<blockquote>
+<p>它不是终局 foundation model，但它把“短时序动作块作为主要建模对象”这件事做成了清晰范式。</p>
+</blockquote>
+<hr />
+<h2 id="9-2022-2026">9. 2022-2026 时间线总图</h2>
+<!-- SVG-DESIGN-NOTES
+Type: E (时间) + A (lane structure) — 4 个 paradigm lane 并行的 swimlane timeline, 跨 2022-2026
+Q0: 2022-2026 不是单线演进, 是 4 个 paradigm 同时推进 + 互相交织: 经典/序列生成式 / VLA / 世界模型 / LLM planner — 每年都有多条 lane 上的代表作出现, lane 之间也有 cross-pollination
+Q1: 4 个 swimlane (上下叠放), 共享一根 year axis (2022→2026, 5 个 tick); 每个 paradigm 模型作 disc 标在它所属 lane 的对应年份; lane 间 cross-pollination 用斜虚线连接两个 model (例如 ACT→OpenVLA chunk inheritance)
+Q2: 去标题: 4 swimlane × year-axis + 跨 lane 虚线 → 立刻是 paradigm timeline, 不是普通"年份+模型"列表
+Q3: 删 20 个空白年份 label (e.g. ""); 删 5 个独立水平 lines (改为有 paradigm-label 的 swimlane); "经典大模型规划开始进入机器人" 等无信息长 caption 改为短 milestone
+Q4: paradigm 名直接在左侧 lane header; 模型名+年份贴 disc 旁; cross-link 虚线带 short caption
+Q5: 全 var(--dia-*); 共用
+-->
+<div class="diagram">
+<svg viewBox="0 0 880 500" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four-paradigm swimlane timeline of robot models 2022-2026">
+  <defs/>
+
+  <text x="440" y="28" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="14" font-style="italic" fill="var(--dia-stroke)">机器人模型 2022 → 2026 · 四 paradigm swimlane</text>
+
+  <!-- shared year axis at top -->
+  <line x1="170" y1="60" x2="850" y2="60" stroke="var(--dia-stroke)" stroke-width="1.2"/>
+  <g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--dia-stroke)" text-anchor="middle">
+    <line x1="200" y1="56" x2="200" y2="64" stroke="var(--dia-stroke)"/><text x="200" y="50">2022</text>
+    <line x1="350" y1="56" x2="350" y2="64" stroke="var(--dia-stroke)"/><text x="350" y="50">2023</text>
+    <line x1="500" y1="56" x2="500" y2="64" stroke="var(--dia-stroke)"/><text x="500" y="50">2024</text>
+    <line x1="650" y1="56" x2="650" y2="64" stroke="var(--dia-stroke)"/><text x="650" y="50">2025</text>
+    <line x1="800" y1="56" x2="800" y2="64" stroke="var(--dia-stroke)"/><text x="800" y="50">2026</text>
+  </g>
+
+  <!-- 4 lanes background bands -->
+  <rect x="170" y="80" width="680" height="80" fill="var(--dia-accent-soft)" stroke="none"/>
+  <rect x="170" y="170" width="680" height="80" fill="var(--dia-blue)" fill-opacity="0.06" stroke="none"/>
+  <rect x="170" y="260" width="680" height="80" fill="var(--dia-green)" fill-opacity="0.07" stroke="none"/>
+  <rect x="170" y="350" width="680" height="80" fill="var(--dia-gold)" fill-opacity="0.08" stroke="none"/>
+
+  <!-- lane headers -->
+  <text x="160" y="125" text-anchor="end" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-accent-deep)">序列 / 生成式策略</text>
+  <text x="160" y="142" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">action chunk · diffusion</text>
+
+  <text x="160" y="213" text-anchor="end" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-blue)">VLA / 基础模型</text>
+  <text x="160" y="230" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">vision-language-action</text>
+
+  <text x="160" y="303" text-anchor="end" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-green)">世界模型</text>
+  <text x="160" y="320" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">RSSM · video gen · sim</text>
+
+  <text x="160" y="393" text-anchor="end" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-gold)">LLM 规划 / Agent</text>
+  <text x="160" y="410" text-anchor="end" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">high-level planner</text>
+
+  <!-- lane 1: sequence/generative -->
+  <!-- ACT 2023 (early) -->
+  <circle cx="330" cy="120" r="6" fill="var(--dia-accent)" stroke="var(--dia-stroke)" stroke-width="1"/>
+  <text x="330" y="105" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke)">ACT</text>
+  <!-- Diffusion Policy 2023 -->
+  <circle cx="380" cy="135" r="5" fill="var(--dia-accent)" stroke="none"/>
+  <text x="380" y="153" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">Diff. Policy</text>
+  <!-- RDT-1B 2024 -->
+  <circle cx="540" cy="120" r="5" fill="var(--dia-accent)" stroke="none"/>
+  <text x="540" y="105" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">RDT-1B</text>
+  <!-- BeT 2022 -->
+  <circle cx="230" cy="135" r="5" fill="var(--dia-accent)" stroke="none"/>
+  <text x="230" y="153" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">BeT</text>
+
+  <!-- lane 2: VLA -->
+  <!-- RT-1 2022 -->
+  <circle cx="220" cy="210" r="6" fill="var(--dia-blue)" stroke="var(--dia-stroke)" stroke-width="1"/>
+  <text x="220" y="195" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke)">RT-1</text>
+  <!-- RT-2 mid 2023 -->
+  <circle cx="380" cy="210" r="7" fill="var(--dia-blue)" stroke="var(--dia-stroke)" stroke-width="1.2"/>
+  <text x="380" y="195" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke)">RT-2</text>
+  <!-- Octo late 2023 -->
+  <circle cx="430" cy="225" r="5" fill="var(--dia-blue)" stroke="none"/>
+  <text x="430" y="240" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">Octo</text>
+  <!-- OpenVLA 2024 -->
+  <circle cx="540" cy="210" r="6" fill="var(--dia-blue)" stroke="var(--dia-stroke)" stroke-width="1"/>
+  <text x="540" y="195" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke)">OpenVLA</text>
+  <!-- pi0 late 2024 -->
+  <circle cx="600" cy="225" r="6" fill="var(--dia-blue)" stroke="var(--dia-stroke)" stroke-width="1"/>
+  <text x="600" y="240" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke)">pi0</text>
+  <!-- HPT 2024 -->
+  <circle cx="500" cy="225" r="5" fill="var(--dia-blue)" stroke="none"/>
+  <text x="500" y="240" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">HPT</text>
+  <!-- FAST 2025 -->
+  <circle cx="690" cy="210" r="5" fill="var(--dia-blue)" stroke="none"/>
+  <text x="690" y="195" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">FAST</text>
+  <!-- pi0.5 mid 2025 -->
+  <circle cx="700" cy="225" r="6" fill="var(--dia-blue)" stroke="var(--dia-stroke)" stroke-width="1"/>
+  <text x="700" y="240" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="11" font-style="italic" fill="var(--dia-stroke)">pi0.5</text>
+  <!-- Helix 2025 -->
+  <circle cx="730" cy="210" r="5" fill="var(--dia-blue)" stroke="none"/>
+  <text x="745" y="208" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">Helix</text>
+
+  <!-- lane 3: world model -->
+  <!-- Dreamer v3 2023 -->
+  <circle cx="380" cy="295" r="5" fill="var(--dia-green)" stroke="none"/>
+  <text x="380" y="280" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">Dreamer v3</text>
+  <!-- UniSim 2023 -->
+  <circle cx="420" cy="310" r="5" fill="var(--dia-green)" stroke="none"/>
+  <text x="420" y="328" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">UniSim</text>
+  <!-- Genie 2024 -->
+  <circle cx="500" cy="295" r="5" fill="var(--dia-green)" stroke="none"/>
+  <text x="500" y="280" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">Genie</text>
+  <!-- Genesis 2024 -->
+  <circle cx="590" cy="310" r="5" fill="var(--dia-green)" stroke="none"/>
+  <text x="590" y="328" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">Genesis</text>
+  <!-- Cosmos 2025 -->
+  <circle cx="660" cy="295" r="6" fill="var(--dia-green)" stroke="var(--dia-stroke)" stroke-width="1"/>
+  <text x="660" y="280" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke)">Cosmos</text>
+
+  <!-- lane 4: LLM planner -->
+  <!-- SayCan 2022 -->
+  <circle cx="240" cy="385" r="6" fill="var(--dia-gold)" stroke="var(--dia-stroke)" stroke-width="1"/>
+  <text x="240" y="370" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke)">SayCan</text>
+  <!-- Code as Policies 2023 -->
+  <circle cx="340" cy="400" r="5" fill="var(--dia-gold)" stroke="none"/>
+  <text x="340" y="418" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">CaP</text>
+  <!-- Inner Monologue 2022 late -->
+  <circle cx="280" cy="400" r="5" fill="var(--dia-gold)" stroke="none"/>
+  <text x="280" y="418" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">Inner Mono.</text>
+  <!-- VoxPoser 2023 -->
+  <circle cx="420" cy="385" r="5" fill="var(--dia-gold)" stroke="none"/>
+  <text x="420" y="370" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">VoxPoser</text>
+
+  <!-- cross-pollination arrows (dashed) -->
+  <!-- ACT chunk → OpenVLA action design -->
+  <path d="M 330,126 Q 430,170 540,204" fill="none" stroke="var(--dia-stroke-soft)" stroke-width="1.1" stroke-dasharray="3,3"/>
+  <text x="440" y="172" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="9" font-style="italic" fill="var(--dia-stroke-soft)">chunk → token设计</text>
+
+  <!-- RT-2 idea → pi0.5 -->
+  <path d="M 386,210 Q 540,170 700,219" fill="none" stroke="var(--dia-stroke-soft)" stroke-width="1.1" stroke-dasharray="3,3"/>
+
+  <!-- VLM-grounding from VoxPoser → pi0.5 (A→B+C fusion) -->
+  <path d="M 425,380 Q 560,330 696,232" fill="none" stroke="var(--dia-stroke-soft)" stroke-width="1.1" stroke-dasharray="3,3"/>
+  <text x="560" y="370" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="9" font-style="italic" fill="var(--dia-stroke-soft)">LLM-planner 上移为高层</text>
+
+  <!-- Cosmos → "imagined rollouts ready" (note) -->
+  <text x="660" y="335" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">→ ready as data engine</text>
+
+  <!-- present marker -->
+  <line x1="785" y1="60" x2="785" y2="430" stroke="var(--dia-accent-deep)" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <text x="785" y="445" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="10" font-style="italic" fill="var(--dia-accent-deep)">2026-04 当前</text>
+
+  <!-- trends note -->
+  <text x="440" y="475" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke-soft)">趋势：四 paradigm 没有互相消灭，而是按 control freq 分层 → pi0.5 / Helix 同时跨 lane</text>
+</svg>
+</div>
+<p class="figure-caption">Figure 2 — 4 paradigm 在 2022-2026 平行发展并互相交织；2025 后的 pi0.5 / Helix 同时占据多 lane，是首批 "三 paradigm 融合" 的代表。</p>
+
+<p>上面最后一行是<strong>截至 2026-04 的趋势总结</strong>，不是单一论文名录。</p>
+<hr />
+<h2 id="10">10. 范式树状图与“从哪篇开始读”</h2>
+<!-- SVG-DESIGN-NOTES
+Type: A (结构 / hierarchical tree) — 真正的 5-branch concept tree + 节点大小反映其在 2026 主流程度
+Q0: 5 个 paradigm 不是同级竞争 — 序列建模 + VLA 是当前主流 (大节点), 经典模仿是 historic foundation (小节点), 世界模型 + LLM 规划 是平行支线 (中等节点); 节点大小直接编码 "应当先读什么"
+Q1: 真正的层级树, 根节点 "Embodied AI Models" → 5 个第一层 paradigm (大小不一, 主流者大); 每 paradigm 下挂代表模型 (leaf); 节点圆 (而非 box), 树边带不同粗细
+Q2: 去标题: 树几何 + 节点大小差异 + 5 个不同色调 → 立刻是 "paradigm 概览" 而非线性 timeline
+Q3: 删 14 个等大方框 + 13 任意交叉箭头; 改用真正的 hierarchical tree
+Q4: paradigm 名 + 代表模型贴 leaf 节点; 主流标识 (star) 标在大节点旁
+Q5: 全 var(--dia-*); 共用
+-->
+<div class="diagram">
+<svg viewBox="0 0 880 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Hierarchical tree of robot model paradigms with node size encoding 2026 prominence">
+  <defs/>
+
+  <text x="440" y="30" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="14" font-style="italic" fill="var(--dia-stroke)">五大 paradigm tree · 节点大小 = 2026 主流程度</text>
+
+  <!-- root -->
+  <circle cx="440" cy="80" r="22" fill="var(--dia-bg-card)" stroke="var(--dia-stroke)" stroke-width="2.4"/>
+  <text x="440" y="78" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="10" fill="var(--dia-stroke)">Embodied</text>
+  <text x="440" y="90" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="10" fill="var(--dia-stroke)">AI Models</text>
+
+  <!-- 5 paradigm sub-nodes at varying y/x and varying radius -->
+
+  <!-- 1. classical IL (small, historic) -->
+  <line x1="430" y1="102" x2="120" y2="180" stroke="var(--dia-stroke-soft)" stroke-width="1.4"/>
+  <circle cx="100" cy="190" r="14" fill="var(--dia-bg-card)" stroke="var(--dia-stroke-soft)" stroke-width="1.6"/>
+  <text x="100" y="178" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke-soft)">经典模仿</text>
+  <text x="100" y="194" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">historic</text>
+  <text x="100" y="210" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">foundation</text>
+
+  <!-- 2. sequence / generative (MEDIUM-LARGE) -->
+  <line x1="436" y1="102" x2="280" y2="200" stroke="var(--dia-stroke)" stroke-width="2"/>
+  <circle cx="260" cy="210" r="22" fill="var(--dia-bg-card)" stroke="var(--dia-accent)" stroke-width="2.4"/>
+  <text x="260" y="207" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" fill="var(--dia-stroke)">序列 /</text>
+  <text x="260" y="220" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" fill="var(--dia-stroke)">生成式</text>
+  <text x="285" y="195" font-family="JetBrains Mono, monospace" font-size="11" fill="var(--dia-accent-deep)" font-weight="bold">★</text>
+
+  <!-- 3. VLA (LARGEST, mainstream) -->
+  <line x1="445" y1="103" x2="450" y2="200" stroke="var(--dia-stroke)" stroke-width="3"/>
+  <circle cx="450" cy="220" r="28" fill="var(--dia-bg-card)" stroke="var(--dia-blue)" stroke-width="3"/>
+  <text x="450" y="217" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" fill="var(--dia-stroke)">VLA /</text>
+  <text x="450" y="232" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" fill="var(--dia-stroke)">基础模型</text>
+  <text x="478" y="200" font-family="JetBrains Mono, monospace" font-size="13" fill="var(--dia-accent-deep)" font-weight="bold">★★</text>
+
+  <!-- 4. world model (MEDIUM) -->
+  <line x1="453" y1="102" x2="620" y2="200" stroke="var(--dia-stroke-soft)" stroke-width="1.6"/>
+  <circle cx="640" cy="210" r="20" fill="var(--dia-bg-card)" stroke="var(--dia-green)" stroke-width="2"/>
+  <text x="640" y="208" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" fill="var(--dia-stroke)">世界</text>
+  <text x="640" y="222" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" fill="var(--dia-stroke)">模型</text>
+  <text x="665" y="195" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--dia-accent-deep)" font-weight="bold">★</text>
+
+  <!-- 5. LLM planner (SMALLER, parallel branch) -->
+  <line x1="458" y1="100" x2="800" y2="180" stroke="var(--dia-stroke-soft)" stroke-width="1.4"/>
+  <circle cx="820" cy="190" r="16" fill="var(--dia-bg-card)" stroke="var(--dia-gold)" stroke-width="1.8"/>
+  <text x="820" y="188" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="10" fill="var(--dia-stroke)">LLM</text>
+  <text x="820" y="200" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="10" fill="var(--dia-stroke)">规划</text>
+
+  <!-- leaves: representative models under each paradigm -->
+  <!-- under classical IL -->
+  <line x1="100" y1="208" x2="60" y2="280" stroke="var(--dia-stroke-soft)" stroke-width="1"/>
+  <line x1="100" y1="208" x2="100" y2="280" stroke="var(--dia-stroke-soft)" stroke-width="1"/>
+  <line x1="100" y1="208" x2="140" y2="280" stroke="var(--dia-stroke-soft)" stroke-width="1"/>
+  <text x="60" y="293" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">BC</text>
+  <text x="100" y="293" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">DAgger</text>
+  <text x="140" y="293" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke)">GAIL</text>
+
+  <!-- under sequence/generative -->
+  <line x1="260" y1="232" x2="220" y2="310" stroke="var(--dia-accent)" stroke-width="1.4"/>
+  <line x1="260" y1="232" x2="260" y2="310" stroke="var(--dia-accent)" stroke-width="1.4"/>
+  <line x1="260" y1="232" x2="300" y2="310" stroke="var(--dia-accent)" stroke-width="1.4"/>
+  <line x1="260" y1="232" x2="340" y2="310" stroke="var(--dia-accent)" stroke-width="1.4"/>
+  <rect x="195" y="318" width="50" height="22" rx="2" fill="var(--dia-accent-soft)" stroke="var(--dia-accent)" stroke-width="1"/>
+  <text x="220" y="333" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-accent-deep)">DT</text>
+  <rect x="235" y="318" width="50" height="22" rx="2" fill="var(--dia-accent-soft)" stroke="var(--dia-accent)" stroke-width="1"/>
+  <text x="260" y="333" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-accent-deep)">BeT</text>
+  <rect x="275" y="318" width="50" height="22" rx="2" fill="var(--dia-accent)" stroke="var(--dia-accent-deep)" stroke-width="1.4"/>
+  <text x="300" y="333" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-bg-card)" font-weight="bold">ACT</text>
+  <rect x="315" y="318" width="50" height="22" rx="2" fill="var(--dia-accent-soft)" stroke="var(--dia-accent)" stroke-width="1"/>
+  <text x="340" y="333" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-accent-deep)">Diff. P.</text>
+
+  <!-- under VLA -->
+  <line x1="450" y1="248" x2="400" y2="350" stroke="var(--dia-blue)" stroke-width="1.6"/>
+  <line x1="450" y1="248" x2="430" y2="350" stroke="var(--dia-blue)" stroke-width="1.6"/>
+  <line x1="450" y1="248" x2="460" y2="350" stroke="var(--dia-blue)" stroke-width="1.6"/>
+  <line x1="450" y1="248" x2="490" y2="350" stroke="var(--dia-blue)" stroke-width="1.6"/>
+  <line x1="450" y1="248" x2="520" y2="350" stroke="var(--dia-blue)" stroke-width="1.6"/>
+  <rect x="375" y="358" width="50" height="22" rx="2" fill="var(--dia-blue)" fill-opacity="0.15" stroke="var(--dia-blue)" stroke-width="1"/>
+  <text x="400" y="373" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-blue)">RT-1</text>
+  <rect x="405" y="358" width="50" height="22" rx="2" fill="var(--dia-blue)" fill-opacity="0.15" stroke="var(--dia-blue)" stroke-width="1"/>
+  <text x="430" y="373" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-blue)">RT-2</text>
+  <rect x="435" y="358" width="50" height="22" rx="2" fill="var(--dia-blue)" fill-opacity="0.15" stroke="var(--dia-blue)" stroke-width="1"/>
+  <text x="460" y="373" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-blue)">Octo</text>
+  <rect x="465" y="358" width="60" height="22" rx="2" fill="var(--dia-blue)" stroke="var(--dia-stroke)" stroke-width="1.4"/>
+  <text x="495" y="373" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-bg-card)" font-weight="bold">OpenVLA</text>
+  <rect x="525" y="358" width="50" height="22" rx="2" fill="var(--dia-blue)" fill-opacity="0.15" stroke="var(--dia-blue)" stroke-width="1"/>
+  <text x="550" y="373" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-blue)">pi0</text>
+
+  <!-- under world model -->
+  <line x1="640" y1="230" x2="610" y2="310" stroke="var(--dia-green)" stroke-width="1.4"/>
+  <line x1="640" y1="230" x2="640" y2="310" stroke="var(--dia-green)" stroke-width="1.4"/>
+  <line x1="640" y1="230" x2="670" y2="310" stroke="var(--dia-green)" stroke-width="1.4"/>
+  <line x1="640" y1="230" x2="700" y2="310" stroke="var(--dia-green)" stroke-width="1.4"/>
+  <text x="610" y="325" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-green)">Dreamer</text>
+  <text x="640" y="325" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-green)">UniSim</text>
+  <text x="670" y="325" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-green)">Genie</text>
+  <text x="700" y="325" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-green)">Cosmos</text>
+
+  <!-- under LLM planner -->
+  <line x1="820" y1="206" x2="800" y2="280" stroke="var(--dia-gold)" stroke-width="1.4"/>
+  <line x1="820" y1="206" x2="820" y2="280" stroke="var(--dia-gold)" stroke-width="1.4"/>
+  <line x1="820" y1="206" x2="840" y2="280" stroke="var(--dia-gold)" stroke-width="1.4"/>
+  <text x="800" y="293" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-gold)">SayCan</text>
+  <text x="820" y="293" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-gold)">CaP</text>
+  <text x="840" y="293" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-gold)">VoxPoser</text>
+
+  <!-- reading recommendation: from this article → next reads, dashed paths -->
+  <text x="440" y="425" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="12" font-style="italic" fill="var(--dia-stroke)">推荐阅读顺序 · 从绿色起点出发</text>
+
+  <!-- start node -->
+  <circle cx="80" cy="475" r="14" fill="var(--dia-green)" stroke="var(--dia-stroke)" stroke-width="1.4"/>
+  <text x="80" y="479" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--dia-bg-card)" font-weight="bold">本页</text>
+
+  <!-- arrow 1: → 基础模型概论 -->
+  <path d="M 95,475 Q 175,455 235,475" fill="none" stroke="var(--dia-stroke)" stroke-width="1.4"/>
+  <polygon points="232,470 245,475 232,480" fill="var(--dia-stroke)"/>
+  <text x="240" y="490" font-family="Fraunces, Georgia, serif" font-size="10" font-style="italic" fill="var(--dia-stroke)">基础模型概论</text>
+
+  <!-- arrow 2 either: VLA model OR ACT branching -->
+  <path d="M 335,475 Q 400,440 470,475" fill="none" stroke="var(--dia-blue)" stroke-width="1.4" stroke-dasharray="3,2"/>
+  <polygon points="467,470 480,475 467,480" fill="var(--dia-blue)"/>
+  <text x="475" y="490" font-family="Fraunces, Georgia, serif" font-size="10" font-style="italic" fill="var(--dia-blue)">关心 VLA → VLA 模型</text>
+
+  <path d="M 335,475 Q 400,510 470,500" fill="none" stroke="var(--dia-accent)" stroke-width="1.4" stroke-dasharray="3,2"/>
+  <polygon points="467,495 480,500 467,505" fill="var(--dia-accent)"/>
+  <text x="475" y="520" font-family="Fraunces, Georgia, serif" font-size="10" font-style="italic" fill="var(--dia-accent)">关心 ACT → ACT 模型</text>
+
+  <!-- arrow 3: VLA → open source summary -->
+  <path d="M 575,475 Q 640,455 700,475" fill="none" stroke="var(--dia-stroke)" stroke-width="1.4"/>
+  <polygon points="697,470 710,475 697,480" fill="var(--dia-stroke)"/>
+  <text x="700" y="490" font-family="Fraunces, Georgia, serif" font-size="10" font-style="italic" fill="var(--dia-stroke)">开源模型汇总</text>
+
+  <text x="440" y="555" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-size="11" font-style="italic" fill="var(--dia-stroke-soft)">★★ 主流 · ★ 重要 · 无 ★ 历史 / 平行支线</text>
+</svg>
+</div>
+<p class="figure-caption">Figure 3 — 5 个 paradigm 不是均匀竞争：VLA 当前最大、序列建模次之、世界模型与 LLM 规划是平行支线、经典模仿是 historic foundation。底部箭头给出从本页出发的推荐阅读顺序。</p>
+
+<h3 id="_2">推荐阅读顺序</h3>
+<table>
+<thead>
+<tr>
+<th>你的问题</th>
+<th>先读</th>
+<th>再读</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>我完全不知道机器人模型怎么分类</td>
+<td><a href="./">模型发展路线图</a></td>
+<td><a href="../%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%AE%BA/">机器人基础模型概论</a></td>
+</tr>
+<tr>
+<td>我只关心当前主流 VLA</td>
+<td><a href="../VLA%E6%A8%A1%E5%9E%8B/">VLA模型</a></td>
+<td><a href="../../03_Models/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E6%B1%87%E6%80%BB/">开源模型汇总</a></td>
+</tr>
+<tr>
+<td>我想搞清楚 ACT 为什么一直被提到</td>
+<td><a href="../../02_Methods/ACT%E6%A8%A1%E5%9E%8B/">ACT模型</a></td>
+<td><a href="../../02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/">模仿学习</a></td>
+</tr>
+<tr>
+<td>我在做双臂 / 灵巧操作</td>
+<td><a href="../../02_Methods/ACT%E6%A8%A1%E5%9E%8B/">ACT模型</a></td>
+<td><a href="../../02_Methods/%E6%89%A9%E6%95%A3%E7%AD%96%E7%95%A5/">扩散策略</a></td>
+</tr>
+<tr>
+<td>我关心世界模型和仿真生成</td>
+<td><a href="../%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/">世界模型与视频生成</a></td>
+<td><a href="../../../03_Sim2Real/01_Simulation/%E4%BB%BF%E7%9C%9F%E4%B8%96%E7%95%8C%E6%9E%84%E5%BB%BA%E4%B8%8E%E7%89%A9%E7%90%86%E8%A7%84%E5%88%99/">仿真世界构建与物理规则</a></td>
+</tr>
+<tr>
+<td>我关心开源复现与训练入口</td>
+<td><a href="../../03_Models/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E6%B1%87%E6%80%BB/">开源模型汇总</a></td>
+<td><a href="../../../03_Sim2Real/03_Ecosystem/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/">开源框架</a></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="11">11. 哪些模型值得单独成页，哪些先保留在综述中</h2>
+<p>当前最值得单独成页的模型，应满足至少一个条件：</p>
+<ul>
+<li>开启了一条明确技术路线</li>
+<li>仍然在工程复现中被频繁使用</li>
+<li>对理解后续模型设计有明显桥接作用</li>
+</ul>
+<p>按这个标准，当前建议是：</p>
+<table>
+<thead>
+<tr>
+<th>模型/方向</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ACT</td>
+<td>已单独成页，原因是其桥接地位非常明确</td>
+</tr>
+<tr>
+<td>VLA 主线</td>
+<td>已单独成页，原因是模型家族和时间线都已足够丰富</td>
+</tr>
+<tr>
+<td>Diffusion Policy</td>
+<td>保持在 <a href="../../02_Methods/%E6%89%A9%E6%95%A3%E7%AD%96%E7%95%A5/">扩散策略</a> 中，因为它仍更像方法线</td>
+</tr>
+<tr>
+<td>RT-2 / OpenVLA / pi0</td>
+<td>先保留在 VLA 综述中，后续如果内容继续增长再拆</td>
+</tr>
+<tr>
+<td>世界模型</td>
+<td>先按方向页维护，不急着拆单模型页</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="12">12. 参考阅读</h2>
+<ul>
+<li>Brohan et al., <em>RT-1: Robotics Transformer for Real-World Control at Scale</em>, RSS 2023</li>
+<li>Brohan et al., <em>RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control</em>, CoRL 2023</li>
+<li>Octo Team, <em>Octo: An Open-Source Generalist Robot Policy</em>, RSS 2024</li>
+<li>Kim et al., <em>OpenVLA: An Open-Source Vision-Language-Action Model</em>, 2024</li>
+<li>Zhao et al., <em>Learning Fine-Grained Bimanual Manipulation with Low-Cost Hardware</em>, RSS 2023</li>
+<li>Chi et al., <em>Diffusion Policy: Visuomotor Policy Learning via Action Diffusion</em>, RSS 2023</li>
+<li>Black et al., <em>pi0: A Vision-Language-Action Flow Model for General Robot Control</em>, 2024</li>
+<li>Physical Intelligence, <em>FAST: Efficient Robot Action Tokenization</em>, 2025</li>
+<li>Hafner et al., <em>DreamerV3</em>, 2023</li>
+<li>相关官方页面：<ul>
+<li>OpenVLA: <a href="https://openvla.github.io/">https://openvla.github.io/</a></li>
+<li>Octo: <a href="https://octo-models.github.io/">https://octo-models.github.io/</a></li>
+<li>Tony Zhao / ALOHA + ACT: <a href="https://tonyzhaozh.github.io/">https://tonyzhaozh.github.io/</a></li>
+<li>pi0 PDF: <a href="https://www.physicalintelligence.company/download/pi0.pdf">https://www.physicalintelligence.company/download/pi0.pdf</a></li>
+<li>FAST: <a href="https://www.physicalintelligence.company/research/fast">https://www.physicalintelligence.company/research/fast</a></li>
+</ul>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+  
+  
+
+    <hr>
+
+    <h2 id="__comments">
+      评论
+      <a href="#__comments" class="headerlink" title="评论">#</a>
+    </h2>
+
+    
+    <script src="https://giscus.app/client.js"
+            data-repo="jeffliulab/embodied-notes"
+            data-repo-id="R_kgDOSqKUrg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSqKUrs4C-D6L"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  回到页面顶部
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "search.suggest", "search.highlight"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../javascripts/katex.js"></script>
+      
+        <script src="../../../site_extra_styles/javascripts/tab_dropdown.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,10181 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="刘杰夫">
+      
+      
+        <link rel="canonical" href="https://jeffliulab.github.io/embodied-notes/en/04_Autonomous_Driving/05_Learning_E2E/%E5%8D%8F%E5%8F%98%E9%87%8F%E5%81%8F%E7%A7%BB%E4%B8%8E%E9%97%AD%E7%8E%AF%E9%B8%BF%E6%B2%9F/">
+      
+      
+        <link rel="prev" href="../%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%A9%BE%E9%A9%B6/">
+      
+      
+        <link rel="next" href="../../06_Data_Eval/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E9%97%AD%E7%8E%AF%E8%AF%84%E6%B5%8B/">
+      
+      
+        
+          <link rel="alternate" href="../../../../04_Autonomous_Driving/05_Learning_E2E/%E5%8D%8F%E5%8F%98%E9%87%8F%E5%81%8F%E7%A7%BB%E4%B8%8E%E9%97%AD%E7%8E%AF%E9%B8%BF%E6%B2%9F/" hreflang="zh">
+        
+          <link rel="alternate" href="./" hreflang="en">
+        
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
+    
+    
+      
+        <title>Covariate Shift & the Closed-Loop Gap - Embodied Intelligence & Robot Engineering Notes</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.css">
+    
+      <link rel="stylesheet" href="../../../../site_extra_styles/stylesheets/extra.css">
+    
+      <link rel="stylesheet" href="../../../../site_extra_styles/stylesheets/correct_bullet_point.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    <body dir="ltr">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#covariate-shift-the-closed-loop-gap" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../" title="Embodied Intelligence &amp; Robot Engineering Notes" class="md-header__button md-logo" aria-label="Embodied Intelligence & Robot Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Embodied Intelligence & Robot Engineering Notes
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Covariate Shift & the Closed-Loop Gap
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="../../../../04_Autonomous_Driving/05_Learning_E2E/%E5%8D%8F%E5%8F%98%E9%87%8F%E5%81%8F%E7%A7%BB%E4%B8%8E%E9%97%AD%E7%8E%AF%E9%B8%BF%E6%B2%9F/" hreflang="zh" class="md-select__link">
+              中文
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../00_Robotics/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Robotics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../01_Robot_Engineering/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Robot Engineering
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../02_Robot_Learning/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Robot Learning
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../03_Sim2Real/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Simulation & Deployment
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Autonomous Driving
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../05_Drones/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Drones
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../06_Robot_Arms/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Robot Arms
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../07_Quadrupeds/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Quadrupeds
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../08_Humanoids/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Humanoid Robots
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../09_Topics/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Topics
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../" title="Embodied Intelligence &amp; Robot Engineering Notes" class="md-nav__button md-logo" aria-label="Embodied Intelligence & Robot Engineering Notes" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Embodied Intelligence & Robot Engineering Notes
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Robotics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/01_Embodiment_Theory/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodiment Theory
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Embodiment Theory
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Embodied Intelligence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E8%B7%AF%E7%BA%BF%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodied Intelligence Technology Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E6%99%BA%E8%83%BD%E9%87%8C%E7%A8%8B%E7%A2%91/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Milestones in Embodied Intelligence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E5%85%B7%E8%BA%AB%E8%AE%A4%E7%9F%A5%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodied Cognition Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E7%9B%B4%E8%A7%89%E7%89%A9%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Intuitive Physics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E8%A1%A8%E5%BE%81%E4%B8%8E%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representations and World Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/01_Embodiment_Theory/%E6%84%9F%E7%9F%A5-%E8%A1%8C%E5%8A%A8%E5%BE%AA%E7%8E%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perception-Action Loop
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/02_Classical_Robotics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Classical Robotics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Classical Robotics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/robotics_intro/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Robotics and Key Topics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E5%9D%90%E6%A0%87%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Coordinate Frames
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E8%BF%90%E5%8A%A8%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Kinematics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E5%8A%A8%E5%8A%9B%E5%AD%A6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Dynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E6%8E%A7%E5%88%B6%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Control Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/MPC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MPC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E8%BF%90%E5%8A%A8%E8%A7%84%E5%88%92/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Motion Planning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/%E4%BB%BB%E5%8A%A1%E4%B8%8E%E8%BF%90%E5%8A%A8%E8%A7%84%E5%88%92%E7%90%86%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Task and Motion Planning Theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/02_Classical_Robotics/SLAM/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SLAM: Simultaneous Localization and Mapping
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../00_Robotics/03_Research_Resources/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Research Resources
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Research Resources
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/03_Research_Resources/%E5%85%B3%E9%94%AE%E4%BC%9A%E8%AE%AE%E4%B8%8E%E6%9C%9F%E5%88%8A/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Conferences and Journals in Embodied Intelligence
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../00_Robotics/03_Research_Resources/%E5%85%B3%E9%94%AE%E8%AE%BA%E6%96%87%E7%B2%BE%E8%AF%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Key Paper Deep Dives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Engineering
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Robot Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/01_Computer_Engineering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computer Engineering
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Computer Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B7%A5%E7%A8%8B%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Computer Engineering
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/CPU%E6%9E%B6%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CPU Architecture
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/GPU%E4%B8%8E%E5%B9%B6%E8%A1%8C%E8%AE%A1%E7%AE%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPU and Parallel Computing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E5%86%85%E5%AD%98%E4%B8%8E%E5%AD%98%E5%82%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Memory and Storage
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E6%80%BB%E7%BA%BF%E4%B8%8E%E6%8E%A5%E5%8F%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Buses and Interfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E5%B5%8C%E5%85%A5%E5%BC%8F%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embedded Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operating System Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/ARM_Cortex_M/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ARM Cortex-M Series
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/FreeRTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FreeRTOS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/RTOS_Overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time Operating Systems (RTOS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/01_Computer_Engineering/Zephyr_RTOS/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Zephyr
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/02_Cameras/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cameras and Vision Sensors
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Cameras and Vision Sensors
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E6%9C%BA%E5%99%A8%E4%BA%BA%E8%A7%86%E8%A7%89%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Robot Vision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/RGB%E7%9B%B8%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RGB Cameras
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E6%B7%B1%E5%BA%A6%E7%9B%B8%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Depth Cameras
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E5%8F%8C%E7%9B%AE%E4%B8%8E%E7%BB%93%E6%9E%84%E5%85%89/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stereo Vision and Structured Light
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E5%85%A8%E6%99%AF%E4%B8%8E%E4%BA%8B%E4%BB%B6%E7%9B%B8%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Panoramic and Event Cameras
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/02_Cameras/%E7%9B%B8%E6%9C%BA%E6%A0%87%E5%AE%9A%E4%B8%8E%E9%80%89%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Camera Calibration and Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/03_LiDAR/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LiDAR
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    LiDAR
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/LiDAR%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LiDAR Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/2D_LiDAR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2D LiDAR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/3D_LiDAR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D LiDAR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/%E5%9B%BA%E6%80%81LiDAR/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Solid-State LiDAR
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/03_LiDAR/%E7%82%B9%E4%BA%91%E5%A4%84%E7%90%86%E5%9F%BA%E7%A1%80/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Point Cloud Processing Fundamentals
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/04_IMU_Navigation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMU and Navigation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    IMU and Navigation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/IMU%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMU Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/IMU%E9%80%89%E5%9E%8B%E4%B8%8E%E6%A0%A1%E5%87%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    IMU Selection and Calibration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/%E8%A7%86%E8%A7%89%E6%83%AF%E6%80%A7%E9%87%8C%E7%A8%8B%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Visual-Inertial Odometry (VIO)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/GPS%E4%B8%8ERTK/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GPS and RTK Positioning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/%E5%A4%9A%E4%BC%A0%E6%84%9F%E5%99%A8%E8%9E%8D%E5%90%88/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-Sensor Fusion
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/04_IMU_Navigation/%E8%BF%91%E8%B7%9D%E7%A6%BB%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Short-Range Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_6" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/05_Motors_Actuators/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motors and Actuators
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_6" id="__nav_3_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Motors and Actuators
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E7%94%B5%E6%9C%BA%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motor Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E7%9B%B4%E6%B5%81%E7%94%B5%E6%9C%BA%E4%B8%8E%E7%BC%96%E7%A0%81%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DC Motors and Encoders
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E8%88%B5%E6%9C%BA%E4%B8%8E%E6%80%BB%E7%BA%BF%E8%88%B5%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servos and Bus Servos
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E6%97%A0%E5%88%B7%E7%94%B5%E6%9C%BA%E4%B8%8EFOC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Brushless Motors and FOC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E5%87%8F%E9%80%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gear Reducers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E7%94%B5%E6%9C%BA%E9%A9%B1%E5%8A%A8%E6%9D%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motor Driver Boards
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E6%9C%AB%E7%AB%AF%E6%89%A7%E8%A1%8C%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    End Effectors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/%E6%B6%B2%E5%8E%8B%E4%B8%8E%E6%B0%94%E5%8A%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hydraulic and Pneumatic Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/BLDC_Motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BLDC Motor (Brushless DC)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/Servo_Motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Servo Motor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/05_Motors_Actuators/Stepper_Motor/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Stepper Motor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/06_Communication/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Communication Systems
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_7" id="__nav_3_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Communication Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E9%80%9A%E4%BF%A1%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Communication Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E4%B8%B2%E5%8F%A3%E4%B8%8EI2C_SPI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UART and I2C/SPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/CAN%E6%80%BB%E7%BA%BF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAN Bus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%B8%8EEtherCAT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ethernet and EtherCAT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/WiFi%E4%B8%8E%E8%93%9D%E7%89%99/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    WiFi and Bluetooth
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/%E8%BF%9C%E7%A8%8B%E9%80%9A%E4%BF%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Long-Range Communication
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/MQTT/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/Modbus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Modbus
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/06_Communication/USB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    USB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/07_Power/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Systems
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_8" id="__nav_3_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Power Systems
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E7%94%B5%E6%BA%90%E7%B3%BB%E7%BB%9F%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power System Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E7%94%B5%E6%B1%A0%E6%8A%80%E6%9C%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battery Technology
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E7%94%B5%E6%BA%90%E7%AE%A1%E7%90%86%E7%94%B5%E8%B7%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Management Circuits
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E5%8A%9F%E8%80%97%E9%A2%84%E7%AE%97%E4%B8%8E%E7%BB%AD%E8%88%AA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Budget and Runtime
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/%E5%85%85%E7%94%B5%E4%B8%8E%E5%AE%89%E5%85%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Charging and Safety
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/BMS_Battery_Management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Battery Management System (BMS)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/07_Power/Wireless_Charging/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wireless Power Transfer (WPT)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/08_Mechanical/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mechanical Design
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_9" id="__nav_3_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mechanical Design
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%9C%BA%E6%A2%B0%E8%AE%BE%E8%AE%A1%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mechanical Design Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E5%BA%95%E7%9B%98%E4%B8%8E%E8%BF%90%E5%8A%A8%E6%9C%BA%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chassis and Locomotion Mechanisms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%9C%BA%E6%A2%B0%E8%87%82%E7%BB%93%E6%9E%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotic Arm Structure
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%95%A3%E7%83%AD%E4%B8%8E%E9%98%B2%E6%8A%A4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thermal Management and Protection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/3D%E6%89%93%E5%8D%B0%E4%B8%8E%E5%8A%A0%E5%B7%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Printing and Machining
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/%E6%9D%90%E6%96%99%E9%80%89%E6%8B%A9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Material Selection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/CAD%E5%B7%A5%E5%85%B7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CAD Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/Bearings/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Bearings
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/08_Mechanical/Finite_Element_Analysis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Finite Element Analysis (FEA)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/09_Displays_HMI/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Displays and Human-Machine Interaction
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_10" id="__nav_3_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Displays and Human-Machine Interaction
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/%E6%98%BE%E7%A4%BA%E7%B3%BB%E7%BB%9F%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Display Systems Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/OLED%E4%B8%8ELCD/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    OLED and LCD
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/LED%E6%8C%87%E7%A4%BA%E4%B8%8E%E5%A3%B0%E9%9F%B3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    LED Indicators and Sound
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/%E8%A7%A6%E6%91%B8%E5%B1%8F%E4%B8%8EWeb%E7%95%8C%E9%9D%A2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Touchscreen and Web Interface
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/%E9%81%A5%E6%8E%A7%E4%B8%8E%E6%89%8B%E6%9F%84/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Remote Control and Gamepad
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/GUI_Frameworks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    GUI Frameworks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/09_Displays_HMI/PID_Tuning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PID Control & Tuning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/10_Force_Tactile/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Force and Tactile Sensing
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_11" id="__nav_3_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Force and Tactile Sensing
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E5%8A%9B%E8%A7%89%E4%BC%A0%E6%84%9F%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Force Sensing Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E5%85%AD%E7%BB%B4%E5%8A%9B%E7%9F%A9%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    6-Axis Force/Torque Sensor
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E8%A7%A6%E8%A7%89%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tactile Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E8%B6%B3%E7%AB%AF%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foot Force Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/10_Force_Tactile/%E5%8A%9B%E6%8E%A7%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Force Control Applications
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_12" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/11_Integration/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Integration
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_12" id="__nav_3_12_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_12_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_12">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    System Integration
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    System Integration Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E6%8E%A5%E7%BA%BF%E4%B8%8EPCB%E8%AE%BE%E8%AE%A1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Wiring and PCB Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/ROS2%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS2 System Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E8%B0%83%E8%AF%95%E4%B8%8E%E6%B5%8B%E8%AF%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Debugging and Testing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/%E5%85%B8%E5%9E%8B%E6%9C%BA%E5%99%A8%E4%BA%BA%E6%8B%86%E8%A7%A3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Typical Robot Teardowns
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/MoveIt2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MoveIt 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/ROS2_Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS 2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/11_Integration/SLAM_Basics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SLAM (Simultaneous Localization and Mapping) Basics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_13" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/12_Foundations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Engineering Foundations
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_13" id="__nav_3_13_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_13">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Engineering Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Linear_Algebra/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Linear Algebra
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Control_Theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control Theory Foundations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Signal_Processing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Signal Processing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/PDE_Methods/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PDE Methods
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Fluid_Mechanics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Fluid Mechanics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Thermodynamics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Thermodynamics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/12_Foundations/Materials_Science/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Materials Science
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_14" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Electrical Engineering
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_14" id="__nav_3_14_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_14">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Electrical Engineering
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/Op_Amp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Operational Amplifier (Op-Amp)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/ADC_DAC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ADC / DAC
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/Power_Electronics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Power Electronics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/13_Electrical_Engineering/PCB_Design/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PCB Design
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_15" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Manufacturing & Frontiers
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_15" id="__nav_3_15_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_15_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_15">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Manufacturing & Frontiers
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/3D_Printing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Printing / Additive Manufacturing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/CNC/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CNC (Computer Numerical Control)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/Industry_4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Industry 4.0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/14_Manufacturing_Frontiers/Robotics_in_Manufacturing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robotics in Manufacturing
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_16" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../01_Robot_Engineering/15_Hardware_Overview/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Overview & Selection
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_16" id="__nav_3_16_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_16_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_16">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Hardware Overview & Selection
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E7%A1%AC%E4%BB%B6%E9%80%89%E5%9E%8B%E6%8C%87%E5%8D%97/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Hardware Selection Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E4%BC%A0%E6%84%9F%E5%99%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sensors
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E6%89%A7%E8%A1%8C%E5%99%A8%E4%B8%8E%E9%A9%B1%E5%8A%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Actuators and Drives
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E8%AE%A1%E7%AE%97%E5%B9%B3%E5%8F%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Computing Platforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../01_Robot_Engineering/15_Hardware_Overview/%E5%BC%80%E6%BA%90%E7%A1%AC%E4%BB%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open-Source Robot Hardware
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02_Robot_Learning/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Learning
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Robot Learning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02_Robot_Learning/01_Foundations/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations & Surveys
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_2" id="__nav_4_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Foundations & Surveys
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/01_Foundations/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%AD%A6%E4%B9%A0%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview of Robot Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/01_Foundations/%E6%9C%BA%E5%99%A8%E4%BA%BA%E5%9F%BA%E7%A1%80%E6%A8%A1%E5%9E%8B%E6%A6%82%E8%AE%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introduction to Robot Foundation Models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/01_Foundations/VLA%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLA Models (Vision-Language-Action Models)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/01_Foundations/%E6%A8%A1%E5%9E%8B%E5%8F%91%E5%B1%95%E8%B7%AF%E7%BA%BF%E5%9B%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Model Roadmap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/01_Foundations/%E5%A4%9A%E4%BB%BB%E5%8A%A1%E4%B8%8E%E6%B3%9B%E5%8C%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Multi-task Learning and Generalization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/01_Foundations/%E5%A4%A7%E6%A8%A1%E5%9E%8B%E9%A9%B1%E5%8A%A8%E7%9A%84%E6%9C%BA%E5%99%A8%E4%BA%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Large Model-Driven Robots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/01_Foundations/%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B%E4%B8%8E%E8%A7%86%E9%A2%91%E7%94%9F%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    World Models and Video Generation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02_Robot_Learning/02_Methods/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Learning Methods
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Learning Methods
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Imitation Learning
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/02_Methods/%E6%89%A9%E6%95%A3%E7%AD%96%E7%95%A5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Diffusion Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/02_Methods/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9C%A8%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Reinforcement Learning in Robotics
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/02_Methods/VLA-RL%E9%9B%86%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLA-RL Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/02_Methods/ACT%E6%A8%A1%E5%9E%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ACT Model
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/02_Methods/Sim2Real/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim2Real: Transferring from Simulation to Reality
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02_Robot_Learning/03_Models/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Representative Models
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_4" id="__nav_4_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Representative Models
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/03_Models/RT_1_Detailed/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RT-1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/03_Models/RT2_OpenVLA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RT-2 and OpenVLA
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/03_Models/Octo_Foundation_Policy/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Octo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/03_Models/Pi0_Physical_Intelligence/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    π0
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/03_Models/RDT_1B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    RDT-1B
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/03_Models/Helix_Figure_AI/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Helix
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/03_Models/%E5%BC%80%E6%BA%90%E6%A8%A1%E5%9E%8B%E6%B1%87%E6%80%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open-Source Model Summary
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../02_Robot_Learning/04_Data_Benchmarks/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_4_5" id="__nav_4_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data & Benchmarks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/04_Data_Benchmarks/%E9%81%A5%E6%93%8D%E4%BD%9C%E4%B8%8E%E6%95%B0%E6%8D%AE%E6%94%B6%E9%9B%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Teleoperation and Data Collection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/04_Data_Benchmarks/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8EBenchmark/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets and Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/04_Data_Benchmarks/DROID_Dataset/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DROID
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/04_Data_Benchmarks/VLA_Benchmark_Suite/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VLA Benchmark Suite
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/04_Data_Benchmarks/UMI_Universal_Manipulation_Interface/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    UMI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../02_Robot_Learning/04_Data_Benchmarks/Aloha_Mobile_Aloha/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Aloha & Mobile Aloha
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation & Deployment
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5" id="__nav_5_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Simulation & Deployment
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/01_Simulation/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_2" id="__nav_5_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Simulation
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/simulation_platforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation Platforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/%E4%BB%BF%E7%9C%9F%E5%B7%A5%E5%85%B7%E5%AF%B9%E6%AF%94/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation Tool Comparison
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/%E4%BB%BF%E7%9C%9F%E4%B8%96%E7%95%8C%E6%9E%84%E5%BB%BA%E4%B8%8E%E7%89%A9%E7%90%86%E8%A7%84%E5%88%99/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation World Building & Physics Rules
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/01_Simulation/%E4%BB%BF%E7%9C%9F%E8%B5%84%E4%BA%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Simulation Assets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/02_Deployment/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment & Ops
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Deployment & Ops
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/Sim2Real%E9%83%A8%E7%BD%B2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sim2Real Deployment Practical Guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E6%A0%87%E5%AE%9A%E4%B8%8E%E7%B3%BB%E7%BB%9F%E9%9B%86%E6%88%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calibration and System Integration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E5%AE%9E%E6%97%B6%E7%B3%BB%E7%BB%9F/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Real-Time Systems
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E5%AE%89%E5%85%A8%E4%B8%8E%E9%B2%81%E6%A3%92%E6%80%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Safety and Robustness
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/02_Deployment/%E9%83%A8%E7%BD%B2%E6%A1%88%E4%BE%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Deployment Case Studies
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../03_Sim2Real/03_Ecosystem/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Ecosystem & Toolchain
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_5_4" id="__nav_5_4_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Ecosystem & Toolchain
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/ROS2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    ROS2 Architecture and Core Tools
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/NVIDIA%E7%94%9F%E6%80%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NVIDIA Robotics Ecosystem
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/%E5%BC%80%E6%BA%90%E6%A1%86%E6%9E%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Open-Source Robot Learning Frameworks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../03_Sim2Real/03_Ecosystem/%E5%BC%80%E5%8F%91%E5%B7%A5%E5%85%B7%E9%93%BE/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development Toolchain
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous Driving
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Autonomous Driving
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_2" id="__nav_6_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Foundations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Foundations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Foundations/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E7%BB%BC%E8%BF%B0/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Autonomous Driving Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../01_Foundations/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%8C%83%E5%BC%8F%E4%B8%8E%E6%96%B9%E6%B3%95%E8%B0%B1%E7%B3%BB/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AD Paradigms & Method Taxonomy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perception
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Perception
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../02_Perception/%E6%84%9F%E7%9F%A5%E4%B8%8E%E5%AE%9A%E4%BD%8D/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perception & Localization
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_4" id="__nav_6_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Prediction & Planning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Prediction & Planning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Prediction_Planning/%E8%BF%90%E5%8A%A8%E9%A2%84%E6%B5%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Motion Prediction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../03_Prediction_Planning/%E8%A7%84%E5%88%92%E4%B8%8E%E5%86%B3%E7%AD%96/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Planning & Decision
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_5" id="__nav_6_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Control
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Control
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../04_Control/%E8%BD%A6%E8%BE%86%E6%8E%A7%E5%88%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Vehicle Control
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_6" id="__nav_6_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    End-to-End & Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    End-to-End & Learning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%A9%BE%E9%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    End-to-End Driving
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Covariate Shift & the Closed-Loop Gap
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Covariate Shift & the Closed-Loop Gap
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-terminology-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Terminology &amp; Definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Terminology &amp; Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-covariate-shift-input-distribution-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Covariate Shift / Input Distribution Shift
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-distinguishing-neighboring-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Distinguishing Neighboring Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-two-layers-incidental-in-general-ml-vs-inevitable-in-ilclosed-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Two Layers: Incidental in General ML vs Inevitable in IL/Closed-Loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Two Layers: Incidental in General ML vs Inevitable in IL/Closed-Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-in-general-supervised-learning-external-incidental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 In General Supervised Learning: External, Incidental
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-in-il-closed-loop-control-internal-structurally-inevitable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 In IL / Closed-Loop Control: Internal, Structurally Inevitable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-error-bound-cited-not-re-derived" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Error Bound (Cited, Not Re-Derived)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-why-even-a-tiny-is-fatal-in-driving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Why "Even a Tiny ε Is Fatal in Driving"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-open-loop-vs-closed-loop-evaluation-the-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Open-Loop vs Closed-Loop Evaluation: the Gap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Open-Loop vs Closed-Loop Evaluation: the Gap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-open-loop-offline-replay-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Open-Loop (Offline Replay) Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-closed-loop-simon-road-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Closed-Loop (Sim/On-Road) Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-why-good-offline-metrics-good-on-road" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Why Good Offline Metrics ≠ Good On-Road
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-closed-loop-leaderboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Closed-Loop Leaderboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-spectrum-of-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Spectrum of Solutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Spectrum of Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-dagger-and-its-driving-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 DAgger and Its Driving Variants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-nvidia-three-cameras-view-synthesis-for-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 NVIDIA Three Cameras / View Synthesis for Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-chauffeurnets-synthetic-perturbation-auxiliary-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 ChauffeurNet's Synthetic Perturbation + Auxiliary Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-noise-injection-dart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Noise Injection / DART
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-closed-loop-training-rl-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Closed-Loop Training + RL Fine-Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-data-augmentation-and-long-tail-scenario-mining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Data Augmentation and Long-Tail Scenario Mining
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-world-models-generating-the-long-tail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 World Models Generating the Long Tail
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-case-walkthrough-a-history-of-fighting-covariate-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. A Case Walkthrough: a History of "Fighting Covariate Shift"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-method-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Method Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Common Pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-frontier-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Frontier Trends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_7" id="__nav_6_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Data & Benchmarks
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Data & Benchmarks
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../06_Data_Eval/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E9%97%AD%E7%8E%AF%E8%AF%84%E6%B5%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Datasets & Closed-Loop Evaluation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../05_Drones/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Drones
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Drones
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../05_Drones/%E6%97%A0%E4%BA%BA%E6%9C%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Drones
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../06_Robot_Arms/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Arms
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_8" id="__nav_8_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Robot Arms
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_Robot_Arms/%E6%9C%BA%E6%A2%B0%E8%87%82%E4%B8%8E%E7%A7%BB%E5%8A%A8%E6%93%8D%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Robot Arms and Mobile Manipulation
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../06_Robot_Arms/%E7%81%B5%E5%B7%A7%E6%89%8B/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Dexterous Hands
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../07_Quadrupeds/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quadrupeds
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Quadrupeds
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../07_Quadrupeds/%E5%9B%9B%E8%B6%B3%E6%9C%BA%E5%99%A8%E4%BA%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quadruped Robots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_10" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../08_Humanoids/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Humanoid Robots
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_10" id="__nav_10_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_10_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_10">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Humanoid Robots
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../08_Humanoids/humanoid_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Humanoid Robots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_11" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../09_Topics/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Topics
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_11" id="__nav_11_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_11_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_11">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Topics
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E5%85%AC%E5%8F%B8%E5%85%A8%E6%99%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodied Intelligence Company Landscape
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E8%A1%8C%E4%B8%9A%E7%A0%94%E7%A9%B6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Embodied Intelligence Industry Research
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E5%B8%82%E5%9C%BA%E4%B8%8E%E9%9C%80%E6%B1%82/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Market and Demand
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E4%BA%A7%E5%AD%A6%E7%A0%94%E5%90%88%E4%BD%9C/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Industry-Academia-Research Collaboration
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E4%B8%9A%E7%95%8C%E5%8A%A8%E6%80%81/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Industry Updates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E7%97%9B%E7%82%B9%E4%B8%8E%E6%8C%91%E6%88%98/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pain Points and Challenges
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/cleaning_robot/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Cleaning Robot
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../09_Topics/%E6%9C%8D%E5%8A%A1%E6%9C%BA%E5%99%A8%E4%BA%BA/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Service Robots
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-terminology-definition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. Terminology &amp; Definition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. Terminology &amp; Definition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#11-covariate-shift-input-distribution-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.1 Covariate Shift / Input Distribution Shift
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#12-distinguishing-neighboring-concepts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1.2 Distinguishing Neighboring Concepts
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-two-layers-incidental-in-general-ml-vs-inevitable-in-ilclosed-loop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. Two Layers: Incidental in General ML vs Inevitable in IL/Closed-Loop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. Two Layers: Incidental in General ML vs Inevitable in IL/Closed-Loop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-in-general-supervised-learning-external-incidental" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.1 In General Supervised Learning: External, Incidental
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-in-il-closed-loop-control-internal-structurally-inevitable" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.2 In IL / Closed-Loop Control: Internal, Structurally Inevitable
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-error-bound-cited-not-re-derived" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.3 Error Bound (Cited, Not Re-Derived)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#24-why-even-a-tiny-is-fatal-in-driving" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2.4 Why "Even a Tiny ε Is Fatal in Driving"
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-open-loop-vs-closed-loop-evaluation-the-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. Open-Loop vs Closed-Loop Evaluation: the Gap
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. Open-Loop vs Closed-Loop Evaluation: the Gap">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-open-loop-offline-replay-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.1 Open-Loop (Offline Replay) Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-closed-loop-simon-road-evaluation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.2 Closed-Loop (Sim/On-Road) Evaluation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-why-good-offline-metrics-good-on-road" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.3 Why Good Offline Metrics ≠ Good On-Road
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-closed-loop-leaderboards" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3.4 Closed-Loop Leaderboards
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-the-spectrum-of-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. The Spectrum of Solutions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. The Spectrum of Solutions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#41-dagger-and-its-driving-variants" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.1 DAgger and Its Driving Variants
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#42-nvidia-three-cameras-view-synthesis-for-recovery" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.2 NVIDIA Three Cameras / View Synthesis for Recovery
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#43-chauffeurnets-synthetic-perturbation-auxiliary-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.3 ChauffeurNet's Synthetic Perturbation + Auxiliary Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#44-noise-injection-dart" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.4 Noise Injection / DART
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#45-closed-loop-training-rl-fine-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.5 Closed-Loop Training + RL Fine-Tuning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#46-data-augmentation-and-long-tail-scenario-mining" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.6 Data Augmentation and Long-Tail Scenario Mining
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#47-world-models-generating-the-long-tail" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4.7 World Models Generating the Long Tail
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-a-case-walkthrough-a-history-of-fighting-covariate-shift" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. A Case Walkthrough: a History of "Fighting Covariate Shift"
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-method-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. Method Comparison
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-common-pitfalls" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. Common Pitfalls
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#8-frontier-trends" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        8. Frontier Trends
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#references" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        References
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../../" class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Autonomous Driving
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%A9%BE%E9%A9%B6/" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    End-to-End & Learning
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+  
+                  
+
+
+
+<h1 id="covariate-shift-the-closed-loop-gap">Covariate Shift &amp; the Closed-Loop Gap</h1>
+<blockquote>
+<p><em>Covariate Shift &amp; the Closed-Loop Gap — why behavior cloning "drifts further the longer it drives, until it avalanches," and how industry pins it down with three cameras, synthetic perturbation, and closed-loop training.</em></p>
+<p><strong>Difficulty</strong>: Intermediate-Advanced
+<strong>Prerequisites</strong>: <a href="../../../02_Robot_Learning/02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/">Imitation Learning</a> (incl. the Ross &amp; Bagnell <span class="arithmatex">\(O(\epsilon T^2)\)</span> theorem and DAgger), <a href="../../01_Foundations/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%8C%83%E5%BC%8F%E4%B8%8E%E6%96%B9%E6%B3%95%E8%B0%B1%E7%B3%BB/">Autonomous Driving Paradigms &amp; Method Taxonomy</a>
+<strong>Further reading</strong>: <a href="../%E7%AB%AF%E5%88%B0%E7%AB%AF%E9%A9%BE%E9%A9%B6/">End-to-End Driving</a>, <a href="../../06_Data_Eval/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E9%97%AD%E7%8E%AF%E8%AF%84%E6%B5%8B/">Datasets &amp; Closed-Loop Evaluation</a>, <a href="../../../02_Robot_Learning/02_Methods/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E5%9C%A8%E6%9C%BA%E5%99%A8%E4%BA%BA%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8/">Reinforcement Learning in Robotics</a></p>
+</blockquote>
+<hr />
+<h2 id="1-terminology-definition">1. Terminology &amp; Definition</h2>
+<h3 id="11-covariate-shift-input-distribution-shift">1.1 Covariate Shift / Input Distribution Shift</h3>
+<p><strong>Covariate shift</strong>, also called <strong>input distribution shift</strong>, means:</p>
+<div class="arithmatex">\[
+p_{\text{train}}(x) \neq p_{\text{test}}(x), \quad \text{while the conditional } p(y \mid x) \text{ stays the same}
+\]</div>
+<p>The input distribution seen at training differs from that at deployment, but "given the input, what the correct answer is" is unchanged. No matter how well the model fits the training distribution, once deployment inputs fall into regions rare/unseen in training, predictions become unreliable.</p>
+<h3 id="12-distinguishing-neighboring-concepts">1.2 Distinguishing Neighboring Concepts</h3>
+<table>
+<thead>
+<tr>
+<th>Shift type</th>
+<th>What changes</th>
+<th>Driving example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Covariate shift</strong></td>
+<td>input marginal <span class="arithmatex">\(p(x)\)</span> changes, <span class="arithmatex">\(p(y\mid x)\)</span> fixed</td>
+<td>trained on sunny city, deployed in rainy-night suburbs</td>
+</tr>
+<tr>
+<td>Label / prior shift</td>
+<td>label marginal <span class="arithmatex">\(p(y)\)</span> changes</td>
+<td>training set is 90% "go straight," deployed in a curve-dense area</td>
+</tr>
+<tr>
+<td>Concept drift</td>
+<td><span class="arithmatex">\(p(y\mid x)\)</span> itself changes over time</td>
+<td>traffic rules changed, lane lines repainted</td>
+</tr>
+</tbody>
+</table>
+<p>This note discusses only the first. The key point: <strong>in imitation learning / closed-loop control, this shift in <span class="arithmatex">\(p(x)\)</span> is not imposed externally — the policy creates it itself.</strong></p>
+<hr />
+<h2 id="2-two-layers-incidental-in-general-ml-vs-inevitable-in-ilclosed-loop">2. Two Layers: Incidental in General ML vs Inevitable in IL/Closed-Loop</h2>
+<h3 id="21-in-general-supervised-learning-external-incidental">2.1 In General Supervised Learning: External, Incidental</h3>
+<p>Ordinary ML assumes i.i.d. data. Covariate shift here is <strong>external and incidental</strong> — sampling bias, regional/seasonal change, sensor swaps. The dataset is <strong>fixed</strong>; the model does not change what it will see in the future. Remedies are "passive compensation" like importance weighting and domain adaptation.</p>
+<h3 id="22-in-il-closed-loop-control-internal-structurally-inevitable">2.2 In IL / Closed-Loop Control: Internal, Structurally Inevitable</h3>
+<p>Once an imitation-learned policy <strong>runs in a closed loop on the car</strong>, things change qualitatively: the policy's <strong>current output determines what state it sees next</strong>. So the policy induces <strong>its own state-visitation distribution</strong> <span class="arithmatex">\(d_\pi\)</span>, which <strong>must differ</strong> from the expert's <span class="arithmatex">\(d_{\pi^*}\)</span>:</p>
+<div class="arithmatex">\[
+d_\pi \neq d_{\pi^*}
+\]</div>
+<p>This is the <strong>fundamental difference between closed loop (policy affects its own input distribution) and open loop (dataset is fixed)</strong>. In ordinary supervised learning covariate shift "may happen"; in an IL closed loop it "must happen" — as long as the policy is not bit-for-bit identical to the expert, it will take itself into states the expert never demonstrated.</p>
+<h3 id="23-error-bound-cited-not-re-derived">2.3 Error Bound (Cited, Not Re-Derived)</h3>
+<p>The <a href="../../../02_Robot_Learning/02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/">Imitation Learning</a> note already gives the classic Ross &amp; Bagnell result: if behavior cloning errs with probability <span class="arithmatex">\(\epsilon\)</span> per step, the total loss over a <span class="arithmatex">\(T\)</span>-step trajectory is bounded by <span class="arithmatex">\(J(\pi_\theta)-J(\pi^*)\le O(\epsilon T^2)\)</span> (<strong>quadratic</strong> growth), while DAgger reduces it to <span class="arithmatex">\(O(\epsilon T)\)</span> (linear) by querying the expert on states the policy itself visits. This note does not re-derive it; it uses the result to explain driving.</p>
+<h3 id="24-why-even-a-tiny-is-fatal-in-driving">2.4 Why "Even a Tiny ε Is Fatal in Driving"</h3>
+<p>The quadratic bound is only a statistical expectation. In autonomous driving three amplifiers make even a tiny per-step <span class="arithmatex">\(\epsilon\)</span> potentially fatal:</p>
+<ul>
+<li><strong>Nonlinear absorbing states → positive-feedback avalanche</strong>: vehicle dynamics make a small deviation not a "linearly accumulating error" but a push toward out-of-training-distribution "absorbing regions" (crossing lines, mounting the shoulder, swerving into oncoming traffic). Once in a state the policy never saw, the output is near-random → drifts further → state even more unfamiliar — a positive feedback that drives the error <strong>exponentially</strong> off the expert manifold (see Figure 1).</li>
+<li><strong>Asymmetric cost of safety</strong>: supervised loss weights all errors equally (0.5 m off and 2 m off have similar MSE), but the real-world cost is <strong>step-like</strong> — 0.5 m off is still in-lane, 2 m off is out-of-bounds/collision. So "small expected error <span class="arithmatex">\(\epsilon\)</span>" badly <strong>underestimates tail risk</strong>.</li>
+<li><strong>Time scale</strong>: the <span class="arithmatex">\(T\)</span> in <span class="arithmatex">\(\epsilon T^2\)</span> corresponds to large physical displacement at highway speeds; for long-horizon tasks <span class="arithmatex">\(T\)</span> is far from negligible.</li>
+</ul>
+<!-- SVG-DESIGN-NOTES
+Type: B (geometry — expert narrow-band distribution vs policy trajectory spiraling out into OOD)
+Q0: BC is only reliable on the expert distribution d_π* (narrow band); a small one-step error pushes the state out of the band → into the untrained region (OOD) → output less reliable → larger error, the state trajectory leaves the expert manifold exponentially; this is closed-loop positive feedback, not linear accumulation
+Q1: Left a blue expert trajectory narrow band (d_π*); overlaid a green policy trajectory, initially aligned, spiraling outward over time (each error arrow grows longer); background light contour = training data density, the policy trajectory turns gray once it shoots out of the high-density region (OOD)
+Q2: Drop the title: blue narrow band + green spiral divergence + turning gray at exit + growing error arrows = covariate-shift avalanche DNA
+Q3: No isolated decoration; divergence carried by spiral geometry and growing arrows
+Q4: Label d_π* (expert narrow band), d_π (policy), OOD (policy never saw), ε→εT² error accumulation
+Q5: expert band var(--dia-blue); policy trajectory var(--dia-accent); OOD region var(--dia-stroke-tertiary); Chinese version mirrored
+-->
+<div class="diagram">
+<svg viewBox="0 0 720 320" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Expert narrow-band distribution and policy trajectory spiraling out of the training distribution: a covariate-shift avalanche">
+  <defs>
+    <marker id="cs-err" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto">
+      <path d="M0,0 L0,6 L7,3 z" fill="var(--dia-accent)"/>
+    </marker>
+  </defs>
+  <text x="360" y="26" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="17" fill="var(--dia-stroke)">Covariate-shift avalanche — one step out of band, positive feedback pushes state to OOD exponentially</text>
+
+  <path d="M 60 230 Q 250 215 440 220 Q 580 224 680 230 L 680 270 Q 580 264 440 260 Q 250 255 60 270 Z" fill="var(--dia-accent-soft)" stroke="none"/>
+  <path d="M 60 250 Q 250 238 440 240 Q 580 244 680 250" fill="none" stroke="var(--dia-blue)" stroke-width="2.4"/>
+  <text x="90" y="285" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--dia-blue)">d_π*  expert narrow band (high data density)</text>
+
+  <path d="M 80 248 Q 200 244 300 235 Q 380 226 430 200 Q 470 176 480 130 Q 486 96 520 78 Q 560 58 620 64"
+        fill="none" stroke="var(--dia-accent)" stroke-width="2.2" stroke-dasharray="1 0"/>
+  <text x="150" y="232" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--dia-accent-deep)">d_π  policy trajectory</text>
+
+  <line x1="300" y1="240" x2="300" y2="233" stroke="var(--dia-accent)" stroke-width="1.2" marker-end="url(#cs-err)"/>
+  <line x1="430" y1="244" x2="430" y2="202" stroke="var(--dia-accent)" stroke-width="1.4" marker-end="url(#cs-err)"/>
+  <line x1="520" y1="248" x2="520" y2="80" stroke="var(--dia-accent)" stroke-width="1.6" marker-end="url(#cs-err)"/>
+  <text x="306" y="226" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--dia-stroke-soft)">ε</text>
+  <text x="436" y="190" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--dia-stroke-soft)">↑error</text>
+  <text x="526" y="120" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--dia-stroke-soft)">≈ εT²</text>
+
+  <rect x="440" y="60" width="250" height="95" fill="var(--dia-stroke-tertiary)" opacity="0.14" stroke="var(--dia-stroke-tertiary)" stroke-dasharray="4 3"/>
+  <text x="565" y="80" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="11" fill="var(--dia-stroke-soft)">OOD: policy never saw it</text>
+  <text x="565" y="98" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="9" fill="var(--dia-stroke-soft)">output near-random → avalanche</text>
+
+  <text x="360" y="308" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="11" fill="var(--dia-stroke-soft)">In closed loop the policy's output determines the next state → d_π must drift off d_π*; past the band the error is no longer linear but an avalanche</text>
+</svg>
+</div>
+<p class="figure-caption">Figure 1 — The closed-loop avalanche of covariate shift: the policy trajectory (orange) starts hugging the expert narrow band (blue, high data density), but each step's small error pushes it outward; once it shoots out of the training distribution into the OOD region (gray), the output is near-random, and the error turns from linear into positive-feedback exponential divergence. This is the geometric picture of $d_\pi\neq d_{\pi^*}$ in a physical closed loop.</p>
+
+<hr />
+<h2 id="3-open-loop-vs-closed-loop-evaluation-the-gap">3. Open-Loop vs Closed-Loop Evaluation: the Gap</h2>
+<p>The most insidious consequence of covariate shift is that it makes <strong>offline evaluation systematically overestimate</strong> a model's true performance.</p>
+<h3 id="31-open-loop-offline-replay-evaluation">3.1 Open-Loop (Offline Replay) Evaluation</h3>
+<p>The model is placed on <strong>expert-recorded trajectories</strong>, and its predicted action is compared frame-by-frame against the expert's (metrics like L2 displacement error, action-classification accuracy). Note: state advancement is always driven by the <strong>expert</strong> — the model <strong>never actually drives</strong> — so it stays on <span class="arithmatex">\(d_{\pi^*}\)</span> forever and covariate shift never gets a chance to occur. The result is <strong>systematic optimism</strong>.</p>
+<h3 id="32-closed-loop-simon-road-evaluation">3.2 Closed-Loop (Sim/On-Road) Evaluation</h3>
+<p>The model <strong>actually drives</strong> the vehicle, and the next state evolves from <strong>its own actions</strong>. Only this exposes <span class="arithmatex">\(d_\pi\neq d_{\pi^*}\)</span> and error accumulation; metrics are success rate, collision rate, violation score, takeover count.</p>
+<h3 id="33-why-good-offline-metrics-good-on-road">3.3 Why Good Offline Metrics ≠ Good On-Road</h3>
+<p>Codevilla et al. (2018) found empirically: <strong>open-loop L2 error correlates only weakly — even negatively — with closed-loop driving success</strong>. A model with lower open-loop L2 can have a worse on-road success rate. The reason is exactly that open-loop evaluation locks the model onto the expert distribution and cannot measure what happens after it leaves the distribution. <strong>Selecting a model by offline metrics alone gets systematically misled by covariate shift.</strong></p>
+<!-- SVG-DESIGN-NOTES
+Type: A (contrast — open-loop replay vs closed-loop self-driving, two flows)
+Q0: Open-loop = policy "checks answers" on a fixed expert trajectory, state always driven by expert, never leaves the expert distribution → optimistic L2; closed-loop = policy output feeds back into the state-update loop, error accumulates, exposing covariate shift → real collision/out-of-bounds; the same model, two evaluations, opposite conclusions
+Q1: Two flow lines top and bottom. Top (open-loop): expert trajectory fixed solid line, policy puts a "prediction-compare" tick beside each point, state still advanced by expert (arrow from expert); bottom (closed-loop): policy output via a self-loop arrow feeds the state update, trajectory progressively deviates from expert. A vertical dashed line in the middle marks GAP
+Q2: Drop the title: top = straight line + hanging compare-ticks (not closing), bottom = deviating trajectory with self-loop feedback, middle seam GAP = open/closed-loop gap DNA
+Q3: No decoration; open-loop "not closing" carried by a non-looping flow, closed-loop carried by a self-loop arrow
+Q4: Label "open-loop: replay expert (optimistic low L2)" "closed-loop: policy self-drives (collision/out-of-bounds)" "metric: L2 vs success/collision rate"
+Q5: open-loop var(--dia-green); closed-loop var(--dia-accent-deep); GAP line var(--dia-gold); Chinese version mirrored
+-->
+<div class="diagram">
+<svg viewBox="0 0 760 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The gap between open-loop replay evaluation and closed-loop self-driving evaluation">
+  <defs>
+    <marker id="cs-g" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="var(--dia-green)"/></marker>
+    <marker id="cs-a" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="var(--dia-accent-deep)"/></marker>
+  </defs>
+  <text x="380" y="26" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="17" fill="var(--dia-stroke)">Same model, two evaluations, two conclusions</text>
+
+  <text x="40" y="78" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="13" fill="var(--dia-green)">Open-loop (replay expert)</text>
+  <text x="40" y="94" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="9" fill="var(--dia-stroke-soft)">state advanced by expert</text>
+  <line x1="220" y1="90" x2="560" y2="90" stroke="var(--dia-green)" stroke-width="2" marker-end="url(#cs-g)"/>
+  <g fill="var(--dia-green)"><circle cx="260" cy="90" r="4"/><circle cx="360" cy="90" r="4"/><circle cx="460" cy="90" r="4"/></g>
+  <g stroke="var(--dia-stroke-soft)" stroke-width="1">
+    <line x1="260" y1="90" x2="260" y2="112"/><line x1="360" y1="90" x2="360" y2="112"/><line x1="460" y1="90" x2="460" y2="112"/>
+  </g>
+  <text x="360" y="126" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-stroke-soft)">compare predicted action vs expert per frame (L2)</text>
+  <text x="600" y="94" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--dia-green)">low L2 → optimistic</text>
+
+  <line x1="380" y1="150" x2="380" y2="210" stroke="var(--dia-gold)" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="380" y="170" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-style="italic" font-size="13" fill="var(--dia-gold)">GAP</text>
+
+  <text x="40" y="238" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="13" fill="var(--dia-accent-deep)">Closed-loop (policy self-drives)</text>
+  <text x="40" y="254" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="9" fill="var(--dia-stroke-soft)">state evolves from policy action</text>
+  <path d="M 220 250 Q 320 250 380 244 Q 450 236 500 218 Q 540 204 575 196" fill="none" stroke="var(--dia-accent-deep)" stroke-width="2" marker-end="url(#cs-a)"/>
+  <path d="M 360 250 C 360 285 280 285 280 256" fill="none" stroke="var(--dia-accent)" stroke-width="1.4" marker-end="url(#cs-a)"/>
+  <text x="320" y="298" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--dia-accent)">action→state feedback</text>
+  <text x="600" y="200" font-family="JetBrains Mono, monospace" font-size="10" fill="var(--dia-accent-deep)">deviate → collision/out-of-bounds</text>
+</svg>
+</div>
+<p class="figure-caption">Figure 2 — Open-loop vs closed-loop evaluation gap: open-loop (top, green) has the model "check answers" on a fixed expert trajectory, state advanced by the expert, never leaving the distribution, so L2 looks low; closed-loop (bottom, orange) has the model drive itself, action feeding back into the state update (self-loop arrow), error accumulating into deviation and collision. The distance between them (GAP) is precisely a measure of covariate shift.</p>
+
+<h3 id="34-closed-loop-leaderboards">3.4 Closed-Loop Leaderboards</h3>
+<p>The only trustworthy yardstick for diagnosing covariate shift is <strong>closed-loop evaluation</strong>:</p>
+<ul>
+<li><strong>CARLA Leaderboard</strong>: drive preset routes in the CARLA simulated city, scored by driving score (route completion × infraction penalty: red-light running, collision, line-crossing each deduct).</li>
+<li><strong>nuPlan</strong>: the first large-scale <strong>real-data</strong> closed-loop planning benchmark, distinguishing non-reactive (background traffic replayed from log) from reactive (background traffic reacts to ego) closed loops, closer to real interaction.</li>
+</ul>
+<p>See <a href="../../06_Data_Eval/%E6%95%B0%E6%8D%AE%E9%9B%86%E4%B8%8E%E9%97%AD%E7%8E%AF%E8%AF%84%E6%B5%8B/">Datasets &amp; Closed-Loop Evaluation</a>.</p>
+<hr />
+<h2 id="4-the-spectrum-of-solutions">4. The Spectrum of Solutions</h2>
+<p>Every solution essentially <strong>makes the training distribution cover the <span class="arithmatex">\(d_\pi\)</span> the policy actually visits</strong>; they differ only in "how they approximate <span class="arithmatex">\(d_\pi\)</span>, whether an online expert is needed, whether simulation is needed."</p>
+<!-- SVG-DESIGN-NOTES
+Type: A (structure — two engineering routes to inject recovery data into the training distribution)
+Q0: Two classic engineering routes to inject "deviate-and-recover" samples into the training distribution — NVIDIA three-camera view synthesis (spatial bias) and ChauffeurNet trajectory perturbation + auxiliary loss (temporal bias) — both manufacture d_π coverage without querying an online expert
+Q1: Left half top-down lane, the car drawing left/center/right camera cones, left/right cameras each labeled "should steer right/left to correct"; right half draws an expert trajectory perturbed into a deviated trajectory + a labeled recovery arrow, below two auxiliary-loss icons (collision/off-road penalty)
+Q2: Drop the title: left three cones + correction-steer labels, right expert trajectory perturbed + recovery arrow + penalties = manufactured recovery-data DNA
+Q3: No decoration; recovery carried by "biased view / perturb + recover" geometry
+Q4: Label "three cameras → synthesized recovery" "trajectory perturbation → learn to correct" "auxiliary loss: collision/off-road penalty"
+Q5: lane var(--dia-stroke-soft); cones var(--dia-blue); perturb/recover var(--dia-accent); penalty var(--dia-gold); Chinese version mirrored
+-->
+<div class="diagram">
+<svg viewBox="0 0 720 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Three-camera view synthesis and trajectory perturbation: two routes for manufacturing recovery data">
+  <defs>
+    <marker id="cs-r" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L8,3 z" fill="var(--dia-accent)"/></marker>
+  </defs>
+  <text x="360" y="26" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-weight="600" font-size="17" fill="var(--dia-stroke)">Two routes to manufacture recovery data — cover d_π without an online expert</text>
+
+  <text x="170" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="12" fill="var(--dia-blue)">NVIDIA three-camera view synthesis</text>
+  <line x1="60" y1="90" x2="60" y2="250" stroke="var(--dia-stroke-soft)" stroke-width="1.4"/>
+  <line x1="290" y1="90" x2="290" y2="250" stroke="var(--dia-stroke-soft)" stroke-width="1.4"/>
+  <line x1="175" y1="90" x2="175" y2="250" stroke="var(--dia-stroke-soft)" stroke-width="1" stroke-dasharray="6 6"/>
+  <rect x="158" y="200" width="34" height="48" rx="4" fill="var(--dia-bg-card)" stroke="var(--dia-stroke)" stroke-width="1.6"/>
+  <path d="M 165 200 L 120 120 L 150 120 Z" fill="var(--dia-blue)" opacity="0.18" stroke="var(--dia-blue)" stroke-width="0.8"/>
+  <path d="M 175 200 L 162 116 L 188 116 Z" fill="var(--dia-blue)" opacity="0.28" stroke="var(--dia-blue)" stroke-width="0.8"/>
+  <path d="M 185 200 L 200 120 L 230 120 Z" fill="var(--dia-blue)" opacity="0.18" stroke="var(--dia-blue)" stroke-width="0.8"/>
+  <text x="120" y="135" font-family="JetBrains Mono, monospace" font-size="7.5" fill="var(--dia-accent-deep)">left cam → "steer right"</text>
+  <text x="196" y="135" font-family="JetBrains Mono, monospace" font-size="7.5" fill="var(--dia-accent-deep)">right cam → "steer left"</text>
+  <text x="170" y="270" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="9" fill="var(--dia-stroke-soft)">biased views = manufactured "deviated" states + recovery labels</text>
+
+  <line x1="360" y1="70" x2="360" y2="270" stroke="var(--dia-rule)" stroke-width="1"/>
+
+  <text x="540" y="58" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-weight="700" font-size="12" fill="var(--dia-blue)">ChauffeurNet perturbation + auxiliary loss</text>
+  <path d="M 420 240 Q 500 220 600 150" fill="none" stroke="var(--dia-green)" stroke-width="2.2"/>
+  <text x="430" y="256" font-family="JetBrains Mono, monospace" font-size="9" fill="var(--dia-green)">expert traj.</text>
+  <path d="M 420 240 Q 510 248 580 210" fill="none" stroke="var(--dia-accent)" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="560" y="226" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--dia-accent-deep)">perturb (deviate)</text>
+  <path d="M 580 210 Q 595 180 600 152" fill="none" stroke="var(--dia-accent)" stroke-width="1.6" marker-end="url(#cs-r)"/>
+  <text x="612" y="180" font-family="JetBrains Mono, monospace" font-size="8.5" fill="var(--dia-accent-deep)">learn to recover</text>
+  <rect x="430" y="118" width="120" height="20" rx="3" fill="var(--dia-bg-card)" stroke="var(--dia-gold)" stroke-width="1.2"/>
+  <text x="490" y="132" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="8" fill="var(--dia-gold)">aux loss: collision/off-road</text>
+  <text x="540" y="270" text-anchor="middle" font-family="Fraunces, Georgia, serif" font-style="italic" font-size="9" fill="var(--dia-stroke-soft)">actively perturb expert traj. = "rehearse disaster" in training</text>
+</svg>
+</div>
+<p class="figure-caption">Figure 3 — Two routes for manufacturing recovery data: left is NVIDIA three-camera view synthesis (use left/right biased cameras to create "deviated" states with recovery labels — spatial bias); right is ChauffeurNet actively perturbing the expert trajectory and penalizing dangerous states with auxiliary losses (collision/off-road — temporal bias). Both, without querying an online expert, inject the $d_\pi$ the policy will encounter into the training distribution ahead of time.</p>
+
+<h3 id="41-dagger-and-its-driving-variants">4.1 DAgger and Its Driving Variants</h3>
+<p>The core idea is to query expert labels on <strong>states the policy itself visits</strong>, actively pulling the training distribution toward <span class="arithmatex">\(d_\pi\)</span> (framework and <span class="arithmatex">\(O(\epsilon T)\)</span> guarantee in <a href="../../../02_Robot_Learning/02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/">Imitation Learning</a>). The deployment difficulty in driving is that <strong>online expert queries are expensive and dangerous</strong> (a human driver must watch and correct in real time). Variants: <strong>SafeDAgger</strong> (query the expert only when the policy is uncertain, saving labels), <strong>HG-DAgger</strong> (human-in-the-loop interactive takeover correction), or a rule-based/privileged expert replacing the human.</p>
+<h3 id="42-nvidia-three-cameras-view-synthesis-for-recovery">4.2 NVIDIA Three Cameras / View Synthesis for Recovery</h3>
+<p>PilotNet mounts left/center/right cameras on the car: the center camera pairs with the expert steering as a normal sample, while the left/right biased cameras are paired with "should steer right/left to correct" labels — manufacturing many "deviate-and-recover" samples (further interpolated by geometric view synthesis). It approximates DAgger's effect <strong>with data rather than online queries</strong>, the simplest and most effective engineering trick (see Figure 3 left).</p>
+<h3 id="43-chauffeurnets-synthetic-perturbation-auxiliary-loss">4.3 ChauffeurNet's Synthetic Perturbation + Auxiliary Loss</h3>
+<p>ChauffeurNet trains on a mid-to-mid representation with two key moves: ① during training <strong>actively perturb the expert trajectory</strong> (create off-road, offset, hard-braking), forcing the network to learn to recover from bad states; ② add <strong>auxiliary losses</strong> (collision, off-road, on-road, geometry consistency) to explicitly penalize dangerous states. It "rehearses disaster" in training, a further systematization of §4.2 (see Figure 3 right).</p>
+<h3 id="44-noise-injection-dart">4.4 Noise Injection / DART</h3>
+<p>DART (Laskey et al., 2017) <strong>injects noise into the expert's actions</strong> while collecting demonstrations, so the expert naturally visits and demonstrates "deviate-and-recover," widening the state distribution the demonstrations cover. It approximates DAgger at collection time but <strong>needs no online expert</strong>, more deployable than DAgger.</p>
+<h3 id="45-closed-loop-training-rl-fine-tuning">4.5 Closed-Loop Training + RL Fine-Tuning</h3>
+<p>Let the policy roll out itself in a <strong>simulated closed loop</strong>, using RL/reward (or online DAgger) to directly correct out-of-distribution behavior — making "training distribution = deployment distribution" real. This corresponds to the "end-to-end RL" quadrant in the <a href="../../01_Foundations/%E8%87%AA%E5%8A%A8%E9%A9%BE%E9%A9%B6%E8%8C%83%E5%BC%8F%E4%B8%8E%E6%96%B9%E6%B3%95%E8%B0%B1%E7%B3%BB/">paradigm taxonomy</a> (e.g., Roach trains with an RL coach in the CARLA closed loop, then distills to an IL student).</p>
+<h3 id="46-data-augmentation-and-long-tail-scenario-mining">4.6 Data Augmentation and Long-Tail Scenario Mining</h3>
+<p>Actively mine long-tail/takeover/disengagement scenarios for targeted data: shadow mode (run the model in the background of production cars, log when it disagrees with the human driver), hard-example reflow, adversarial scenario generation. Essentially targeted expansion of the high-risk tail of <span class="arithmatex">\(d_\pi\)</span>.</p>
+<h3 id="47-world-models-generating-the-long-tail">4.7 World Models Generating the Long Tail</h3>
+<p>Use generative world models (GAIA-1 etc.) to <strong>synthesize</strong> rare dangerous scenarios, serving both as recovery training data and as a closed-loop evaluation environment, bypassing the risk and cost of collecting such scenarios in the real world. See <a href="../../../00_Robotics/01_Embodiment_Theory/%E8%A1%A8%E5%BE%81%E4%B8%8E%E4%B8%96%E7%95%8C%E6%A8%A1%E5%9E%8B/">Representation &amp; World Models</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>How it approximates <span class="arithmatex">\(d_\pi\)</span></th>
+<th>Needs online expert</th>
+<th>Needs sim</th>
+<th>Representative</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>DAgger / SafeDAgger / HG-DAgger</td>
+<td>query expert on policy-visited states</td>
+<td>yes</td>
+<td>no</td>
+<td>Ross 2011 / driving variants</td>
+</tr>
+<tr>
+<td>Three-camera view synthesis</td>
+<td>spatial bias makes recovery data</td>
+<td>no</td>
+<td>no</td>
+<td>PilotNet</td>
+</tr>
+<tr>
+<td>Trajectory perturbation + aux loss</td>
+<td>temporal perturbation + penalize danger</td>
+<td>no</td>
+<td>no</td>
+<td>ChauffeurNet</td>
+</tr>
+<tr>
+<td>Noise injection DART</td>
+<td>inject noise at collection to widen distribution</td>
+<td>no</td>
+<td>no</td>
+<td>DART</td>
+</tr>
+<tr>
+<td>Closed-loop training + RL fine-tune</td>
+<td>train directly on <span class="arithmatex">\(d_\pi\)</span></td>
+<td>no</td>
+<td>yes</td>
+<td>Roach</td>
+</tr>
+<tr>
+<td>Long-tail mining / shadow mode</td>
+<td>targeted fill of high-risk tail</td>
+<td>no</td>
+<td>no</td>
+<td>industrial practice</td>
+</tr>
+<tr>
+<td>World model long-tail synthesis</td>
+<td>generate rare scenarios</td>
+<td>no</td>
+<td>yes (generative)</td>
+<td>GAIA-1</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="5-a-case-walkthrough-a-history-of-fighting-covariate-shift">5. A Case Walkthrough: a History of "Fighting Covariate Shift"</h2>
+<ul>
+<li><strong>ALVINN (1989)</strong>: naive pixel→steering BC, <strong>with no recovery mechanism at all</strong>, fails on any deviation — the original victim of covariate shift.</li>
+<li><strong>PilotNet (2016)</strong>: also E2E+BC, but the first to <strong>systematically inject recovery data via three cameras / view synthesis</strong> (§4.2), letting the car recover from deviation.</li>
+<li><strong>ChauffeurNet (2018)</strong>: moved to a mid-to-mid modular representation, <strong>"rehearsing disaster" in training via synthetic perturbation + auxiliary loss</strong> (§4.3), and explicitly penalizing dangerous states.</li>
+</ul>
+<p>In one line: from "ignore it" → "manufacture data" → "manufacture disaster + penalize danger" → "closed-loop training / world-model long-tail synthesis," a history of progressively cornering the same covariate-shift problem.</p>
+<hr />
+<h2 id="6-method-comparison">6. Method Comparison</h2>
+<p>See the summary table at the end of §4. In one ordering: <strong>most deployable</strong> — three cameras/DART/perturbation (no online expert, no sim); <strong>closest to the essence</strong> — closed-loop training/RL fine-tuning (train directly on <span class="arithmatex">\(d_\pi\)</span>, but needs sim); <strong>strongest long-tail coverage</strong> — world-model generation (but high training/eval cost).</p>
+<hr />
+<h2 id="7-common-pitfalls">7. Common Pitfalls</h2>
+<ol>
+<li><strong>Going on-road judging only by open-loop L2</strong>: covariate shift makes offline metrics systematically optimistic (§3.3); always evaluate closed-loop before deployment.</li>
+<li><strong>Assuming more BC data alone cures it</strong>: expanding data on <span class="arithmatex">\(d_{\pi^*}\)</span> treats the symptom, not the cause, because the problem is in states the policy never saw on <span class="arithmatex">\(d_\pi\)</span>; DAgger/recovery is the cure.</li>
+<li><strong>Treating recovery data as ordinary augmentation</strong>: random augmentation that does not cover real failure modes (line-crossing, oncoming swerve, hard braking) helps little with covariate shift.</li>
+<li><strong>Running DAgger directly on a real car</strong>: letting an immature policy drive to collect data online has safety risk; needs SafeDAgger/human-in-the-loop backstop.</li>
+<li><strong>Using non-reactive background traffic in closed-loop eval</strong>: background cars that do not react to ego inflate the score; real interaction (reactive, like nuPlan's reactive track) is what exposes problems.</li>
+</ol>
+<hr />
+<h2 id="8-frontier-trends">8. Frontier Trends</h2>
+<ol>
+<li><strong>Closed-loop differentiable simulation + RL fine-tuning</strong> becomes standard for end-to-end training, removing the distribution gap at the source.</li>
+<li><strong>Generative world models for the long tail</strong> (GAIA series): synthesize rare dangerous scenarios for closed-loop training and evaluation.</li>
+<li><strong>Large models / VLA bring language-level interpretable correction</strong>: use language reasoning to recognize and explain "I am drifting."</li>
+<li><strong>Hybrid real-sim closed-loop evaluation</strong>: after nuPlan / CARLA, combine real-log replay with simulated reactive traffic to approach the true distribution.</li>
+</ol>
+<hr />
+<h2 id="references">References</h2>
+<ol>
+<li>Ross, S., Gordon, G., &amp; Bagnell, D. (2011). <em>A Reduction of Imitation Learning and Structured Prediction to No-Regret Online Learning (DAgger)</em>. AISTATS. (The <span class="arithmatex">\(O(\epsilon T^2)\)</span>/<span class="arithmatex">\(O(\epsilon T)\)</span> theorem is in <a href="../../../02_Robot_Learning/02_Methods/%E6%A8%A1%E4%BB%BF%E5%AD%A6%E4%B9%A0/">Imitation Learning</a>.)</li>
+<li>Pomerleau, D. (1989). <em>ALVINN: An Autonomous Land Vehicle in a Neural Network</em>. NeurIPS.</li>
+<li>Bojarski, M., et al. (2016). <em>End to End Learning for Self-Driving Cars</em>. arXiv:1604.07316.</li>
+<li>Bansal, M., Krishnan, A., &amp; Ogale, A. (2018). <em>ChauffeurNet: Learning to Drive by Imitating the Best and Synthesizing the Worst</em>. arXiv:1812.03079 / RSS 2019.</li>
+<li>Laskey, M., Lee, J., Fox, R., Dragan, A., &amp; Goldberg, K. (2017). <em>DART: Noise Injection for Robust Imitation Learning</em>. CoRL.</li>
+<li>Zhang, J., &amp; Cho, K. (2017). <em>Query-Efficient Imitation Learning for End-to-End Autonomous Driving (SafeDAgger)</em>. AAAI.</li>
+<li>Kelly, M., Sidrane, C., Driggs-Campbell, K., &amp; Kochenderfer, M. (2019). <em>HG-DAgger: Interactive Imitation Learning with Human Experts</em>. ICRA.</li>
+<li>Codevilla, F., Lopez, A., Koltun, V., &amp; Dosovitskiy, A. (2018). <em>On Offline Evaluation of Vision-based Driving Models</em>. ECCV. (Key empirical study of the open-loop/closed-loop gap.)</li>
+<li>Caesar, H., et al. (2021). <em>nuPlan: A Closed-Loop ML-Based Planning Benchmark for Autonomous Vehicles</em>. arXiv:2106.11810.</li>
+<li>Dosovitskiy, A., et al. (2017). <em>CARLA: An Open Urban Driving Simulator</em>. CoRL.</li>
+<li>Hu, A., et al. (2023). <em>GAIA-1: A Generative World Model for Autonomous Driving</em>. arXiv:2309.17080.</li>
+</ol>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+
+  
+  
+
+    <hr>
+
+    <h2 id="__comments">
+      评论
+      <a href="#__comments" class="headerlink" title="评论">#</a>
+    </h2>
+
+    
+    <script src="https://giscus.app/client.js"
+            data-repo="jeffliulab/embodied-notes"
+            data-repo-id="R_kgDOSqKUrg"
+            data-category="Announcements"
+            data-category-id="DIC_kwDOSqKUrs4C-D6L"
+            data-mapping="pathname"
+            data-strict="0"
+            data-reactions-enabled="1"
+            data-emit-metadata="0"
+            data-input-position="top"
+            data-theme="preferred_color_scheme"
+            data-lang="zh-CN"
+            data-loading="lazy"
+            crossorigin="anonymous"
+            async>
+    </script>
+
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.indexes", "navigation.top", "navigation.path", "search.suggest", "search.highlight"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/katex.min.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/katex@0.16.8/dist/contrib/auto-render.min.js"></script>
+      
+        <script src="../../../../javascripts/katex.js"></script>
+      
+        <script src="../../../../site_extra_styles/javascripts/tab_dropdown.js"></script>
+      
+    
+  </body>
+</html>

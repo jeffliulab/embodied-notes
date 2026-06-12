@@ -243,6 +243,24 @@ extra:
       link: /embodied-notes/en/
       lang: en
 
+  # 站点集成：jeffliulab.com /embodied-notes 渲染用的分类元数据（与 ai-notes 同构）。
+  # key = nav: 里的顶级中文标题（自然键）。新增/重命名顶级分类时同步改这里。
+  site_integration:
+    categories:
+      机器人学: { id: robotics, icon: 🤖, color: from-cyan-500 to-blue-500, order: 10 }
+      机器人工程: { id: robot-engineering, icon: 🛠️, color: from-slate-500 to-zinc-500, order: 20 }
+      机器人学习: { id: robot-learning, icon: 🧠, color: from-purple-500 to-pink-500, order: 30 }
+      仿真与部署: { id: sim-deploy, icon: 🎮, color: from-emerald-500 to-teal-500, order: 40 }
+      自动驾驶: { id: autonomous-driving, icon: 🚗, color: from-sky-500 to-blue-500, order: 50 }
+      无人机: { id: drones, icon: 🚁, color: from-indigo-500 to-violet-500, order: 60 }
+      机械臂: { id: robot-arms, icon: 🦾, color: from-violet-500 to-purple-500, order: 70 }
+      机器狗: { id: quadrupeds, icon: 🐕, color: from-amber-500 to-orange-500, order: 80 }
+      人形机器人: { id: humanoid, icon: 🧍, color: from-orange-500 to-amber-500, order: 90 }
+      独立议题: { id: topics, icon: 📌, color: from-rose-500 to-pink-500, order: 100 }
+    skip:
+      categories: [首页, 日志]
+      basenames: [index.md, index.en.md]
+
 markdown_extensions:
   - admonition
   - pymdownx.details

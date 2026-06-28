@@ -214,7 +214,7 @@ IMU-camera time / extrinsic 必须 calibrate;否则 VIO 失败。
 
 - **同节**:[ROS 2 基础](ROS2_Basics.md)、[系统集成综述](系统集成综述.md)
 - **传感**:[Cameras](../02_Cameras/index.md)、[LiDAR](../03_LiDAR/index.md)、[IMU](../04_IMU_Navigation/index.md)
-- **AI 关联**: [Embodied Intelligence](https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/)
+- **AI 关联**: [Embodied Intelligence](https://jeffliulab.com/embodied-notes)
 
 ---
 

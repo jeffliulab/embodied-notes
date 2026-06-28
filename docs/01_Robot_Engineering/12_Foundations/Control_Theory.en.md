@@ -254,7 +254,7 @@ Nonlinear systems linearized around operating point; fails far from it.
 
 - **Same section**: [Signal Processing](Signal_Processing.en.md)
 - **Applications**: [FOC Motor](../05_Motors_Actuators/无刷电机与FOC.en.md)
-- **Robotics**: https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/03_Robotics/
+- **Robotics**: https://jeffliulab.com/embodied-notes
 
 ---
 

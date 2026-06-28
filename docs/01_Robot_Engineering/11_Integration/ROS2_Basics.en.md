@@ -189,7 +189,7 @@ Humble (2022), Iron (2023), Jazzy (2024) — APIs gradually change.
 
 - **Same section**: [Integration Overview](系统集成综述.en.md)
 - **Embedded**: [ARM Cortex-M](../01_Computer_Engineering/ARM_Cortex_M.en.md)
-- **AI / Embodied**: https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/
+- **AI / Embodied**: https://jeffliulab.com/embodied-notes
 
 ---
 

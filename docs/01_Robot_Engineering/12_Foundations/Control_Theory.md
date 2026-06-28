@@ -256,7 +256,7 @@ MPC / LQR 依赖准确 model。Plant 变化 → 性能下降。
 
 - **同节**:[信号处理](Signal_Processing.md)
 - **应用**:[FOC 电机](../05_Motors_Actuators/无刷电机与FOC.md)
-- **机器人**:https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/03_Robotics/ — 机器人学
+- **机器人**:https://jeffliulab.com/embodied-notes — 机器人学
 
 ---
 

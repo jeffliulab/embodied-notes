@@ -168,7 +168,7 @@ Repeatable 不代表 absolute position 精;须 calibration。
 
 - **同节**:[3D Printing](3D_Printing.md)、[CNC](CNC.md)、[Industry 4.0](Industry_4.md)
 - **机器人**:[ROS2](../11_Integration/ROS2_Basics.md)、[SLAM](../11_Integration/SLAM_Basics.md)
-- **AI**: VLA — https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/
+- **AI**: VLA — https://jeffliulab.com/embodied-notes
 
 ---
 

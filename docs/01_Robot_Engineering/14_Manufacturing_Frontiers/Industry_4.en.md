@@ -190,7 +190,7 @@ Closed ecosystem → long-term high cost.
 
 - **Same section**: [3D Printing](3D_Printing.en.md), [CNC](CNC.en.md)
 - **Robotics**: [ROS 2 Basics](../11_Integration/ROS2_Basics.en.md)
-- **AI**: https://jeffliulab.github.io/ai-notes/06_AI_Engineering/
+- **AI**: https://jeffliulab.com/ai-notes
 
 ---
 

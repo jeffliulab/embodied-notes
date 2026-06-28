@@ -187,7 +187,7 @@ PyTorch / CUDA 数倍加速大矩阵运算。
 
 - **同节**:[信号处理](Signal_Processing.md)、[控制理论](Control_Theory.md)
 - **应用**:[CAD 工具](../08_Mechanical/CAD工具.md)
-- **AI**: https://jeffliulab.github.io/ai-notes/00_Computing_Science/01_Math_Foundations/
+- **AI**: https://jeffliulab.com/ai-notes
 
 ---
 

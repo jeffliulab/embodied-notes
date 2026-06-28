@@ -193,7 +193,7 @@ class RULPredictor(nn.Module):
 
 - **同节**:[3D 打印](3D_Printing.md)、[CNC](CNC.md)
 - **机器人**:[ROS 2 基础](../11_Integration/ROS2_Basics.md)
-- **AI**: https://jeffliulab.github.io/ai-notes/06_AI_Engineering/
+- **AI**: https://jeffliulab.com/ai-notes
 
 ---
 

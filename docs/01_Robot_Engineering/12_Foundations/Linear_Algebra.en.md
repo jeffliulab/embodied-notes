@@ -164,7 +164,7 @@ PyTorch / CUDA — orders-of-magnitude speedup.
 ## 11. Related Concepts
 
 - **Same section**: [Signal Processing](Signal_Processing.en.md), [Control Theory](Control_Theory.en.md)
-- **AI**: https://jeffliulab.github.io/ai-notes/00_Computing_Science/01_Math_Foundations/
+- **AI**: https://jeffliulab.com/ai-notes
 
 ---
 

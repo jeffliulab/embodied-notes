@@ -413,7 +413,7 @@ Helix and π0 both claim best; evaluation scenarios differ, no standard for fair
 
 - **Same section**: [VLA Models](../01_Foundations/VLA模型.en.md), [π0](Pi0_Physical_Intelligence.en.md), [Octo](Octo_Foundation_Policy.en.md), [RT-2 / OpenVLA](RT2_OpenVLA.en.md), [RDT-1B](RDT_1B.en.md)
 - **Humanoid robots**: [1X World Model](https://jeffliulab.com/ai-notes/08_World_Models/06_Applications/1X_World_Model), [Humanoid form factor](../../08_Humanoids/index.en.md)
-- **Behavior hierarchies**: [Advanced RL](https://jeffliulab.github.io/ai-notes/04_Reinforcement_Learning/05_Advanced_RL/)
+- **Behavior hierarchies**: [Advanced RL](https://jeffliulab.com/ai-notes)
 
 ---
 

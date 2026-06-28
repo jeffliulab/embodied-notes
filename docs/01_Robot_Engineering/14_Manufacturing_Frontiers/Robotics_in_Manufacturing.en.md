@@ -168,7 +168,7 @@ Domestic robots cheap, but controllers still depend on Yaskawa et al.
 
 - **Same section**: [3D Printing](3D_Printing.en.md), [CNC](CNC.en.md), [Industry 4.0](Industry_4.en.md)
 - **Robotics**: [ROS2](../11_Integration/ROS2_Basics.en.md), [SLAM](../11_Integration/SLAM_Basics.en.md)
-- **AI**: VLA — https://jeffliulab.github.io/ai-notes/08_Embodied_Intelligence/
+- **AI**: VLA — https://jeffliulab.com/embodied-notes
 
 ---
 

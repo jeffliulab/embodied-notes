@@ -1,0 +1,1189 @@
+{
+  "schemaVersion": 1,
+  "notebookId": "embodied-notes",
+  "categories": [
+    {
+      "id": "robotics",
+      "title": "机器人学",
+      "titleEn": "Robotics",
+      "icon": "🤖",
+      "color": "from-cyan-500 to-blue-500",
+      "order": 0,
+      "items": [
+        {
+          "title": "具身智能理论",
+          "titleEn": "Embodiment Theory",
+          "children": [
+            {
+              "title": "具身智能综述",
+              "titleEn": "Overview of Embodied Intelligence",
+              "slug": "00_Robotics/01_Embodiment_Theory/具身智能综述"
+            },
+            {
+              "title": "具身智能技术路线图",
+              "titleEn": "Embodied Intelligence Technology Roadmap",
+              "slug": "00_Robotics/01_Embodiment_Theory/具身智能路线图"
+            },
+            {
+              "title": "具身智能发展里程碑",
+              "titleEn": "Milestones in Embodied Intelligence",
+              "slug": "00_Robotics/01_Embodiment_Theory/具身智能里程碑"
+            },
+            {
+              "title": "具身认知理论",
+              "titleEn": "Embodied Cognition Theory",
+              "slug": "00_Robotics/01_Embodiment_Theory/具身认知理论"
+            },
+            {
+              "title": "直觉物理",
+              "titleEn": "Intuitive Physics",
+              "slug": "00_Robotics/01_Embodiment_Theory/直觉物理"
+            },
+            {
+              "title": "表征与世界模型",
+              "titleEn": "Representations and World Models",
+              "slug": "00_Robotics/01_Embodiment_Theory/表征与世界模型"
+            },
+            {
+              "title": "感知-行动循环",
+              "titleEn": "Perception-Action Loop",
+              "slug": "00_Robotics/01_Embodiment_Theory/感知-行动循环"
+            }
+          ]
+        },
+        {
+          "title": "经典机器人学",
+          "titleEn": "Classical Robotics",
+          "children": [
+            {
+              "title": "机器人学综述",
+              "titleEn": "Overview of Robotics and Key Topics",
+              "slug": "00_Robotics/02_Classical_Robotics/robotics_intro"
+            },
+            {
+              "title": "坐标系",
+              "titleEn": "Coordinate Frames",
+              "slug": "00_Robotics/02_Classical_Robotics/坐标系"
+            },
+            {
+              "title": "机器人运动学",
+              "titleEn": "Robot Kinematics",
+              "slug": "00_Robotics/02_Classical_Robotics/运动学"
+            },
+            {
+              "title": "机器人动力学",
+              "titleEn": "Robot Dynamics",
+              "slug": "00_Robotics/02_Classical_Robotics/动力学"
+            },
+            {
+              "title": "机器人控制理论",
+              "titleEn": "Robot Control Theory",
+              "slug": "00_Robotics/02_Classical_Robotics/控制理论"
+            },
+            {
+              "title": "模型预测控制",
+              "titleEn": "MPC",
+              "slug": "00_Robotics/02_Classical_Robotics/MPC"
+            },
+            {
+              "title": "机器人运动规划",
+              "titleEn": "Robot Motion Planning",
+              "slug": "00_Robotics/02_Classical_Robotics/运动规划"
+            },
+            {
+              "title": "任务与运动规划理论",
+              "titleEn": "Task and Motion Planning Theory",
+              "slug": "00_Robotics/02_Classical_Robotics/任务与运动规划理论"
+            },
+            {
+              "title": "SLAM",
+              "titleEn": "SLAM: Simultaneous Localization and Mapping",
+              "slug": "00_Robotics/02_Classical_Robotics/SLAM"
+            }
+          ]
+        },
+        {
+          "title": "研究资源",
+          "titleEn": "Research Resources",
+          "children": [
+            {
+              "title": "关键会议与期刊",
+              "titleEn": "Key Conferences and Journals in Embodied Intelligence",
+              "slug": "00_Robotics/03_Research_Resources/关键会议与期刊"
+            },
+            {
+              "title": "关键论文精读",
+              "titleEn": "Key Paper Deep Dives",
+              "slug": "00_Robotics/03_Research_Resources/关键论文精读"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "robot-engineering",
+      "title": "机器人工程",
+      "titleEn": "Robot Engineering",
+      "icon": "🛠️",
+      "color": "from-slate-500 to-zinc-500",
+      "order": 1,
+      "items": [
+        {
+          "title": "计算机工程",
+          "titleEn": "Computer Engineering",
+          "children": [
+            {
+              "title": "计算机工程综述",
+              "titleEn": "Overview of Computer Engineering",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/计算机工程综述"
+            },
+            {
+              "title": "CPU架构",
+              "titleEn": "CPU Architecture",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/CPU架构"
+            },
+            {
+              "title": "GPU与并行计算",
+              "titleEn": "GPU and Parallel Computing",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/GPU与并行计算"
+            },
+            {
+              "title": "内存与存储",
+              "titleEn": "Memory and Storage",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/内存与存储"
+            },
+            {
+              "title": "总线与接口",
+              "titleEn": "Buses and Interfaces",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/总线与接口"
+            },
+            {
+              "title": "嵌入式系统",
+              "titleEn": "Embedded Systems",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/嵌入式系统"
+            },
+            {
+              "title": "操作系统基础",
+              "titleEn": "Operating System Fundamentals",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/操作系统基础"
+            },
+            {
+              "title": "ARM Cortex-M 系列",
+              "titleEn": "ARM Cortex-M Series",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/ARM_Cortex_M"
+            },
+            {
+              "title": "FreeRTOS",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/FreeRTOS"
+            },
+            {
+              "title": "实时操作系统 (RTOS)",
+              "titleEn": "Real-Time Operating Systems (RTOS)",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/RTOS_Overview"
+            },
+            {
+              "title": "Zephyr",
+              "slug": "01_Robot_Engineering/01_Computer_Engineering/Zephyr_RTOS"
+            }
+          ]
+        },
+        {
+          "title": "相机与视觉",
+          "titleEn": "Cameras and Vision Sensors",
+          "children": [
+            {
+              "title": "机器人视觉综述",
+              "titleEn": "Overview of Robot Vision",
+              "slug": "01_Robot_Engineering/02_Cameras/机器人视觉综述"
+            },
+            {
+              "title": "RGB相机",
+              "titleEn": "RGB Cameras",
+              "slug": "01_Robot_Engineering/02_Cameras/RGB相机"
+            },
+            {
+              "title": "深度相机",
+              "titleEn": "Depth Cameras",
+              "slug": "01_Robot_Engineering/02_Cameras/深度相机"
+            },
+            {
+              "title": "双目与结构光",
+              "titleEn": "Stereo Vision and Structured Light",
+              "slug": "01_Robot_Engineering/02_Cameras/双目与结构光"
+            },
+            {
+              "title": "全景与事件相机",
+              "titleEn": "Panoramic and Event Cameras",
+              "slug": "01_Robot_Engineering/02_Cameras/全景与事件相机"
+            },
+            {
+              "title": "相机标定与选型",
+              "titleEn": "Camera Calibration and Selection",
+              "slug": "01_Robot_Engineering/02_Cameras/相机标定与选型"
+            }
+          ]
+        },
+        {
+          "title": "激光雷达",
+          "titleEn": "LiDAR",
+          "children": [
+            {
+              "title": "LiDAR综述",
+              "titleEn": "LiDAR Overview",
+              "slug": "01_Robot_Engineering/03_LiDAR/LiDAR综述"
+            },
+            {
+              "title": "2D LiDAR",
+              "slug": "01_Robot_Engineering/03_LiDAR/2D_LiDAR"
+            },
+            {
+              "title": "3D LiDAR",
+              "slug": "01_Robot_Engineering/03_LiDAR/3D_LiDAR"
+            },
+            {
+              "title": "固态LiDAR",
+              "titleEn": "Solid-State LiDAR",
+              "slug": "01_Robot_Engineering/03_LiDAR/固态LiDAR"
+            },
+            {
+              "title": "点云处理基础",
+              "titleEn": "Point Cloud Processing Fundamentals",
+              "slug": "01_Robot_Engineering/03_LiDAR/点云处理基础"
+            }
+          ]
+        },
+        {
+          "title": "惯性导航与定位",
+          "titleEn": "IMU and Navigation",
+          "children": [
+            {
+              "title": "IMU综述",
+              "titleEn": "IMU Overview",
+              "slug": "01_Robot_Engineering/04_IMU_Navigation/IMU综述"
+            },
+            {
+              "title": "IMU选型与校准",
+              "titleEn": "IMU Selection and Calibration",
+              "slug": "01_Robot_Engineering/04_IMU_Navigation/IMU选型与校准"
+            },
+            {
+              "title": "视觉惯性里程计",
+              "titleEn": "Visual-Inertial Odometry (VIO)",
+              "slug": "01_Robot_Engineering/04_IMU_Navigation/视觉惯性里程计"
+            },
+            {
+              "title": "GPS与RTK",
+              "titleEn": "GPS and RTK Positioning",
+              "slug": "01_Robot_Engineering/04_IMU_Navigation/GPS与RTK"
+            },
+            {
+              "title": "多传感器融合",
+              "titleEn": "Multi-Sensor Fusion",
+              "slug": "01_Robot_Engineering/04_IMU_Navigation/多传感器融合"
+            },
+            {
+              "title": "近距离传感器",
+              "titleEn": "Short-Range Sensors",
+              "slug": "01_Robot_Engineering/04_IMU_Navigation/近距离传感器"
+            }
+          ]
+        },
+        {
+          "title": "电机与执行器",
+          "titleEn": "Motors and Actuators",
+          "children": [
+            {
+              "title": "电机综述",
+              "titleEn": "Motor Overview",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/电机综述"
+            },
+            {
+              "title": "直流电机与编码器",
+              "titleEn": "DC Motors and Encoders",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/直流电机与编码器"
+            },
+            {
+              "title": "舵机与总线舵机",
+              "titleEn": "Servos and Bus Servos",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/舵机与总线舵机"
+            },
+            {
+              "title": "无刷电机与FOC",
+              "titleEn": "Brushless Motors and FOC",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/无刷电机与FOC"
+            },
+            {
+              "title": "减速器",
+              "titleEn": "Gear Reducers",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/减速器"
+            },
+            {
+              "title": "电机驱动板",
+              "titleEn": "Motor Driver Boards",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/电机驱动板"
+            },
+            {
+              "title": "末端执行器",
+              "titleEn": "End Effectors",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/末端执行器"
+            },
+            {
+              "title": "液压与气动",
+              "titleEn": "Hydraulic and Pneumatic Systems",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/液压与气动"
+            },
+            {
+              "title": "无刷直流电机 (BLDC Motor)",
+              "titleEn": "BLDC Motor (Brushless DC)",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/BLDC_Motor"
+            },
+            {
+              "title": "伺服电机 (Servo Motor)",
+              "titleEn": "Servo Motor",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/Servo_Motor"
+            },
+            {
+              "title": "步进电机 (Stepper Motor)",
+              "titleEn": "Stepper Motor",
+              "slug": "01_Robot_Engineering/05_Motors_Actuators/Stepper_Motor"
+            }
+          ]
+        },
+        {
+          "title": "通信与总线",
+          "titleEn": "Communication Systems",
+          "children": [
+            {
+              "title": "通信综述",
+              "titleEn": "Communication Overview",
+              "slug": "01_Robot_Engineering/06_Communication/通信综述"
+            },
+            {
+              "title": "串口与I2C/SPI",
+              "titleEn": "UART and I2C/SPI",
+              "slug": "01_Robot_Engineering/06_Communication/串口与I2C_SPI"
+            },
+            {
+              "title": "CAN总线",
+              "titleEn": "CAN Bus",
+              "slug": "01_Robot_Engineering/06_Communication/CAN总线"
+            },
+            {
+              "title": "以太网与EtherCAT",
+              "titleEn": "Ethernet and EtherCAT",
+              "slug": "01_Robot_Engineering/06_Communication/以太网与EtherCAT"
+            },
+            {
+              "title": "WiFi与蓝牙",
+              "titleEn": "WiFi and Bluetooth",
+              "slug": "01_Robot_Engineering/06_Communication/WiFi与蓝牙"
+            },
+            {
+              "title": "远程通信",
+              "titleEn": "Long-Range Communication",
+              "slug": "01_Robot_Engineering/06_Communication/远程通信"
+            },
+            {
+              "title": "MQTT",
+              "slug": "01_Robot_Engineering/06_Communication/MQTT"
+            },
+            {
+              "title": "Modbus",
+              "slug": "01_Robot_Engineering/06_Communication/Modbus"
+            },
+            {
+              "title": "USB",
+              "slug": "01_Robot_Engineering/06_Communication/USB"
+            }
+          ]
+        },
+        {
+          "title": "电源管理",
+          "titleEn": "Power Systems",
+          "children": [
+            {
+              "title": "电源系统综述",
+              "titleEn": "Power System Overview",
+              "slug": "01_Robot_Engineering/07_Power/电源系统综述"
+            },
+            {
+              "title": "电池技术",
+              "titleEn": "Battery Technology",
+              "slug": "01_Robot_Engineering/07_Power/电池技术"
+            },
+            {
+              "title": "电源管理电路",
+              "titleEn": "Power Management Circuits",
+              "slug": "01_Robot_Engineering/07_Power/电源管理电路"
+            },
+            {
+              "title": "功耗预算与续航",
+              "titleEn": "Power Budget and Runtime",
+              "slug": "01_Robot_Engineering/07_Power/功耗预算与续航"
+            },
+            {
+              "title": "充电与安全",
+              "titleEn": "Charging and Safety",
+              "slug": "01_Robot_Engineering/07_Power/充电与安全"
+            },
+            {
+              "title": "电池管理系统 (Battery Management System, BMS)",
+              "titleEn": "Battery Management System (BMS)",
+              "slug": "01_Robot_Engineering/07_Power/BMS_Battery_Management"
+            },
+            {
+              "title": "无线充电 (Wireless Power Transfer)",
+              "titleEn": "Wireless Power Transfer (WPT)",
+              "slug": "01_Robot_Engineering/07_Power/Wireless_Charging"
+            }
+          ]
+        },
+        {
+          "title": "机械结构",
+          "titleEn": "Mechanical Design",
+          "children": [
+            {
+              "title": "机械设计综述",
+              "titleEn": "Mechanical Design Overview",
+              "slug": "01_Robot_Engineering/08_Mechanical/机械设计综述"
+            },
+            {
+              "title": "底盘与运动机构",
+              "titleEn": "Chassis and Locomotion Mechanisms",
+              "slug": "01_Robot_Engineering/08_Mechanical/底盘与运动机构"
+            },
+            {
+              "title": "机械臂结构",
+              "titleEn": "Robotic Arm Structure",
+              "slug": "01_Robot_Engineering/08_Mechanical/机械臂结构"
+            },
+            {
+              "title": "散热与防护",
+              "titleEn": "Thermal Management and Protection",
+              "slug": "01_Robot_Engineering/08_Mechanical/散热与防护"
+            },
+            {
+              "title": "3D打印与加工",
+              "titleEn": "3D Printing and Machining",
+              "slug": "01_Robot_Engineering/08_Mechanical/3D打印与加工"
+            },
+            {
+              "title": "材料选择",
+              "titleEn": "Material Selection",
+              "slug": "01_Robot_Engineering/08_Mechanical/材料选择"
+            },
+            {
+              "title": "CAD工具",
+              "titleEn": "CAD Tools",
+              "slug": "01_Robot_Engineering/08_Mechanical/CAD工具"
+            },
+            {
+              "title": "轴承 (Bearings)",
+              "titleEn": "Bearings",
+              "slug": "01_Robot_Engineering/08_Mechanical/Bearings"
+            },
+            {
+              "title": "有限元分析 (Finite Element Analysis)",
+              "titleEn": "Finite Element Analysis (FEA)",
+              "slug": "01_Robot_Engineering/08_Mechanical/Finite_Element_Analysis"
+            }
+          ]
+        },
+        {
+          "title": "显示与人机交互",
+          "titleEn": "Displays and Human-Machine Interaction",
+          "children": [
+            {
+              "title": "显示系统综述",
+              "titleEn": "Display Systems Overview",
+              "slug": "01_Robot_Engineering/09_Displays_HMI/显示系统综述"
+            },
+            {
+              "title": "OLED与LCD",
+              "titleEn": "OLED and LCD",
+              "slug": "01_Robot_Engineering/09_Displays_HMI/OLED与LCD"
+            },
+            {
+              "title": "LED指示与声音",
+              "titleEn": "LED Indicators and Sound",
+              "slug": "01_Robot_Engineering/09_Displays_HMI/LED指示与声音"
+            },
+            {
+              "title": "触摸屏与Web界面",
+              "titleEn": "Touchscreen and Web Interface",
+              "slug": "01_Robot_Engineering/09_Displays_HMI/触摸屏与Web界面"
+            },
+            {
+              "title": "遥控与手柄",
+              "titleEn": "Remote Control and Gamepad",
+              "slug": "01_Robot_Engineering/09_Displays_HMI/遥控与手柄"
+            },
+            {
+              "title": "GUI Frameworks",
+              "slug": "01_Robot_Engineering/09_Displays_HMI/GUI_Frameworks"
+            },
+            {
+              "title": "PID 控制器与调参 (PID Control & Tuning)",
+              "slug": "01_Robot_Engineering/09_Displays_HMI/PID_Tuning"
+            }
+          ]
+        },
+        {
+          "title": "力觉与触觉传感",
+          "titleEn": "Force and Tactile Sensing",
+          "children": [
+            {
+              "title": "力觉传感综述",
+              "titleEn": "Force Sensing Overview",
+              "slug": "01_Robot_Engineering/10_Force_Tactile/力觉传感综述"
+            },
+            {
+              "title": "六维力矩传感器",
+              "titleEn": "6-Axis Force/Torque Sensor",
+              "slug": "01_Robot_Engineering/10_Force_Tactile/六维力矩传感器"
+            },
+            {
+              "title": "触觉传感器",
+              "titleEn": "Tactile Sensors",
+              "slug": "01_Robot_Engineering/10_Force_Tactile/触觉传感器"
+            },
+            {
+              "title": "足端传感器",
+              "titleEn": "Foot Force Sensors",
+              "slug": "01_Robot_Engineering/10_Force_Tactile/足端传感器"
+            },
+            {
+              "title": "力控应用",
+              "titleEn": "Force Control Applications",
+              "slug": "01_Robot_Engineering/10_Force_Tactile/力控应用"
+            }
+          ]
+        },
+        {
+          "title": "系统集成",
+          "titleEn": "System Integration",
+          "children": [
+            {
+              "title": "系统集成综述",
+              "titleEn": "System Integration Overview",
+              "slug": "01_Robot_Engineering/11_Integration/系统集成综述"
+            },
+            {
+              "title": "接线与PCB设计",
+              "titleEn": "Wiring and PCB Design",
+              "slug": "01_Robot_Engineering/11_Integration/接线与PCB设计"
+            },
+            {
+              "title": "ROS2系统集成",
+              "titleEn": "ROS2 System Integration",
+              "slug": "01_Robot_Engineering/11_Integration/ROS2系统集成"
+            },
+            {
+              "title": "调试与测试",
+              "titleEn": "Debugging and Testing",
+              "slug": "01_Robot_Engineering/11_Integration/调试与测试"
+            },
+            {
+              "title": "典型机器人拆解",
+              "titleEn": "Typical Robot Teardowns",
+              "slug": "01_Robot_Engineering/11_Integration/典型机器人拆解"
+            },
+            {
+              "title": "MoveIt 2",
+              "slug": "01_Robot_Engineering/11_Integration/MoveIt2"
+            },
+            {
+              "title": "ROS 2",
+              "slug": "01_Robot_Engineering/11_Integration/ROS2_Basics"
+            },
+            {
+              "title": "SLAM (Simultaneous Localization and Mapping) 基础",
+              "titleEn": "SLAM (Simultaneous Localization and Mapping) Basics",
+              "slug": "01_Robot_Engineering/11_Integration/SLAM_Basics"
+            }
+          ]
+        },
+        {
+          "title": "工程数理基础",
+          "titleEn": "Engineering Foundations",
+          "children": [
+            {
+              "title": "线性代数",
+              "titleEn": "Linear Algebra",
+              "slug": "01_Robot_Engineering/12_Foundations/Linear_Algebra"
+            },
+            {
+              "title": "控制理论基础",
+              "titleEn": "Control Theory Foundations",
+              "slug": "01_Robot_Engineering/12_Foundations/Control_Theory"
+            },
+            {
+              "title": "信号处理",
+              "titleEn": "Signal Processing",
+              "slug": "01_Robot_Engineering/12_Foundations/Signal_Processing"
+            },
+            {
+              "title": "偏微分方程方法",
+              "titleEn": "PDE Methods",
+              "slug": "01_Robot_Engineering/12_Foundations/PDE_Methods"
+            },
+            {
+              "title": "流体力学",
+              "titleEn": "Fluid Mechanics",
+              "slug": "01_Robot_Engineering/12_Foundations/Fluid_Mechanics"
+            },
+            {
+              "title": "热力学",
+              "titleEn": "Thermodynamics",
+              "slug": "01_Robot_Engineering/12_Foundations/Thermodynamics"
+            },
+            {
+              "title": "材料科学",
+              "titleEn": "Materials Science",
+              "slug": "01_Robot_Engineering/12_Foundations/Materials_Science"
+            }
+          ]
+        },
+        {
+          "title": "电子电气工程",
+          "titleEn": "Electrical Engineering",
+          "children": [
+            {
+              "title": "运算放大器",
+              "titleEn": "Operational Amplifier (Op-Amp)",
+              "slug": "01_Robot_Engineering/13_Electrical_Engineering/Op_Amp"
+            },
+            {
+              "title": "ADC / DAC",
+              "slug": "01_Robot_Engineering/13_Electrical_Engineering/ADC_DAC"
+            },
+            {
+              "title": "电力电子",
+              "titleEn": "Power Electronics",
+              "slug": "01_Robot_Engineering/13_Electrical_Engineering/Power_Electronics"
+            },
+            {
+              "title": "PCB 设计",
+              "titleEn": "PCB Design",
+              "slug": "01_Robot_Engineering/13_Electrical_Engineering/PCB_Design"
+            }
+          ]
+        },
+        {
+          "title": "制造与前沿",
+          "titleEn": "Manufacturing & Frontiers",
+          "children": [
+            {
+              "title": "3D 打印",
+              "titleEn": "3D Printing / Additive Manufacturing",
+              "slug": "01_Robot_Engineering/14_Manufacturing_Frontiers/3D_Printing"
+            },
+            {
+              "title": "CNC",
+              "titleEn": "CNC (Computer Numerical Control)",
+              "slug": "01_Robot_Engineering/14_Manufacturing_Frontiers/CNC"
+            },
+            {
+              "title": "工业 4.0",
+              "titleEn": "Industry 4.0",
+              "slug": "01_Robot_Engineering/14_Manufacturing_Frontiers/Industry_4"
+            },
+            {
+              "title": "制造业中的机器人",
+              "titleEn": "Robotics in Manufacturing",
+              "slug": "01_Robot_Engineering/14_Manufacturing_Frontiers/Robotics_in_Manufacturing"
+            }
+          ]
+        },
+        {
+          "title": "硬件总览与选型",
+          "titleEn": "Hardware Overview & Selection",
+          "children": [
+            {
+              "title": "硬件选型指南",
+              "titleEn": "Hardware Selection Guide",
+              "slug": "01_Robot_Engineering/15_Hardware_Overview/硬件选型指南"
+            },
+            {
+              "title": "传感器",
+              "titleEn": "Sensors",
+              "slug": "01_Robot_Engineering/15_Hardware_Overview/传感器"
+            },
+            {
+              "title": "执行器与驱动",
+              "titleEn": "Actuators and Drives",
+              "slug": "01_Robot_Engineering/15_Hardware_Overview/执行器与驱动"
+            },
+            {
+              "title": "计算平台",
+              "titleEn": "Computing Platforms",
+              "slug": "01_Robot_Engineering/15_Hardware_Overview/计算平台"
+            },
+            {
+              "title": "开源硬件",
+              "titleEn": "Open-Source Robot Hardware",
+              "slug": "01_Robot_Engineering/15_Hardware_Overview/开源硬件"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "robot-learning",
+      "title": "机器人学习",
+      "titleEn": "Robot Learning",
+      "icon": "🧠",
+      "color": "from-purple-500 to-pink-500",
+      "order": 2,
+      "items": [
+        {
+          "title": "基础与综述",
+          "titleEn": "Foundations & Surveys",
+          "children": [
+            {
+              "title": "机器人学习综述",
+              "titleEn": "Overview of Robot Learning",
+              "slug": "02_Robot_Learning/01_Foundations/机器人学习综述"
+            },
+            {
+              "title": "机器人基础模型概论",
+              "titleEn": "Introduction to Robot Foundation Models",
+              "slug": "02_Robot_Learning/01_Foundations/机器人基础模型概论"
+            },
+            {
+              "title": "VLA 模型",
+              "titleEn": "VLA Models (Vision-Language-Action Models)",
+              "slug": "02_Robot_Learning/01_Foundations/VLA模型"
+            },
+            {
+              "title": "模型发展路线图",
+              "titleEn": "Model Roadmap",
+              "slug": "02_Robot_Learning/01_Foundations/模型发展路线图"
+            },
+            {
+              "title": "多任务与泛化",
+              "titleEn": "Multi-task Learning and Generalization",
+              "slug": "02_Robot_Learning/01_Foundations/多任务与泛化"
+            },
+            {
+              "title": "大模型驱动的机器人",
+              "titleEn": "Large Model-Driven Robots",
+              "slug": "02_Robot_Learning/01_Foundations/大模型驱动的机器人"
+            },
+            {
+              "title": "世界模型与视频生成",
+              "titleEn": "World Models and Video Generation",
+              "slug": "02_Robot_Learning/01_Foundations/世界模型与视频生成"
+            }
+          ]
+        },
+        {
+          "title": "学习方法",
+          "titleEn": "Learning Methods",
+          "children": [
+            {
+              "title": "模仿学习",
+              "titleEn": "Imitation Learning",
+              "slug": "02_Robot_Learning/02_Methods/模仿学习"
+            },
+            {
+              "title": "扩散策略",
+              "titleEn": "Diffusion Policy",
+              "slug": "02_Robot_Learning/02_Methods/扩散策略"
+            },
+            {
+              "title": "强化学习在机器人中的应用",
+              "titleEn": "Reinforcement Learning in Robotics",
+              "slug": "02_Robot_Learning/02_Methods/强化学习在机器人中的应用"
+            },
+            {
+              "title": "VLA-RL 集成",
+              "titleEn": "VLA-RL Integration",
+              "slug": "02_Robot_Learning/02_Methods/VLA-RL集成"
+            },
+            {
+              "title": "ACT 模型",
+              "titleEn": "ACT Model",
+              "slug": "02_Robot_Learning/02_Methods/ACT模型"
+            },
+            {
+              "title": "Sim2Real 迁移",
+              "titleEn": "Sim2Real: Transferring from Simulation to Reality",
+              "slug": "02_Robot_Learning/02_Methods/Sim2Real"
+            }
+          ]
+        },
+        {
+          "title": "代表模型",
+          "titleEn": "Representative Models",
+          "children": [
+            {
+              "title": "RT-1",
+              "slug": "02_Robot_Learning/03_Models/RT_1_Detailed"
+            },
+            {
+              "title": "RT-2 与 OpenVLA",
+              "titleEn": "RT-2 and OpenVLA",
+              "slug": "02_Robot_Learning/03_Models/RT2_OpenVLA"
+            },
+            {
+              "title": "Octo",
+              "slug": "02_Robot_Learning/03_Models/Octo_Foundation_Policy"
+            },
+            {
+              "title": "π0",
+              "slug": "02_Robot_Learning/03_Models/Pi0_Physical_Intelligence"
+            },
+            {
+              "title": "RDT-1B",
+              "slug": "02_Robot_Learning/03_Models/RDT_1B"
+            },
+            {
+              "title": "Helix",
+              "slug": "02_Robot_Learning/03_Models/Helix_Figure_AI"
+            },
+            {
+              "title": "开源模型汇总",
+              "titleEn": "Open-Source Model Summary",
+              "slug": "02_Robot_Learning/03_Models/开源模型汇总"
+            }
+          ]
+        },
+        {
+          "title": "数据与评测",
+          "titleEn": "Data & Benchmarks",
+          "children": [
+            {
+              "title": "遥操作与数据收集",
+              "titleEn": "Teleoperation and Data Collection",
+              "slug": "02_Robot_Learning/04_Data_Benchmarks/遥操作与数据收集"
+            },
+            {
+              "title": "数据集与 Benchmark",
+              "titleEn": "Datasets and Benchmarks",
+              "slug": "02_Robot_Learning/04_Data_Benchmarks/数据集与Benchmark"
+            },
+            {
+              "title": "DROID 数据集",
+              "titleEn": "DROID",
+              "slug": "02_Robot_Learning/04_Data_Benchmarks/DROID_Dataset"
+            },
+            {
+              "title": "VLA 评测基准套件",
+              "titleEn": "VLA Benchmark Suite",
+              "slug": "02_Robot_Learning/04_Data_Benchmarks/VLA_Benchmark_Suite"
+            },
+            {
+              "title": "UMI",
+              "slug": "02_Robot_Learning/04_Data_Benchmarks/UMI_Universal_Manipulation_Interface"
+            },
+            {
+              "title": "Aloha 与 Mobile Aloha",
+              "titleEn": "Aloha & Mobile Aloha",
+              "slug": "02_Robot_Learning/04_Data_Benchmarks/Aloha_Mobile_Aloha"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "sim-deploy",
+      "title": "仿真与部署",
+      "titleEn": "Simulation & Deployment",
+      "icon": "🎮",
+      "color": "from-emerald-500 to-teal-500",
+      "order": 3,
+      "items": [
+        {
+          "title": "仿真",
+          "titleEn": "Simulation",
+          "children": [
+            {
+              "title": "仿真平台",
+              "titleEn": "Simulation Platforms",
+              "slug": "03_Sim2Real/01_Simulation/simulation_platforms"
+            },
+            {
+              "title": "仿真工具对比",
+              "titleEn": "Simulation Tool Comparison",
+              "slug": "03_Sim2Real/01_Simulation/仿真工具对比"
+            },
+            {
+              "title": "仿真世界构建与物理规则",
+              "titleEn": "Simulation World Building & Physics Rules",
+              "slug": "03_Sim2Real/01_Simulation/仿真世界构建与物理规则"
+            },
+            {
+              "title": "仿真资产",
+              "titleEn": "Simulation Assets",
+              "slug": "03_Sim2Real/01_Simulation/仿真资产"
+            }
+          ]
+        },
+        {
+          "title": "部署与运维",
+          "titleEn": "Deployment & Ops",
+          "children": [
+            {
+              "title": "Sim2Real 部署",
+              "titleEn": "Sim2Real Deployment Practical Guide",
+              "slug": "03_Sim2Real/02_Deployment/Sim2Real部署"
+            },
+            {
+              "title": "标定与系统集成",
+              "titleEn": "Calibration and System Integration",
+              "slug": "03_Sim2Real/02_Deployment/标定与系统集成"
+            },
+            {
+              "title": "实时系统",
+              "titleEn": "Real-Time Systems",
+              "slug": "03_Sim2Real/02_Deployment/实时系统"
+            },
+            {
+              "title": "安全与鲁棒性",
+              "titleEn": "Safety and Robustness",
+              "slug": "03_Sim2Real/02_Deployment/安全与鲁棒性"
+            },
+            {
+              "title": "部署案例",
+              "titleEn": "Deployment Case Studies",
+              "slug": "03_Sim2Real/02_Deployment/部署案例"
+            }
+          ]
+        },
+        {
+          "title": "生态与工具链",
+          "titleEn": "Ecosystem & Toolchain",
+          "children": [
+            {
+              "title": "ROS2",
+              "titleEn": "ROS2 Architecture and Core Tools",
+              "slug": "03_Sim2Real/03_Ecosystem/ROS2"
+            },
+            {
+              "title": "NVIDIA 生态",
+              "titleEn": "NVIDIA Robotics Ecosystem",
+              "slug": "03_Sim2Real/03_Ecosystem/NVIDIA生态"
+            },
+            {
+              "title": "开源框架",
+              "titleEn": "Open-Source Robot Learning Frameworks",
+              "slug": "03_Sim2Real/03_Ecosystem/开源框架"
+            },
+            {
+              "title": "开发工具链",
+              "titleEn": "Development Toolchain",
+              "slug": "03_Sim2Real/03_Ecosystem/开发工具链"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "autonomous-driving",
+      "title": "自动驾驶",
+      "titleEn": "Autonomous Driving",
+      "icon": "🚗",
+      "color": "from-sky-500 to-blue-500",
+      "order": 4,
+      "items": [
+        {
+          "title": "基础",
+          "titleEn": "Foundations",
+          "children": [
+            {
+              "title": "自动驾驶综述",
+              "titleEn": "Autonomous Driving Overview",
+              "slug": "04_Autonomous_Driving/01_Foundations/自动驾驶综述"
+            },
+            {
+              "title": "自动驾驶范式与方法谱系",
+              "titleEn": "AD Paradigms & Method Taxonomy",
+              "slug": "04_Autonomous_Driving/01_Foundations/自动驾驶范式与方法谱系"
+            }
+          ]
+        },
+        {
+          "title": "感知",
+          "titleEn": "Perception",
+          "children": [
+            {
+              "title": "感知与定位",
+              "titleEn": "Perception & Localization",
+              "slug": "04_Autonomous_Driving/02_Perception/感知与定位"
+            }
+          ]
+        },
+        {
+          "title": "预测与规划",
+          "titleEn": "Prediction & Planning",
+          "children": [
+            {
+              "title": "运动预测",
+              "titleEn": "Motion Prediction",
+              "slug": "04_Autonomous_Driving/03_Prediction_Planning/运动预测"
+            },
+            {
+              "title": "规划与决策",
+              "titleEn": "Planning & Decision",
+              "slug": "04_Autonomous_Driving/03_Prediction_Planning/规划与决策"
+            }
+          ]
+        },
+        {
+          "title": "控制",
+          "titleEn": "Control",
+          "children": [
+            {
+              "title": "车辆控制",
+              "titleEn": "Vehicle Control",
+              "slug": "04_Autonomous_Driving/04_Control/车辆控制"
+            }
+          ]
+        },
+        {
+          "title": "端到端与学习",
+          "titleEn": "End-to-End & Learning",
+          "children": [
+            {
+              "title": "端到端驾驶",
+              "titleEn": "End-to-End Driving",
+              "slug": "04_Autonomous_Driving/05_Learning_E2E/端到端驾驶"
+            },
+            {
+              "title": "协变量偏移与闭环鸿沟",
+              "titleEn": "Covariate Shift & the Closed-Loop Gap",
+              "slug": "04_Autonomous_Driving/05_Learning_E2E/协变量偏移与闭环鸿沟"
+            }
+          ]
+        },
+        {
+          "title": "数据与评测",
+          "titleEn": "Data & Benchmarks",
+          "children": [
+            {
+              "title": "数据集与闭环评测",
+              "titleEn": "Datasets & Closed-Loop Evaluation",
+              "slug": "04_Autonomous_Driving/06_Data_Eval/数据集与闭环评测"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "drones",
+      "title": "无人机",
+      "titleEn": "Drones",
+      "icon": "🚁",
+      "color": "from-indigo-500 to-violet-500",
+      "order": 5,
+      "items": [
+        {
+          "title": "无人机",
+          "titleEn": "Drones",
+          "slug": "05_Drones/无人机"
+        }
+      ]
+    },
+    {
+      "id": "robot-arms",
+      "title": "机械臂",
+      "titleEn": "Robot Arms",
+      "icon": "🦾",
+      "color": "from-violet-500 to-purple-500",
+      "order": 6,
+      "items": [
+        {
+          "title": "机械臂与移动操作",
+          "titleEn": "Robot Arms and Mobile Manipulation",
+          "slug": "06_Robot_Arms/机械臂与移动操作"
+        },
+        {
+          "title": "灵巧手",
+          "titleEn": "Dexterous Hands",
+          "slug": "06_Robot_Arms/灵巧手"
+        }
+      ]
+    },
+    {
+      "id": "quadrupeds",
+      "title": "机器狗",
+      "titleEn": "Quadrupeds",
+      "icon": "🐕",
+      "color": "from-amber-500 to-orange-500",
+      "order": 7,
+      "items": [
+        {
+          "title": "四足机器人",
+          "titleEn": "Quadruped Robots",
+          "slug": "07_Quadrupeds/四足机器人"
+        }
+      ]
+    },
+    {
+      "id": "humanoid",
+      "title": "人形机器人",
+      "titleEn": "Humanoid Robots",
+      "icon": "🧍",
+      "color": "from-orange-500 to-amber-500",
+      "order": 8,
+      "items": [
+        {
+          "title": "人形机器人",
+          "titleEn": "Humanoid Robots",
+          "slug": "08_Humanoids/humanoid_robot"
+        }
+      ]
+    },
+    {
+      "id": "topics",
+      "title": "独立议题",
+      "titleEn": "Topics",
+      "icon": "📌",
+      "color": "from-rose-500 to-pink-500",
+      "order": 9,
+      "items": [
+        {
+          "title": "公司全景",
+          "titleEn": "Embodied Intelligence Company Landscape",
+          "slug": "09_Topics/公司全景"
+        },
+        {
+          "title": "行业研究",
+          "titleEn": "Embodied Intelligence Industry Research",
+          "slug": "09_Topics/行业研究"
+        },
+        {
+          "title": "市场与需求",
+          "titleEn": "Market and Demand",
+          "slug": "09_Topics/市场与需求"
+        },
+        {
+          "title": "产学研合作",
+          "titleEn": "Industry-Academia-Research Collaboration",
+          "slug": "09_Topics/产学研合作"
+        },
+        {
+          "title": "业界动态",
+          "titleEn": "Industry Updates",
+          "slug": "09_Topics/业界动态"
+        },
+        {
+          "title": "痛点与挑战",
+          "titleEn": "Pain Points and Challenges",
+          "slug": "09_Topics/痛点与挑战"
+        },
+        {
+          "title": "扫地机器人",
+          "titleEn": "Cleaning Robot",
+          "slug": "09_Topics/cleaning_robot"
+        },
+        {
+          "title": "服务机器人",
+          "titleEn": "Service Robots",
+          "slug": "09_Topics/服务机器人"
+        }
+      ]
+    }
+  ]
+}

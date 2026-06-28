@@ -1,10 +1,10 @@
 # MPC — Model Predictive Control
 
-> *Model Predictive Control (MPC) — modern workhorse of classical control theory. **At each timestep look ahead H steps, optimize an action sequence, execute only the first step, then redo at the next step**. Tesla Autopilot, Boston Dynamics, SpaceX rockets all use MPC. Related to [MDP](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/MDP/) as finite-horizon vs infinite-horizon.*
+> *Model Predictive Control (MPC) — modern workhorse of classical control theory. **At each timestep look ahead H steps, optimize an action sequence, execute only the first step, then redo at the next step**. Tesla Autopilot, Boston Dynamics, SpaceX rockets all use MPC. Related to [MDP](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/MDP) as finite-horizon vs infinite-horizon.*
 >
 > **Difficulty**: Intermediate-Advanced
-> **Prerequisites**: [Control Theory](控制理论.en.md), [Motion Planning](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/motion_trajectory_planning/), [MDP](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/MDP/), optimization basics
-> **Further reading**: [Dreamer](https://jeffliulab.github.io/ai-notes/04_Reinforcement_Learning/04_Modern_RL/Dreamer/) (Model-based RL), [Diffusion Policy](../../02_Robot_Learning/02_Methods/扩散策略.en.md)
+> **Prerequisites**: [Control Theory](控制理论.en.md), [Motion Planning](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/motion_trajectory_planning), [MDP](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/MDP), optimization basics
+> **Further reading**: [Dreamer](https://jeffliulab.com/ai-notes/03_Reinforcement_Learning/04_Modern_RL/Dreamer) (Model-based RL), [Diffusion Policy](../../02_Robot_Learning/02_Methods/扩散策略.en.md)
 
 ---
 
@@ -264,9 +264,9 @@ What if the solver can't find a feasible solution? **Slack variables** (soft con
 
 ## 10. Related Concepts
 
-- **Same-section**: [Control Theory](控制理论.en.md) (PID/LQR foundation), [Motion Planning](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/motion_trajectory_planning/)
-- **Theory**: [MDP](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/MDP/) (infinite-horizon version), optimization theory
-- **RL connection**: [Dreamer](https://jeffliulab.github.io/ai-notes/04_Reinforcement_Learning/04_Modern_RL/Dreamer/) (learn model then MPC), [AlphaZero](https://jeffliulab.github.io/ai-notes/04_Reinforcement_Learning/04_Modern_RL/AlphaZero_Family/) (MCTS is a search variant of MPC)
+- **Same-section**: [Control Theory](控制理论.en.md) (PID/LQR foundation), [Motion Planning](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/motion_trajectory_planning)
+- **Theory**: [MDP](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/MDP) (infinite-horizon version), optimization theory
+- **RL connection**: [Dreamer](https://jeffliulab.com/ai-notes/03_Reinforcement_Learning/04_Modern_RL/Dreamer) (learn model then MPC), [AlphaZero](https://jeffliulab.com/ai-notes/03_Reinforcement_Learning/04_Modern_RL/AlphaZero_Family) (MCTS is a search variant of MPC)
 - **Modern evolution**: Convex MPC, Tube MPC, Learning-MPC
 
 ---

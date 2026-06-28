@@ -3,7 +3,7 @@
 > *Google DeepMind 2022 年 12 月发布 **RT-1**:首个真正可用的 generalist robot policy。**35M 参数 EfficientNet + Transformer**,在 **130k Google 自家 manipulation 数据**上训练,完成 700+ 任务,80%+ 成功率。是 RT-X / RT-2 / π0 路线的开创者,虽小但 punch above weight。*
 >
 > **难度**:Intermediate
-> **前置知识**:[VLA 模型](../01_Foundations/VLA模型.md)、[Transformer](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/05_Transformers/transformer_architect/)、[模仿学习](../02_Methods/模仿学习.md)
+> **前置知识**:[VLA 模型](../01_Foundations/VLA模型.md)、[Transformer](https://jeffliulab.com/ai-notes/02_Deep_Learning/06_Transformer/transformer_architect)、[模仿学习](../02_Methods/模仿学习.md)
 > **后续阅读**:[RT-2 / OpenVLA](RT2_OpenVLA.md)、[π0](Pi0_Physical_Intelligence.md)
 
 ---
@@ -309,7 +309,7 @@ Google Everyday Robots 数据私有,泛化到其他机器人未验证。
 ## 11. Related Concepts
 
 - **同节**:[VLA 模型](../01_Foundations/VLA模型.md)、[RT-2 / OpenVLA](RT2_OpenVLA.md)、[π0](Pi0_Physical_Intelligence.md)、[Octo](Octo_Foundation_Policy.md)、[Helix](Helix_Figure_AI.md)
-- **基础**:[Transformer](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/05_Transformers/transformer_architect/)、[模仿学习](../02_Methods/模仿学习.md)
+- **基础**:[Transformer](https://jeffliulab.com/ai-notes/02_Deep_Learning/06_Transformer/transformer_architect)、[模仿学习](../02_Methods/模仿学习.md)
 - **数据**:[Open X-Embodiment](../04_Data_Benchmarks/数据集与Benchmark.md)
 
 ---

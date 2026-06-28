@@ -3,7 +3,7 @@
 > *RT-2 (Google DeepMind 2023) is the first industrial-grade **Vision-Language-Action (VLA)** model that fine-tunes an LLM directly as a robot action generator. **OpenVLA** (Stanford 2024) is the open-source counterpart, based on Llama-2 + Prismatic VLM, trained on the Open X-Embodiment dataset. Key route to **general robotics**.*
 >
 > **Difficulty**: Advanced
-> **Prerequisites**: [VLA Models Overview](../01_Foundations/VLA模型.en.md), [Multimodal LLMs](https://jeffliulab.github.io/ai-notes/03_Foundation_Models/05_Multimodal/MLLMs/), [Diffusion Policy](../02_Methods/扩散策略.en.md)
+> **Prerequisites**: [VLA Models Overview](../01_Foundations/VLA模型.en.md), [Multimodal LLMs](https://jeffliulab.com/ai-notes/04_Foundation_Models/05_Multimodal/MLLMs), [Diffusion Policy](../02_Methods/扩散策略.en.md)
 > **Further reading**: [π0 / RDT-1B](../index.en.md), [Sim2Real](../02_Methods/Sim2Real.en.md)
 
 ---
@@ -259,9 +259,9 @@ VLA is a single-step policy; long-horizon tasks need external planning ("open fr
 
 ## 8. Related Concepts
 
-- **Same-section**: [VLA Models Overview](../01_Foundations/VLA模型.en.md), [Multimodal Learning](https://jeffliulab.github.io/ai-notes/03_Foundation_Models/05_Multimodal/多模态学习/)
+- **Same-section**: [VLA Models Overview](../01_Foundations/VLA模型.en.md), [Multimodal Learning](https://jeffliulab.com/ai-notes/04_Foundation_Models/05_Multimodal/多模态学习)
 - **Robot learning**: [Diffusion Policy](../02_Methods/扩散策略.en.md), [Imitation Learning](../02_Methods/模仿学习.en.md), [Sim2Real](../02_Methods/Sim2Real.en.md)
-- **Foundation**: [LLM](https://jeffliulab.github.io/ai-notes/03_Foundation_Models/03_Language_Models/LLM_as_Foundation/), [CLIP](https://jeffliulab.github.io/ai-notes/03_Foundation_Models/04_Vision_Foundation/CLIP/)
+- **Foundation**: [LLM](https://jeffliulab.com/ai-notes/04_Foundation_Models/03_Language_Models/LLM_as_Foundation), [CLIP](https://jeffliulab.com/ai-notes/04_Foundation_Models/04_Vision_Foundation/CLIP)
 - **Modern evolution**: π0 (Flow Matching), Helix, RDT-1B
 
 ---

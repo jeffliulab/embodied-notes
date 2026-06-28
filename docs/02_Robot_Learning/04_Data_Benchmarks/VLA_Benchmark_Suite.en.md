@@ -295,7 +295,7 @@ print(results)  # {'spatial': 0.65, 'object': 0.70, 'goal': 0.55, 'long': 0.30}
 
 - **Same section**: [VLA Models](../01_Foundations/VLA模型.en.md), [π0](../03_Models/Pi0_Physical_Intelligence.en.md), [OpenVLA](../03_Models/RT2_OpenVLA.en.md), [Octo](../03_Models/Octo_Foundation_Policy.en.md), [Helix](../03_Models/Helix_Figure_AI.en.md)
 - **Data**: [DROID](DROID_Dataset.en.md), [Open X-Embodiment](数据集与Benchmark.en.md)
-- **WM evaluation**: [WM Eval Benchmarks](https://jeffliulab.github.io/ai-notes/01_AI/03_Frontiers/03_World_Models/WM_Eval_Benchmarks/)
+- **WM evaluation**: [WM Eval Benchmarks](https://jeffliulab.com/ai-notes/08_World_Models/05_Planning_Control/WM_Eval_Benchmarks)
 
 ---
 

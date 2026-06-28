@@ -1,10 +1,10 @@
 # MPC — 模型预测控制
 
-> *Model Predictive Control (MPC) — 经典控制理论的现代主力。**每个时刻向未来推演 H 步,优化序列动作,只执行第一步,然后下一步重做**。Tesla Autopilot, Boston Dynamics, SpaceX 火箭都用 MPC。与 [MDP](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/MDP/) 是 finite-horizon vs infinite-horizon 关系。*
+> *Model Predictive Control (MPC) — 经典控制理论的现代主力。**每个时刻向未来推演 H 步,优化序列动作,只执行第一步,然后下一步重做**。Tesla Autopilot, Boston Dynamics, SpaceX 火箭都用 MPC。与 [MDP](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/MDP) 是 finite-horizon vs infinite-horizon 关系。*
 >
 > **难度**：Intermediate-Advanced
-> **前置知识**：[控制理论](控制理论.md)、[运动规划](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/motion_trajectory_planning/)、[MDP](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/MDP/)、最优化基础
-> **后续阅读**：[Dreamer](https://jeffliulab.github.io/ai-notes/04_Reinforcement_Learning/04_Modern_RL/Dreamer/)（Model-based RL）、[Diffusion Policy](../../02_Robot_Learning/02_Methods/扩散策略.md)
+> **前置知识**：[控制理论](控制理论.md)、[运动规划](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/motion_trajectory_planning)、[MDP](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/MDP)、最优化基础
+> **后续阅读**：[Dreamer](https://jeffliulab.com/ai-notes/03_Reinforcement_Learning/04_Modern_RL/Dreamer)（Model-based RL）、[Diffusion Policy](../../02_Robot_Learning/02_Methods/扩散策略.md)
 
 ---
 
@@ -272,9 +272,9 @@ solver 找不到可行解时怎么办？**Slack 变量** (软约束) 或 **fallb
 
 ## 10. Related Concepts
 
-- **同节**：[控制理论](控制理论.md)（PID/LQR 基础）、[运动规划](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/motion_trajectory_planning/)
-- **理论**：[MDP](https://jeffliulab.github.io/ai-notes/01_AI/01_Classical_AI/04_Planning/MDP/)（无限 horizon 版）、最优化理论
-- **RL 联系**：[Dreamer](https://jeffliulab.github.io/ai-notes/04_Reinforcement_Learning/04_Modern_RL/Dreamer/)（学 model 后做 MPC）、[AlphaZero](https://jeffliulab.github.io/ai-notes/04_Reinforcement_Learning/04_Modern_RL/AlphaZero_Family/)（MCTS 是 MPC 的搜索版）
+- **同节**：[控制理论](控制理论.md)（PID/LQR 基础）、[运动规划](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/motion_trajectory_planning)
+- **理论**：[MDP](https://jeffliulab.com/ai-notes/01_Symbolism/04_Planning/MDP)（无限 horizon 版）、最优化理论
+- **RL 联系**：[Dreamer](https://jeffliulab.com/ai-notes/03_Reinforcement_Learning/04_Modern_RL/Dreamer)（学 model 后做 MPC）、[AlphaZero](https://jeffliulab.com/ai-notes/03_Reinforcement_Learning/04_Modern_RL/AlphaZero_Family)（MCTS 是 MPC 的搜索版）
 - **现代演进**：Convex MPC, Tube MPC, Learning-MPC
 
 ---

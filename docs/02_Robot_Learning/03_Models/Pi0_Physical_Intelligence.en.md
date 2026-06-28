@@ -3,7 +3,7 @@
 > *Physical Intelligence (PI) released **π0** in November 2024: a 3B-parameter VLA + Flow Matching action head, trained on 10⁴ hours of real-robot data. Significantly improves precise manipulation over RT-2 / OpenVLA (folding towels, tidying desks, packing bags) and is 4× faster to infer than diffusion policy. One of the strongest single-model generalist robot policies as of 2025.*
 >
 > **Difficulty**: Advanced
-> **Prerequisites**: [VLA Models](../01_Foundations/VLA模型.en.md), [RT-2 / OpenVLA](RT2_OpenVLA.en.md), [Diffusion Policy](../02_Methods/扩散策略.en.md), [Flow Matching](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/06_Generative_Models/Diffusion/)
+> **Prerequisites**: [VLA Models](../01_Foundations/VLA模型.en.md), [RT-2 / OpenVLA](RT2_OpenVLA.en.md), [Diffusion Policy](../02_Methods/扩散策略.en.md), [Flow Matching](https://jeffliulab.com/ai-notes/02_Deep_Learning/07_Generative/Diffusion)
 > **Further reading**: [Octo Foundation Policy](Octo_Foundation_Policy.en.md), [Helix](Helix_Figure_AI.en.md)
 
 ---
@@ -373,7 +373,7 @@ OpenVLA + Diffusion Policy self-trained reaches 60-70% of π0.
 - **Same section**: [VLA Models](../01_Foundations/VLA模型.en.md), [RT-2 / OpenVLA](RT2_OpenVLA.en.md), [Octo Foundation Policy](Octo_Foundation_Policy.en.md), [RDT-1B](RDT_1B.en.md), [Helix](Helix_Figure_AI.en.md), [ACT Model](../02_Methods/ACT模型.en.md)
 - **Robot learning**: [Diffusion Policy](../02_Methods/扩散策略.en.md), [imitation learning](../02_Methods/模仿学习.en.md)
 - **Datasets**: [Open X-Embodiment](../04_Data_Benchmarks/数据集与Benchmark.en.md), [DROID Dataset](../04_Data_Benchmarks/DROID_Dataset.en.md)
-- **Generative models**: [Flow Matching / Diffusion](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/06_Generative_Models/Diffusion/)
+- **Generative models**: [Flow Matching / Diffusion](https://jeffliulab.com/ai-notes/02_Deep_Learning/07_Generative/Diffusion)
 
 ---
 

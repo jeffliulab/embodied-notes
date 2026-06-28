@@ -3,7 +3,7 @@
 > *Physical Intelligence (PI) 2024 年 11 月发布 **π0**:3B 参数 VLA + Flow Matching 动作头,在 10⁴ 小时真机数据上训练。比 RT-2 / OpenVLA 在精细操作上提升显著(折毛巾、整理桌面、装袋子),并比 diffusion policy 推理 4× 快。是当前 (2025) 最强 single-model generalist 机器人 policy 之一。*
 >
 > **难度**:Advanced
-> **前置知识**:[VLA 模型](../01_Foundations/VLA模型.md)、[RT-2 / OpenVLA](RT2_OpenVLA.md)、[Diffusion Policy](../02_Methods/扩散策略.md)、[Flow Matching](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/06_Generative_Models/Diffusion/)
+> **前置知识**:[VLA 模型](../01_Foundations/VLA模型.md)、[RT-2 / OpenVLA](RT2_OpenVLA.md)、[Diffusion Policy](../02_Methods/扩散策略.md)、[Flow Matching](https://jeffliulab.com/ai-notes/02_Deep_Learning/07_Generative/Diffusion)
 > **后续阅读**:[Octo Foundation Policy](Octo_Foundation_Policy.md)、[Helix](Helix_Figure_AI.md)
 
 ---
@@ -392,7 +392,7 @@ OpenVLA + Diffusion Policy 自训可达 π0 的 60-70%。
 - **同节**:[VLA 模型](../01_Foundations/VLA模型.md)、[RT-2 / OpenVLA](RT2_OpenVLA.md)、[Octo Foundation Policy](Octo_Foundation_Policy.md)、[RDT-1B](RDT_1B.md)、[Helix](Helix_Figure_AI.md)、[ACT 模型](../02_Methods/ACT模型.md)
 - **机器人学习**:[Diffusion Policy](../02_Methods/扩散策略.md)、[imitation learning](../02_Methods/模仿学习.md)
 - **数据集**:[Open X-Embodiment](../04_Data_Benchmarks/数据集与Benchmark.md)、[DROID Dataset](../04_Data_Benchmarks/DROID_Dataset.md)
-- **生成模型**:[Flow Matching / Diffusion](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/06_Generative_Models/Diffusion/)
+- **生成模型**:[Flow Matching / Diffusion](https://jeffliulab.com/ai-notes/02_Deep_Learning/07_Generative/Diffusion)
 
 ---
 

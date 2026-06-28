@@ -3,7 +3,7 @@
 > *Google DeepMind released **RT-1** in December 2022: the first truly usable generalist robot policy. **35M parameter EfficientNet + Transformer**, trained on **130k Google in-house manipulation data**, completes 700+ tasks with 80%+ success. The pioneer of the RT-X / RT-2 / π0 lineage — small but punching above its weight.*
 >
 > **Difficulty**: Intermediate
-> **Prerequisites**: [VLA Models](../01_Foundations/VLA模型.en.md), [Transformer](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/05_Transformers/transformer_architect/), [Imitation Learning](../02_Methods/模仿学习.en.md)
+> **Prerequisites**: [VLA Models](../01_Foundations/VLA模型.en.md), [Transformer](https://jeffliulab.com/ai-notes/02_Deep_Learning/06_Transformer/transformer_architect), [Imitation Learning](../02_Methods/模仿学习.en.md)
 > **Further reading**: [RT-2 / OpenVLA](RT2_OpenVLA.en.md), [π0](Pi0_Physical_Intelligence.en.md)
 
 ---
@@ -289,7 +289,7 @@ Google Everyday Robots data private, generalization to other robots unverified.
 ## 11. Related Concepts
 
 - **Same section**: [VLA Models](../01_Foundations/VLA模型.en.md), [RT-2 / OpenVLA](RT2_OpenVLA.en.md), [π0](Pi0_Physical_Intelligence.en.md), [Octo](Octo_Foundation_Policy.en.md), [Helix](Helix_Figure_AI.en.md)
-- **Basics**: [Transformer](https://jeffliulab.github.io/ai-notes/02_Deep_Learning/05_Transformers/transformer_architect/), [Imitation Learning](../02_Methods/模仿学习.en.md)
+- **Basics**: [Transformer](https://jeffliulab.com/ai-notes/02_Deep_Learning/06_Transformer/transformer_architect), [Imitation Learning](../02_Methods/模仿学习.en.md)
 - **Data**: [Open X-Embodiment](../04_Data_Benchmarks/数据集与Benchmark.en.md)
 
 ---

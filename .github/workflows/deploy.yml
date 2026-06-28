@@ -1,36 +1,33 @@
-name: Deploy MkDocs
-
+name: Pages Redirect
+# GH Pages 已关停：不再构建 mkdocs，只发布一个 3 秒提示后跳转到 jeffliulab.com 的静态页。
+# index.html = 根；404.html = 兜底所有旧深链。两者同一份 pages-redirect/index.html。
 on:
   push:
-    branches:
-      - main
-
+    branches: [main]
+  workflow_dispatch:
 permissions:
-  contents: write
-
+  contents: read
+  pages: write
+  id-token: write
+concurrency:
+  group: pages
+  cancel-in-progress: false
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v5
-
-      - name: Set up Python
-        uses: actions/setup-python@v6
-        with:
-          python-version: '3.10'
-
-      - name: Install dependencies
+      - uses: actions/checkout@v4
+      - name: Assemble redirect site
         run: |
-          pip install "mkdocs-material[all]"
-          pip install "mkdocs-static-i18n[material]"
-          pip install mdx-truly-sane-lists
-
-      - name: Generate dropdown menu from nav
-        run: python hooks/generate_dropdown.py
-
-      - name: Deploy to GitHub Pages
-        run: mkdocs gh-deploy --force
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          mkdir -p site
+          cp pages-redirect/index.html site/index.html
+          cp pages-redirect/index.html site/404.html
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4

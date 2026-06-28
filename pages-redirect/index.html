@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>具身智能笔记已迁移 · jeffliulab.com</title>
+<meta http-equiv="refresh" content="3;url=https://jeffliulab.com/embodied-notes">
+<style>
+  html,body{height:100%;margin:0}
+  body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,"PingFang SC","Microsoft YaHei",sans-serif;
+       display:grid;place-items:center;background:#0b0b0f;color:#e8e8ea;text-align:center;padding:1.5rem}
+  .card{max-width:32rem}
+  h1{font-size:1.25rem;margin:0 0 .75rem;font-weight:600}
+  p{margin:.45rem 0;color:#a1a1aa;line-height:1.6}
+  a{color:#a78bfa;text-decoration:none;font-weight:600}
+  a:hover{text-decoration:underline}
+  .count{color:#34d399;font-weight:600}
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>本站（GitHub Pages）已关闭</h1>
+    <p>「具身智能笔记」的全部内容已迁移到 <a href="https://jeffliulab.com/embodied-notes">jeffliulab.com</a>，界面更现代、阅读体验更好。</p>
+    <p><span class="count" id="c">3</span> 秒后自动跳转，或 <a href="https://jeffliulab.com/embodied-notes">立即前往</a>。</p>
+  </div>
+  <script>
+    var n=3,el=document.getElementById('c');
+    var t=setInterval(function(){n--;if(el)el.textContent=Math.max(n,0);if(n<=0){clearInterval(t);location.replace("https://jeffliulab.com/embodied-notes")}},1000);
+  </script>
+</body>
+</html>

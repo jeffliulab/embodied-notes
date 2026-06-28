@@ -1,0 +1,13 @@
+# OS / 编辑器
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.obsidian/
+
+# Python（若用脚本处理内容）
+__pycache__/
+*.pyc
+
+# 旧 mkdocs 构建产物（已退役，防误提交）
+site/

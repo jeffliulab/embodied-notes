@@ -98,7 +98,7 @@ hide:
 
 ## 友情链接
 
-[AI 学习笔记 →](https://jeffliulab.github.io/ai-notes/){ .md-button }
+[AI 学习笔记 →](https://jeffliulab.com/ai-notes){ .md-button }
 [神经科学 →](https://jeffliulab.github.io/neuro-sci-notes/){ .md-button }
-[AI 行业研究 →](https://jeffliulab.github.io/ai-industry-research/){ .md-button }
+[AI 行业研究 →](https://jeffliulab.com/ai-industry-research){ .md-button }
 [金融学习笔记 →](https://jeffliulab.github.io/finance-notes/){ .md-button }

@@ -98,7 +98,7 @@ A systematic knowledge base covering embodied AI, robotics, robot learning, simu
 
 ## Sister Sites
 
-[AI Notes →](https://jeffliulab.github.io/ai-notes/){ .md-button }
+[AI Notes →](https://jeffliulab.com/ai-notes){ .md-button }
 [Neuroscience →](https://jeffliulab.github.io/neuro-sci-notes/){ .md-button }
-[AI Industry Research →](https://jeffliulab.github.io/ai-industry-research/){ .md-button }
+[AI Industry Research →](https://jeffliulab.com/ai-industry-research){ .md-button }
 [Finance Notes →](https://jeffliulab.github.io/finance-notes/){ .md-button }
